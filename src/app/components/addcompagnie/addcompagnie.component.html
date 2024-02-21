@@ -1,0 +1,27 @@
+<form [formGroup]="addCompForm" (ngSubmit)="AddComp()"  enctype="multipart/form-data">
+    
+      
+        <div class="form-group">
+            <label for="logo">logo Compagnie</label>
+            <input   type="file" class="form-control"  id="logo" (change)="onFileChange($event)" >
+          </div>
+      
+
+    <div class="form-group">
+      <label for="nomc">Nom Compagnie</label>
+      <input  type="text" class="form-control" formControlName="nom" id="nom"  placeholder="Enterer nom ">
+    </div>
+
+    <div class="form-group">
+      <label for="siege">Siège</label>
+      <input type="text" class="form-control" formControlName="siege" id="siege" placeholder="Entrer le siège">
+    </div>
+
+    <div class="form-group">
+      <label for="tel">telephone</label>
+      <input  type="text" class="form-control" formControlName="tel" id="tel" placeholder="Entrer le numéro de téléphone">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="addCompForm.invalid">Submit</button>
+  </form>
