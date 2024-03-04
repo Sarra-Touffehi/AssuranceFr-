@@ -1,0 +1,41 @@
+.cont{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.nom{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+.small-fab-button {
+    width: 45px; 
+    height: 48px; 
+  }
+  .example-card{
+    width: 400px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  }
+  h2{
+    
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+  .center-container{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  }
+  mat-card-actions{
+   display: flex; 
+   justify-content: flex-end
+  }
+  .addContainer{
+    display: flex;
+     justify-content: flex-end;
+   
+  }
