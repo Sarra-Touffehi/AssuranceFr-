@@ -15,4 +15,13 @@ export class NotificationServiceService {
       //panelClass:['success-snackbar'],
     });
   }
+
+  showError(message: string): void {
+    this.snackbar.open(message, 'Fermer', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['error-snackbar'], 
+    });
+  }
 }

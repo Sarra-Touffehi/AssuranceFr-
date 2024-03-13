@@ -22,6 +22,7 @@ export class AddcompagnieComponent implements OnInit {
    siege: '', 
    tel: '' ,
    logoUrl: null,
+   offres: []
   };
   constructor(private compagnieservice:CompagnieserviceService,private fb:FormBuilder, private router:Router, private notificationservice:NotificationServiceService,private snackBar: MatSnackBar, private matdialogref:MatDialogRef<AddcompagnieComponent>) { }
   ngOnInit(): void {

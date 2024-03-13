@@ -1,6 +1,9 @@
+import { Offre } from "./offre";
+
 export class Compagnie {
   
   public logoUrl!: string | null;
+  public offres: Offre[];
     constructor(
       public idcomp:number,
        public logo:File |null,
@@ -8,7 +11,7 @@ export class Compagnie {
         public siege:string,
         public tel:string
         ){
-            
+          this.offres = [];
           }
     
         

@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Liste des Offres</h2>
+    <div *ngIf="offres && offres.length > 0; else noOffres">
+      <div *ngFor="let offre of offres" class="offre-card">
+       
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ offre.nom }}</h5>
+            <p class="card-text">Conditions : {{ offre.conditions }}</p>
+            <p class="card-text">Couverture : {{ offre.couverture }}</p>
+            <p class="card-text">Frais : {{ offre.frais }}</p>
+            <p class="card-text">Taux de risque : {{ offre.taux_risque }}</p>
+  <div *ngFor="let c of lesCompagnies">
+    <p class="card-text" >Compagnie :  {{ c.nom }}</p>
+
+  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="addContainer">
+        <mat-dialog-actions >
+          <button mat-raised-button color="primary" (click)="openDialog()">Ajouter Offre</button>
+        </mat-dialog-actions>
+        </div>
+    <ng-template #noOffres>
+      <p>Aucune offre disponible pour cette compagnie.</p>
+    </ng-template>
+  </div>
+  

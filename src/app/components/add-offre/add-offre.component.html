@@ -1,0 +1,53 @@
+<div style="display: flex; justify-content: flex-end;">
+
+    <h3 style="text-align: center;">Ajouter Offre</h3>
+    <button type="button" (click)="Cancel()" class="btn btn-primary centered-button"  style="background: none; border: none; cursor: pointer;"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+  </button> 
+  </div>
+  
+  <form  [formGroup]="addOffresForm" (ngSubmit)="AddOffre()"  enctype="multipart/form-data">
+        
+  
+      <div class="form-group">
+        <label for="nom">Nom Offre</label>
+        <input  type="text" class="form-control" formControlName="nom" id="nom"  placeholder="Enterer nom ">
+      </div>
+  
+      <div class="form-group">
+        <label for="conditions">Conditions</label>
+        <input type="text" class="form-control" formControlName="conditions" id="conditions" placeholder="Entrer les conditions">
+      </div>
+            <div class="form-group">
+        <label for="couverture">Couverture</label>
+        <input type="text" class="form-control" formControlName="couverture" id="couverture" placeholder="Entrer la couverture">
+      </div>
+  
+      <div class="form-group">
+        <label for="frais">Frais</label>
+        <input  type="text" class="form-control" formControlName="frais" id="frais" placeholder="Entrer le frais">
+      </div>
+
+      <div class="form-group">
+        <label for="taux_risque">Taux Risque</label>
+        <input  type="text" class="form-control" formControlName="taux_risque" id="taux_risque" placeholder="Entrer le taux du risque">
+      </div>
+      
+
+
+      <div class="form-group">
+        <label for="compagnie">Compagnie</label>
+        <select class="form-control" formControlName="compagnie" id="compagnie">
+          <option *ngFor="let compagnie of lesCompagnies" [value]="compagnie.idcomp">{{ compagnie.nom }}</option>
+        </select>
+      </div>
+      
+      <div style="display: flex; justify-content: flex-end;">
+        <button type="submit" class="btn btn-primary centered-button" [disabled]="addOffresForm.invalid" style="background: none; border: none; cursor: pointer;"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+    </button>  
+    </div> 
+  
+    
+    </form>
+    

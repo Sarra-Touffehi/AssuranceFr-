@@ -16,10 +16,14 @@
    <span class="cont"> Contact : </span>  {{c.tel}}
     </p>
   </mat-card-content>
-  <mat-card-actions>
+
+  <mat-card-actions class="card-actions">
     <button mat-fab color="warn" (click)="deleteComp(c.idcomp)" aria-label="Example icon button with a delete icon" class="small-fab-button">
-      <mat-icon >delete</mat-icon>
+      <mat-icon>clear</mat-icon>
     </button>
+  </mat-card-actions>
+  <mat-card-actions class="bottom-offres">
+    <button mat-raised-button color="beige" [routerLink]="['/offres', c.idcomp]">Offres</button>
   </mat-card-actions>
 </mat-card>
 <div class="addContainer">

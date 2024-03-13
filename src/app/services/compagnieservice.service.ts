@@ -55,4 +55,10 @@ export class CompagnieserviceService {
     
       return this.http.delete<Compagnie>(`${this.url}/${idcomp}`);
       }
+
+
+      getCompagnieById(id: number): Observable<Compagnie> {
+        return this.http.get<Compagnie>(`${this.url}/${id}`);
+      }
+      
   }

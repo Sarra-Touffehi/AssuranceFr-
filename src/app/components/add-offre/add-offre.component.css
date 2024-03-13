@@ -1,0 +1,38 @@
+h3{
+    text-align: center;
+    justify-content: center;}
+    
+.centered-button{
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+form {
+  margin-bottom: 50px;
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px; 
+  }
+  
+
+  label, input {
+    display: block; 
+    width: 100%; 
+    margin-bottom: 10px;
+  }
+  
+
+  .mat-dialog-container {
+    border-radius: 60px;
+  }
+  /* Media Query pour les écrans plus petits */
+  @media screen and (max-width: 768px) {
+    form {
+      padding: 10px; 
+    }
+  
+    label, input {
+      width: calc(100% - 20px); 
+      margin-bottom: 10px; 
+    }
+  }
