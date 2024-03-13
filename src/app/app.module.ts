@@ -14,12 +14,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListeCompagniesComponent } from './components/liste-compagnies/liste-compagnies.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
+import { SouscriptionComponent } from './components/souscription/souscription.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddcompagnieComponent,
-    ListeCompagniesComponent
+    ListeCompagniesComponent,
+    SouscriptionComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -33,8 +41,12 @@ import {MatCardModule} from '@angular/material/card';
   BrowserAnimationsModule,
   NoopAnimationsModule,
   MatSnackBarModule,
-  MatCardModule
-  
+  MatCardModule,
+  MatToolbarModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
