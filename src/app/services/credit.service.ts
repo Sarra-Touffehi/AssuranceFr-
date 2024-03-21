@@ -10,7 +10,7 @@ export class CreditService {
   private url ="http://localhost:9630/credits/"
   constructor(private http:HttpClient) { }
 
-  getCreditByCodeClient(idClient:number): Observable<Credit[]> {
-    return this.http.get<Credit[]>(this.url +idClient);
+  getCreditByNumCredit(numCredit:number): Observable<Credit[]> {
+    return this.http.get<Credit[]>(this.url +numCredit);
   }
 }

@@ -14,20 +14,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListeCompagniesComponent } from './components/liste-compagnies/liste-compagnies.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
-import { SouscriptionComponent } from './components/souscription/souscription.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { OffresComponent } from './components/offres/offres.component';
+import { AddOffreComponent } from './components/add-offre/add-offre.component';
+import { SouscriptionComponent } from './components/souscription/souscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddcompagnieComponent,
     ListeCompagniesComponent,
-    SouscriptionComponent,
-    
+    HeaderComponent,
+    FooterComponent,
+    OffresComponent,
+    AddOffreComponent,
+    SouscriptionComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -43,10 +51,13 @@ import {MatGridListModule} from '@angular/material/grid-list';
   MatSnackBarModule,
   MatCardModule,
   MatToolbarModule,
+  MatListModule,
+  MatSidenavModule,
   MatInputModule,
-  MatAutocompleteModule,
   MatFormFieldModule,
-  MatGridListModule
+  
+  
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

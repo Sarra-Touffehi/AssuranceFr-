@@ -10,6 +10,8 @@
      <div class="form-group">
             <label for="logo">Logo Compagnie</label>
             <input   type="file" class="form-control"  id="logo" (change)="onFileChange($event)" >
+            <img  mat-card-image *ngIf="logoURL" [src]="logoURL" alt="Compagnie Logo" width="50px" height="50px">
+
           </div>
       
 

@@ -31,9 +31,16 @@ lesCompagnies!: Compagnie[];
     return null;
   }
   */
-  getLogoUrl(logo: Blob): any {
+ /* getLogoUrl(logo: Blob): any {
     return URL.createObjectURL(logo);
+  }*/
+  getLogoUrl(logo: File | null): string | null {
+    if (logo instanceof File) {
+      return URL.createObjectURL(logo);
+    }
+    return null;
   }
+  
   
   afficherCompagnies() {
     this.compagnieservice.getCompagnies().subscribe(
@@ -46,6 +53,23 @@ lesCompagnies!: Compagnie[];
       }
     );
   }
+
+
+ /* afficherCompagnies() {
+    this.compagnieservice.getCompagnies().subscribe(
+      data => {
+        data.forEach(compagnie => {
+          compagnie.logoUrl = '/Images/' + compagnie.logo;
+        });
+        this.lesCompagnies = data;
+        console.log('Liste des compagnies:', this.lesCompagnies);
+      
+      },
+      error => {
+        console.log('Erreur lors de la récupération des compagnies:', error);
+      }
+    );
+  }*/
   openDialog(){
     this.matDialog.open(AddcompagnieComponent,{
       width:'400px',

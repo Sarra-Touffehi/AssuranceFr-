@@ -53,26 +53,28 @@
 <mat-toolbar class="toolbar">
     <span >Informations Crédits</span>
   </mat-toolbar>
-  <form [formGroup]="FormClient">
+ <form [formGroup]="FormCredit">
 
   <mat-form-field>
-    <mat-label>Code Client</mat-label>
-    <select matNativeControl formControlName="idClient">
-      <option *ngFor="let client of lesClients" [value]="client?.idClient">{{ client?.idClient }}</option>
+    <mat-label>Numéro Credit </mat-label>
+    <select matNativeControl formControlName="numCredit">
+      <!--<option *ngFor="let client of lesClients" [value]="client?.idClient">{{ client?.idClient }}</option>-->
+      <option *ngFor="let credit of lesCredits" [value]="credit?.numCredit">{{ credit?.numCredit}} </option>
+
     </select>
   </mat-form-field>
   </form>
-  <div class="box"  >
+  <div class="box" >
 <div class="row" >
-  <div class="col-4">Numéro Crédit :{{lesCredits[0]?.numCredit}} </div>
   <div class="col-4">Type de Cédit :{{lesCredits[0]?.typeCredit}}  </div>
   <div class="col-4">Montant :{{lesCredits[0]?.montant}} </div>
+  <div class="col-sm-4">Durée :{{lesCredits[0]?.duree}} </div>
+
 </div>
 
 <div class="row" >
   <div class="col-sm-4">Date d'accord : {{lesCredits[0]?.dateAccord}} </div>
   <div class="col-sm-4">Date d'échéance :{{lesCredits[0]?.dateEcheance}} </div>
-  <div class="col-sm-4">Durée :{{lesCredits[0]?.duree}} </div>
 </div>
 
 </div>

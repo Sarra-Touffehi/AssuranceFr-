@@ -4,6 +4,9 @@ import { Client } from 'src/app/models/client';
 import { Credit } from 'src/app/models/credit';
 import { ClientServiceService } from 'src/app/services/client-service.service';
 import { CreditService } from 'src/app/services/credit.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-souscription',
@@ -14,7 +17,7 @@ import { CreditService } from 'src/app/services/credit.service';
 })
 export class SouscriptionComponent implements OnInit {
   FormClient !:FormGroup;
-  //FormCredit!:FormGroup;
+  FormCredit!:FormGroup;
   lesClients: Client[]=[];
   lesCredits:Credit[]=[];
 constructor(private clientservice:ClientServiceService,private creditservice:CreditService, private fb:FormBuilder) { }
@@ -32,7 +35,7 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
     'revenu': []
    }),
 
- /*  this.FormCredit= this.fb.group({
+ this.FormCredit= this.fb.group({
    
     "numCredit":[],
 	 "typeCredit":[],
@@ -41,7 +44,7 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
 	 "dateEcheance":[],
 	 "duree":[]
    }),
- */
+ 
     this.FormClient.get('numcompte')?.valueChanges.subscribe((value) => {
       if(!value){
         this.FormClient.reset();
@@ -51,9 +54,9 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
       }
     });
 
-    this.FormClient.get('idClient')?.valueChanges.subscribe((value) => {
+    this.FormCredit.get('numCredit')?.valueChanges.subscribe((value) => {
       if (value) {
-        this.afficherCreditsByCodeClient();
+        this.afficherCreditByNumCreditt();
       }
     });
   }
@@ -68,6 +71,7 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
       (data:Client) => {
         this.lesClients.push(data); 
         console.log('Infos clients:', this.lesClients);
+
       }
     ,
       (error: any) => {
@@ -82,15 +86,14 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
 
 
 
-  afficherCreditsByCodeClient() {
-    if (this.FormClient.valid) {
-      const idClient = this.FormClient.get('idClient')?.value;
+  afficherCreditByNumCreditt() {
+    if (this.FormCredit.valid) {
+      const numCredit = this.FormCredit.get('numCredit')?.value;
       // vider le tableau avant de le remplir
       this.lesCredits = [];
       
-      this.creditservice.getCreditByCodeClient(idClient).subscribe(
+      this.creditservice.getCreditByNumCredit(numCredit).subscribe(
         (data: Credit[]) => {
-          // Notez que j'ai changé `Credit` en `Credit[]` ici pour refléter que getCreditsByCodeClient peut retourner une liste
           this.lesCredits = data;
           console.log('Infos credits:', this.lesCredits);
         },
