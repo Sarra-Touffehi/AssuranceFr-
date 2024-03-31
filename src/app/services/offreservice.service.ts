@@ -15,6 +15,11 @@ export class OffreserviceService {
     return this.http.get<Offre[]>(`${this.url}/compagnies/${idCompagnie}/offres`);
   }
 
+  getOffres(): Observable<Offre[]> {
+    return this.http.get<Offre[]>(`${this.url}/offres`);
+  }
+  
+
  /* addOffresPourCompagnie(idcomp: number, offre: Offre): Observable<Offre> {
     return this.http.post<Offre>(`${this.url}/compagnies/${idcomp}/offres`, offre);
   } */
@@ -41,5 +46,11 @@ export class OffreserviceService {
     return this.http.post<Offre>(`${this.url}/offres`, offre);
   }
 
+  updateOffre(id: number, offre: Offre): Observable<any> {
+    return this.http.put<any>(`${this.url}/offres/${id}`, offre, { responseType: 'text' as 'json' });
+  }
 
+  getOffreById(id: number): Observable<Offre> {
+    return this.http.get<Offre>(`${this.url}/offres/${id}`);
+  }
 }

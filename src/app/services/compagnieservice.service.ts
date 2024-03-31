@@ -80,5 +80,9 @@ addCompagnie(formData: FormData): Observable<Compagnie> {
       getCompagnieById(id: number): Observable<Compagnie> {
         return this.http.get<Compagnie>(`${this.url}/${id}`);
       }
+
+      getCompagnieByOffreId(offreId: number): Observable<Compagnie> {
+        return this.http.get<Compagnie>(`${this.url}/offre/${offreId}`);
+      }
       
   }

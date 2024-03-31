@@ -1,11 +1,12 @@
+import { Client } from "./client";
 export class Credit {
     constructor(
         public numCredit: number,
-        public typeCredit:String,
+        public typeCredit: string,
         public dateAccord: Date,
         public dateEcheance: Date,
-        public duree:String,
-        public montant:number,
-)
-{}
+        public duree: string,
+        public montant: number,
+        public client: Client 
+    ) {}
 }

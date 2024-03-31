@@ -1,0 +1,46 @@
+<div class="container">
+    <mat-toolbar class="toolbar">
+      <span>Simulation des offres d'assurance incendie</span>
+    </mat-toolbar>
+    <div *ngIf="offres && offres.length > 0; else noOffres" class="offre-container">
+      <div *ngFor="let offre of offres" class="offre-card">
+        <div class="card">
+          <div class="card-header">
+            <img *ngIf="offre.compagnie && offre.compagnie.logo" src="http://localhost:9630/images/{{ offre.compagnie.logo }}" alt="Compagnie Logo" width="150" height="200">
+            <div *ngFor="let c of lesCompagnies">
+           
+              <h5 class="card-title">{{ c.nom }}</h5>
+            </div>
+            <h5 class="card-title">{{ offre.nom }}</h5>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <tr>
+                <td>Conditions:</td>
+                <td>{{ offre.conditions }}</td>
+              </tr>
+              <tr>
+                <td>Couverture:</td>
+                <td>{{ offre.couverture }}</td>
+              </tr>
+              <tr>
+                <td>Frais:</td>
+                <td>{{ offre.frais }}</td>
+              </tr>
+              <tr>
+                <td>Taux de risque:</td>
+                <td>{{ offre.taux_risque }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer text-center">
+            <mat-icon class="money-icon" (click)="openDialog()">attach_money</mat-icon> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noOffres>
+      <p>Aucune offre disponible</p>
+    </ng-template>
+  </div>
+  

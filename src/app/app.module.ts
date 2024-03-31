@@ -24,6 +24,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { OffresComponent } from './components/offres/offres.component';
 import { AddOffreComponent } from './components/add-offre/add-offre.component';
 import { SouscriptionComponent } from './components/souscription/souscription.component';
+import { UpdateOffreComponent } from './components/update-offre/update-offre.component';
+import { MatSelectModule } from '@angular/material/select';
+import { SimulationComponent } from './components/simulation/simulation.component';
+import { TarificationComponent } from './components/tarification/tarification.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { SouscriptionComponent } from './components/souscription/souscription.co
     FooterComponent,
     OffresComponent,
     AddOffreComponent,
-    SouscriptionComponent
+    SouscriptionComponent,
+    UpdateOffreComponent,
+    SimulationComponent,
+    TarificationComponent
   
   ],
   imports: [
@@ -55,7 +62,7 @@ import { SouscriptionComponent } from './components/souscription/souscription.co
   MatSidenavModule,
   MatInputModule,
   MatFormFieldModule,
-  
+  MatSelectModule
   
   
   ],

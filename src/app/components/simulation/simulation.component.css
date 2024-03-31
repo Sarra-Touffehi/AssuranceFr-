@@ -1,0 +1,62 @@
+.container {
+    
+}
+
+.offre-container {
+  display: flex;
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 20px;
+}
+
+.offre-card {
+  flex-basis: calc(33.33% - 20px); 
+  max-width: calc(33.33% - 20px); 
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center; 
+}
+
+.card-header img {
+  display: block;
+  margin: 0 auto; 
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+.money-icon {
+  vertical-align: middle;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}

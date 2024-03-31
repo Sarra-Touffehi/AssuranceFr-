@@ -7,6 +7,9 @@ import { CreditService } from 'src/app/services/credit.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { Router } from '@angular/router';
+import { NotificationServiceService } from 'src/app/services/notification-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-souscription',
@@ -20,11 +23,14 @@ export class SouscriptionComponent implements OnInit {
   FormCredit!:FormGroup;
   lesClients: Client[]=[];
   lesCredits:Credit[]=[];
-constructor(private clientservice:ClientServiceService,private creditservice:CreditService, private fb:FormBuilder) { }
+constructor(private clientservice:ClientServiceService,private creditservice:CreditService, private fb:FormBuilder, 
+  private router : Router,
+  private notificationservice : NotificationServiceService,
+  ) { }
 
   ngOnInit(): void {
    this.FormClient= this.fb.group({
-    'numcompte':[ Validators.required],
+    'numcompte':[ null, Validators.required],
     'idClient': [],
     'nom': [],
     'prenom': [],
@@ -54,54 +60,105 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
       }
     });
 
-    this.FormCredit.get('numCredit')?.valueChanges.subscribe((value) => {
-      if (value) {
-        this.afficherCreditByNumCreditt();
-      }
-    });
-  }
-
-  afficherClientsByNumCompte() {
-    if(this.FormClient.valid){
-     
-      const numcompte=this.FormClient.get('numcompte')?.value;
-      //vider le tableau avant de le remplir 
-      this.lesClients = [];
-    this.clientservice.getClientByNumCompte(numcompte).subscribe(
-      (data:Client) => {
-        this.lesClients.push(data); 
-        console.log('Infos clients:', this.lesClients);
-
-      }
-    ,
-      (error: any) => {
-        console.log('Erreur lors de la récupération des infos client:', error);
-      }
-      
-    );
     
   }
-  }
 
+afficherClientsByNumCompte() {
+    if (this.FormClient.valid) {
+      const numcompte = this.FormClient.get('numcompte')?.value;
+      this.lesClients = []; 
 
-
-
-  afficherCreditByNumCreditt() {
-    if (this.FormCredit.valid) {
-      const numCredit = this.FormCredit.get('numCredit')?.value;
-      // vider le tableau avant de le remplir
-      this.lesCredits = [];
-      
-      this.creditservice.getCreditByNumCredit(numCredit).subscribe(
-        (data: Credit[]) => {
-          this.lesCredits = data;
-          console.log('Infos credits:', this.lesCredits);
+      this.clientservice.getClientByNumCompte(numcompte).subscribe(
+        (data: Client) => { 
+          this.lesClients.push(data); 
+          console.log('Infos clients:', this.lesClients);
         },
         (error: any) => {
-          console.log('Erreur lors de la récupération des infos credit:', error);
+          console.log('Erreur lors de la récupération des infos client:', error);
+        }
+      );
+      
+
+      this.creditservice.getCreditByNumCompte(numcompte).subscribe(
+        (data: Credit[]) => {
+          this.lesCredits = data;
+          console.log('Infos crédits:', this.lesCredits);
+        },
+        (error: any) => {
+          console.log('Erreur lors de la récupération des crédits:', error);
         }
       );
     }
+  }
+
+  
+/*  afficherCreditsByNumCompte() {
+    const numcompte = this.FormClient.get('numcompte')?.value;
+    this.creditservice.getCreditByNumCompte(numcompte).subscribe(
+      (data: Credit[]) => {
+        this.lesCredits = data;
+        console.log('Crédits associés au compte:', this.lesCredits);
+        //this.afficherCreditByNumCredit();
+      },
+      (error: any) => {
+        console.log('Erreur lors de la récupération des crédits:', error);
+      }
+    );
+  } */
+
+
+
+
+  afficherCreditByNumCredit() {
+    const numCredit = this.FormCredit.get('numCredit')?.value;
+    this.creditservice.getCreditByNumCredit(numCredit).subscribe(
+      (data: Credit[]) => {
+        if (data.length > 0) {
+          const credit = data[0];
+          this.FormCredit.patchValue({
+            typeCredit: credit.typeCredit,
+            montant: credit.montant,
+            duree: credit.duree,
+            dateAccord: credit.dateAccord,
+            dateEcheance: credit.dateEcheance
+          });
+          console.log('Infos crédit:', data);
+        } else {
+          console.log('Aucune information sur le crédit pour le numéro de crédit sélectionné.');
+        }
+      },
+      (error: any) => {
+        console.log('Erreur lors de la récupération des infos crédit:', error);
+      }
+    );
+  }
+  
+
+  simuler() {
+   
+    const numCredit = this.FormCredit.get('numCredit')?.value;
+  
+    this.creditservice.getCreditByNumCredit(numCredit).subscribe(
+      (credit: any) => {
+        if (credit) {
+          this.router.navigate(['/simulation']); // Rediriger vers la page de simulation
+        } else {
+          alert('Le client n\'a pas de crédit associé.'); // Afficher une alerte si le client n'a pas de crédit associé
+        }
+      },
+      (error: any) => {
+        console.log('Erreur lors de la récupération du crédit:', error);
+        this.notificationservice.showError('Le client n\'a pas de crédit associé.');
+      }
+    );
+    
+  }
+  
+  reset() {
+    this.FormClient.reset();
+    this.FormCredit.reset();
+    this.lesClients = [];
+    this.lesCredits = [];
   }
   
 }

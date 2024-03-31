@@ -6,6 +6,7 @@ import { AddOffreComponent } from '../add-offre/add-offre.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Compagnie } from 'src/app/models/compagnie';
 import { CompagnieserviceService } from 'src/app/services/compagnieservice.service';
+import { UpdateOffreComponent } from '../update-offre/update-offre.component';
 
 @Component({
   selector: 'app-offres',
@@ -13,9 +14,10 @@ import { CompagnieserviceService } from 'src/app/services/compagnieservice.servi
   styleUrls: ['./offres.component.css']
 })
 export class OffresComponent implements OnInit {
-  offres!: Offre[];
+  offres: Offre[]= [];;
   lesCompagnies!: Compagnie[];
   idCompagnie!: number;
+ 
 
   constructor( private route: ActivatedRoute, private offreService :OffreserviceService, private matDialog:MatDialog,
     private compagnieService : CompagnieserviceService) { }
@@ -68,5 +70,21 @@ export class OffresComponent implements OnInit {
       data: { idCompagnie: this.idCompagnie } 
     });
   }
+ 
+  openModifyDialog(offre: Offre) {
+    const dialogRef = this.matDialog.open(UpdateOffreComponent, {
+        width: '400px',
+        data: { offre: offre }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        // Actualisez la liste des offres après la modification si nécessaire
+        if (result === 'updated') {
+            this.AfficherOffres();
+        }
+    });
+}
+
+  
 
 }

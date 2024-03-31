@@ -22,6 +22,7 @@ export class NotificationServiceService {
       horizontalPosition: 'center',
       verticalPosition: 'top',
       panelClass: ['error-snackbar'], 
+      
     });
   }
 }

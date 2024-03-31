@@ -13,4 +13,8 @@ export class CreditService {
   getCreditByNumCredit(numCredit:number): Observable<Credit[]> {
     return this.http.get<Credit[]>(this.url +numCredit);
   }
+
+  getCreditByNumCompte(numCompte: number): Observable<Credit[]> {
+    return this.http.get<Credit[]>(`${this.url}numCompte/`+numCompte);
+  }
 }

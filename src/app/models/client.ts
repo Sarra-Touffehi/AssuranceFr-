@@ -1,15 +1,16 @@
+import { Credit } from "./credit";
+
 export class Client {
     constructor(
         public idClient: number,
         public numCompte: number,
-        public cin:String,
-        public nom:String,
-        public prenom:String,
-        public email:String,
+        public cin: string,
+        public nom: string,
+        public prenom: string,
+        public email: string,
         public dateNaissance: Date,
-        public tel:String,
-        public revenu:number,
-){
-
-    }
+        public tel: string,
+        public revenu: number,
+        public credits: Credit[] = [] 
+    ) {}
 }

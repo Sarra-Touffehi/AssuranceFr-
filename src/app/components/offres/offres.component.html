@@ -4,16 +4,36 @@
     <div *ngFor="let offre of offres" class="offre-card">
      
       <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ offre.nom }}</h5>
-          <p class="card-text">Conditions : {{ offre.conditions }}</p>
-          <p class="card-text">Couverture : {{ offre.couverture }}</p>
-          <p class="card-text">Frais : {{ offre.frais }}</p>
-          <p class="card-text">Taux de risque : {{ offre.taux_risque }}</p>
-<div *ngFor="let c of lesCompagnies">
-  <p class="card-text" >Compagnie :  {{ c.nom }}</p>
+        
+          <button mat-icon-button class="edit-icon" aria-label="Modifier" (click)="openModifyDialog(offre)" style="color: green;padding: 20px;">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <div class="card-body">
+          <div *ngFor="let c of lesCompagnies">
+           
+            <img  mat-card-image  src="http://localhost:9630/images/{{c.logo}}" alt="Compagnie Logo" width="150" height="200">
+            <h5 class="card-title">{{ offre.nom }}</h5>
+          </div>
+          
+          <table class="table">
+            <tr>
+              <td>Conditions:</td>
+              <td>{{ offre.conditions }}</td>
+            </tr>
+            <tr>
+              <td>Couverture:</td>
+              <td>{{ offre.couverture }}</td>
+            </tr>
+            <tr>
+              <td>Frais:</td>
+              <td>{{ offre.frais }}</td>
+            </tr>
+            <tr>
+              <td>Taux de risque:</td>
+              <td>{{ offre.taux_risque }}</td>
+            </tr>
+          </table>
 
-</div>
         </div>
       </div>
     </div>
@@ -22,8 +42,11 @@
       <mat-dialog-actions >
         <button mat-raised-button color="primary" (click)="openDialog()">Ajouter Offre</button>
       </mat-dialog-actions>
-      </div>
+  </div>
   <ng-template #noOffres>
     <p>Aucune offre disponible pour cette compagnie.</p>
   </ng-template>
 </div>
+
+
+
