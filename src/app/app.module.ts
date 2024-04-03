@@ -28,6 +28,7 @@ import { UpdateOffreComponent } from './components/update-offre/update-offre.com
 import { MatSelectModule } from '@angular/material/select';
 import { SimulationComponent } from './components/simulation/simulation.component';
 import { TarificationComponent } from './components/tarification/tarification.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TarificationComponent } from './components/tarification/tarification.co
     SouscriptionComponent,
     UpdateOffreComponent,
     SimulationComponent,
-    TarificationComponent
+    TarificationComponent,
+    AddUserComponent
   
   ],
   imports: [

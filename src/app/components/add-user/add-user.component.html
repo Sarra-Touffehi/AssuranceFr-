@@ -1,0 +1,45 @@
+<div class="container">
+    <h2> Ajouter Utilisateur</h2>
+  </div>
+  <form id="userForm" [formGroup]="RegisterForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" class="form-control" id="nom" formControlName="nom">
+    </div>
+  
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" class="form-control" id="prenom" formControlName="prenom">
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+  
+    <div class="form-group">
+        <label for="confirmPassword">Confirmation du mot de passe</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+        <div class="error-message" *ngIf="RegisterForm.get('confirmPassword')?.hasError('passwordMismatch') && (RegisterForm.get('confirmPassword')?.dirty || RegisterForm.get('confirmPassword')?.touched)">
+            Mot de passe incorrect
+          </div>
+          
+      </div>
+  
+    <div class="form-group">
+      <label for="role">Rôle</label>
+      <select class="form-control" id="role" formControlName="role">
+        <option value="AGENT">Agent</option>
+        <option value="ADMIN">Admin</option>
+        <option value="ADMIN_GLOBAL">Admin Global</option>
+      </select>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="RegisterForm.invalid">Register</button>
+  </form>
+  

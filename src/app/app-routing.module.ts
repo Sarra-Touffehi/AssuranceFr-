@@ -8,6 +8,7 @@ import { AddOffreComponent } from './components/add-offre/add-offre.component';
 import { SouscriptionComponent } from './components/souscription/souscription.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SimulationComponent } from './components/simulation/simulation.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 const routes: Routes = [
 {path:'ajoutcompagnie', title:'AjoutCompagnie', component:AddcompagnieComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
 {path:'header',component:HeaderComponent},
 {path:'simulation', title:'simulation', component:SimulationComponent},
 {path:'souscription', title:'souscription', component:SouscriptionComponent},
+{path:'adduser', title:'adduser', component:AddUserComponent},
 
 
 ];
