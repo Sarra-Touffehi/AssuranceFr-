@@ -9,8 +9,11 @@ import { SouscriptionComponent } from './components/souscription/souscription.co
 import { HeaderComponent } from './components/header/header.component';
 import { SimulationComponent } from './components/simulation/simulation.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
 {path:'ajoutcompagnie', title:'AjoutCompagnie', component:AddcompagnieComponent},
 {path:'listecompagnie', title:'ListeCompagnie', component:ListeCompagniesComponent},
 {path:'offres/:idcomp', component:OffresComponent},

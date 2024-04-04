@@ -29,6 +29,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { SimulationComponent } from './components/simulation/simulation.component';
 import { TarificationComponent } from './components/tarification/tarification.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     UpdateOffreComponent,
     SimulationComponent,
     TarificationComponent,
-    AddUserComponent
+    AddUserComponent,
+    LoginComponent
   
   ],
   imports: [
