@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationServiceService } from 'src/app/services/notification-service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AddUserComponent implements OnInit {
   RegisterForm!: FormGroup;
   
   constructor(private authService : AuthService,
-    private fb : FormBuilder) {
+    private fb : FormBuilder, private notificationservice:NotificationServiceService) {
       this.createForm();
      }
 
@@ -48,7 +49,8 @@ const confirmPassword = formGroup.get('confirmPassword')?.value;
       this.authService.register(signRequest).subscribe(
         (response) => {
           console.log('Utilisateur inscrit avec succès!', response);
-          
+          this.notificationservice.showSuccess('Utilisateur inscrit avec succès!');
+
           this.RegisterForm.reset();
         },
         (error) => {

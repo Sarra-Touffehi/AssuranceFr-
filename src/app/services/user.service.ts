@@ -33,5 +33,15 @@ export class UserService {
     const url = `${this.url}/${userId}/deactivate`;
     return this.http.put(url, {}, { responseType: 'text', headers: this.headers });
   }
+
+  getUserById(userId: number): Observable<User> {
+    const url = `${this.url}/${userId}`;
+    return this.http.get<User>(url, { headers: this.headers });
+  }
+
+  getUserByEmail(email: string): Observable<User> {
+    const url = `${this.url}/email/${email}`;
+    return this.http.get<User>(url, { headers: this.headers });
+  }
 }
 
