@@ -1,0 +1,52 @@
+<div>
+    <div style="display: flex; justify-content: flex-end;">
+        <button type="button" (click)="Cancel()" class="btn btn-primary centered-button" style="background: none; border: none; cursor: pointer;"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" stroke="red"></circle>
+                <line x1="15" y1="9" x2="9" y2="15" stroke="red"></line>
+                <line x1="9" y1="9" x2="15" y2="15" stroke="red"></line>
+            </svg>
+        </button>
+    </div>
+    
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <h3>Modifier Utilisateur</h3>
+    </div>
+   
+</div>
+
+<form [formGroup]="modifyUserForm" (ngSubmit)="UpdateUser()" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Entrez le nom">
+    </div>
+  
+    <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" formControlName="prenom" id="prenom" placeholder="Entrez le prénom">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" formControlName="email" id="email" placeholder="Entrez l'email">
+    </div>
+
+    <div class="form-group">
+        <label for="role">Rôle</label>
+        <select class="form-control" formControlName="role" id="role">
+            <option value="AGENT">Agent</option>
+            <option value="ADMIN">Admin</option>
+        </select>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end;">
+        <button type="submit" class="btn btn-primary centered-button" [disabled]="modifyUserForm.invalid" style="background: none; border: none; cursor: pointer;"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" stroke="green"></circle>
+                <polyline points="16 7 10 17 6 12" stroke="green"/>
+            </svg>
+        </button>  
+    </div>
+    
+    
+</form>

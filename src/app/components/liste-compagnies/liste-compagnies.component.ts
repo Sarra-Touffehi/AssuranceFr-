@@ -3,6 +3,8 @@ import { Compagnie } from 'src/app/models/compagnie';
 import { CompagnieserviceService } from 'src/app/services/compagnieservice.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddcompagnieComponent } from '../addcompagnie/addcompagnie.component';
+import { AuthService } from 'src/app/services/auth.service';
+import { HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-liste-compagnies',
   templateUrl: './liste-compagnies.component.html',
@@ -10,7 +12,11 @@ import { AddcompagnieComponent } from '../addcompagnie/addcompagnie.component';
 })
 export class ListeCompagniesComponent implements OnInit {
 lesCompagnies!: Compagnie[];
-  constructor(private compagnieservice:CompagnieserviceService,private matDialog:MatDialog ) { }
+private headers: HttpHeaders;
+  constructor(private compagnieservice:CompagnieserviceService,private matDialog:MatDialog ,private authService : AuthService) { 
+    this.headers = this.authService.getTokenHeaders();
+
+  }
  
   ngOnInit(): void {
    this.afficherCompagnies();
@@ -33,13 +39,25 @@ lesCompagnies!: Compagnie[];
   */
  /* getLogoUrl(logo: Blob): any {
     return URL.createObjectURL(logo);
-  }*/
+  }
   getLogoUrl(logo: File | null): string | null {
     if (logo instanceof File) {
       return URL.createObjectURL(logo);
     }
     return null;
+  } */
+
+
+  getLogoUrl(logo: File | null): string | null {
+    if (logo) {
+      const headers = this.authService.getTokenHeaders();
+      return (`http://localhost:9630/images/${logo}` + {headers: this.headers});
+    }
+    return null;
   }
+  
+  
+  
   
   
   afficherCompagnies() {

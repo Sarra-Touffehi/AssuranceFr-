@@ -2,54 +2,36 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { User } from '../models/user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'http://localhost:9630/api/v1/auth/';
+  private url = 'http://localhost:9630/users';
+  private headers: HttpHeaders;
 
-  constructor(private http: HttpClient) { 
-
+  constructor(private http: HttpClient,private authService : AuthService) { 
+    this.headers = this.authService.getTokenHeaders();
   }
-  register(signRequest: any): Observable<any> {
-    return this.http.post<any>(this.url+'register', signRequest);
-  }
-
-  login(loginRequest: any): Observable<any> {
-    return this.http.post<any>(this.url+'authenticate', loginRequest);
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url, { headers: this.headers });
   }
 
-  public loggedInUser ={ 
-    _id:'',
-     nom: '',
-    motdepasse: '',
-      
-      };
+  updateUser(userId: number, updatedUser: User): Observable<any> {
+    const url = `${this.url}/${userId}`;
+    return this.http.put(url, updatedUser, {responseType: 'text' as 'json' , headers: this.headers });
+  }
 
-      helper = new JwtHelperService();
+  activateUser(userId: number): Observable<any> {
+    const url = `${this.url}/${userId}/activate`;
+    return this.http.put(url, {}, { responseType: 'text', headers: this.headers });
+  }
 
-      saveData(token:any){
-        let decodeToken= this.helper.decodeToken(token);
-      
-        localStorage.setItem('token',token);
-        
-       
-        console.log(decodeToken);
-          
-        }
-        getTokenHeaders(config: any = {}) {
-          const token = localStorage.getItem('token');
-          if (token) {
-            // Création d'un objet HttpHeaders avec le token
-            const headers = new HttpHeaders({
-              'Authorization': 'Bearer ' + token
-            });
-            // Fusionner les en-têtes avec les en-têtes de configuration supplémentaires
-            return {config, headers: headers };
-          }
-          return config;
-        }
-
-
+  deactivateUser(userId: number): Observable<any> {
+    const url = `${this.url}/${userId}/deactivate`;
+    return this.http.put(url, {}, { responseType: 'text', headers: this.headers });
+  }
 }
+

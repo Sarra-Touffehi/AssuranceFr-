@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SimulationComponent } from './components/simulation/simulation.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
+import { ListUsersComponent } from './components/list-users/list-users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
 {path:'simulation', title:'simulation', component:SimulationComponent},
 {path:'souscription', title:'souscription', component:SouscriptionComponent},
 {path:'adduser', title:'adduser', component:AddUserComponent},
+{path:'listusers', title:'listusers', component:ListUsersComponent},
 
 
 ];

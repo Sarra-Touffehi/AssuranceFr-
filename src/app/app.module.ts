@@ -30,6 +30,8 @@ import { SimulationComponent } from './components/simulation/simulation.componen
 import { TarificationComponent } from './components/tarification/tarification.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
+import { ListUsersComponent } from './components/list-users/list-users.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { LoginComponent } from './components/login/login.component';
     SimulationComponent,
     TarificationComponent,
     AddUserComponent,
-    LoginComponent
+    LoginComponent,
+    ListUsersComponent,
+    UpdateUserComponent
   
   ],
   imports: [

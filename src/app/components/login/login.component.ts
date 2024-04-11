@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   LoginForm!: FormGroup;
   dataReceived:any;
   sessionId:any="";
-  constructor(private userService : UserService,
+  errorMessage: string = '';
+  constructor(private authService : AuthService,
     private fb : FormBuilder
     , private router: Router) { }
 
@@ -60,12 +62,11 @@ export class LoginComponent implements OnInit {
    }
       }
     )
-  } */
+  } 
 
   submit() {
-    // Appel à getTokenHeaders() sans argument
-    const headers = this.userService.getTokenHeaders(); // Assurez-vous que cette méthode ne prend pas d'argument
-    this.userService.login(this.LoginForm.value).subscribe(
+    const headers = this.userService.getTokenHeaders().headers; // Récupération des en-têtes HTTP
+    this.userService.login(this.LoginForm.value, { headers: headers }).subscribe(
       (response) => {
         this.dataReceived = response;
         this.userService.saveData(this.dataReceived.token); 
@@ -75,8 +76,28 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/header']);
         }
       }
-    )
+    );
   }
-  
+
+*/ 
+submit(): void {
+  if (this.LoginForm.invalid) {
+    return;
+  }
+  const credentials = {
+    email: this.LoginForm.value.email,
+    password: this.LoginForm.value.password
+  };
+  this.authService.login(credentials).subscribe(
+    (response) => {
+      localStorage.setItem('token', response.token);
+    //  this.userService.setToken(response.token);
+      this.router.navigate(['/header']); // Rediriger vers la page de dashboard après la connexion
+    },
+    (error) => {
+      this.errorMessage = 'Identifiants incorrects. Veuillez réessayer.';
+    }
+  );
+}
 
 }

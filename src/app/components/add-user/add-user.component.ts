@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AddUserComponent implements OnInit {
   RegisterForm!: FormGroup;
   
-  constructor(private userService : UserService,
+  constructor(private authService : AuthService,
     private fb : FormBuilder) {
       this.createForm();
      }
@@ -44,7 +45,7 @@ const confirmPassword = formGroup.get('confirmPassword')?.value;
   submit() {
     if (this.RegisterForm.valid) { 
       const signRequest = this.RegisterForm.value; 
-      this.userService.register(signRequest).subscribe(
+      this.authService.register(signRequest).subscribe(
         (response) => {
           console.log('Utilisateur inscrit avec succès!', response);
           

@@ -11,7 +11,8 @@ export enum Role {
       public prenom: string,
       public email: string,
       public password: string,
-      public role: Role
+      public role: Role,
+      public active : boolean
     ) {}
   }
   

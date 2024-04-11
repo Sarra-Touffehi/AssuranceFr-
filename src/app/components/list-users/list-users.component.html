@@ -1,0 +1,37 @@
+<h2 style="text-align: center;">Liste des utilisateurs</h2>
+<table class="user-table">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Rôle</th>
+      <th>Statut</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <!-- Bouton pour activer ou désactiver l'utilisateur -->
+        <button class="activate-btn" (click)="toggleUserStatus(user)">
+          <ng-container *ngIf="user.active; else inactiveIcon">
+            <i class="fa-solid fa-toggle-on" style="color: green;background-color: transparent;"></i> <!-- Icône pour l'état activé -->
+          </ng-container>
+          <ng-template #inactiveIcon>
+            <i class="fa-solid fa-toggle-off" style="color: red;background-color: transparent;"></i> <!-- Icône pour l'état désactivé -->
+          </ng-template>
+        </button>
+      </td>
+      <td>
+        <button class="modify-btn" (click)="openModifyDialog(user)">
+          <i class="fa-solid fa-user-pen"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
