@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CreditService {
-  private url ="http://localhost:9630/credits/"
+  private url ="http://localhost:9630/credits"
   private headers: HttpHeaders;
   constructor(private http:HttpClient,  private authService : AuthService) { 
     this.headers = this.authService.getTokenHeaders();
@@ -16,10 +16,14 @@ export class CreditService {
   }
 
   getCreditByNumCredit(numCredit:number): Observable<Credit[]> {
-    return this.http.get<Credit[]>(this.url +numCredit, { headers: this.headers });
+    return this.http.get<Credit[]>(`${this.url}/${numCredit}`, { headers: this.headers });
   }
 
   getCreditByNumCompte(numCompte: number): Observable<Credit[]> {
-    return this.http.get<Credit[]>(`${this.url}numCompte/`+numCompte, { headers: this.headers });
+    return this.http.get<Credit[]>(`${this.url}/numCompte/${numCompte}`, { headers: this.headers });
+  }
+
+  getAllCredits(): Observable<Credit[]> {
+    return this.http.get<Credit[]>(this.url, { headers: this.headers });
   }
 }

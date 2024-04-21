@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Tarification</h1>
+<div mat-dialog-content>
+  <p>Tarif: {{ offre.frais }}</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" aria-label="Annuler la souscription">Annuler</button>
+  <button mat-button color="primary" (click)="confirmSouscription()" aria-label="Souscrire">Souscrire</button>
+</div>

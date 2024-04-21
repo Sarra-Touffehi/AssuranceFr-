@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
   private url = 'http://localhost:9630/api/v1/auth/';
-
+ helper = new JwtHelperService();
   constructor(private http: HttpClient) { 
 
   }
@@ -131,4 +132,30 @@ setToken(token: string): void {
 removeToken(): void {
   localStorage.removeItem('token');
 }
+
+
+getUserEmail(): string | null {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(token);
+    const userEmail: string = decodedToken.sub; 
+    console.log('Email de l\'utilisateur :', userEmail); 
+    return userEmail;
+  } else {
+    return null;
+  }
+}
+
+
+saveData(token:any){
+  let decodeToken= this.helper.decodeToken(token);
+
+  localStorage.setItem('token',token);
+  localStorage.setItem('email',decodeToken.sub);
+  console.log(decodeToken);
+    
+  }
+
+
 }

@@ -1,0 +1,61 @@
+
+.container {
+   margin: 0 auto;
+  max-width: 900px;
+  }
+
+
+
+.box {
+  border: 2px solid #ccc;
+  position: relative;
+  padding: 20px;
+}
+
+.header {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 0 10px;
+}
+
+
+.cadreContrat {
+  margin:10px;
+  padding: 15px;
+  border: solid black 2px; 
+}
+::ng-deep p-dialog {
+  width:50px;
+}
+.div {
+  display: flex;
+  position:relative;
+  flex-direction: column;
+  left:160px; 
+}
+p-dialog ::ng-deep .p-dialog-header {
+  background-color: #d85023 !important;
+
+}
+.p-dropdown {
+  position:relative;
+  width: 400px; /* replace with your desired width */
+ }
+span p {
+  height: 100px; /* Set the desired height */
+  overflow-y: auto; /* Add scroll bar if content overflows */
+}
+
+i.search:hover,i.pi-arrow-left:hover{
+cursor:pointer;
+}
+
+a {
+  text-decoration: none;
+  color:white;
+}
+
+

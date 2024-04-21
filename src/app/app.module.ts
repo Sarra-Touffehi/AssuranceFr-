@@ -9,47 +9,51 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
-import { AddcompagnieComponent } from './components/addcompagnie/addcompagnie.component';
+import { AddcompagnieComponent } from './admin/addcompagnie/addcompagnie.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ListeCompagniesComponent } from './components/liste-compagnies/liste-compagnies.component';
+import { ListeCompagniesComponent } from './admin/liste-compagnies/liste-compagnies.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './agent/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { OffresComponent } from './components/offres/offres.component';
-import { AddOffreComponent } from './components/add-offre/add-offre.component';
-import { SouscriptionComponent } from './components/souscription/souscription.component';
-import { UpdateOffreComponent } from './components/update-offre/update-offre.component';
+import { OffresComponent } from './admin/offres/offres.component';
+import { AddOffreComponent } from './admin/add-offre/add-offre.component';
+import { SouscriptionComponent } from './agent/souscription/souscription.component';
+import { UpdateOffreComponent } from './admin/update-offre/update-offre.component';
 import { MatSelectModule } from '@angular/material/select';
-import { SimulationComponent } from './components/simulation/simulation.component';
-import { TarificationComponent } from './components/tarification/tarification.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
+import { SimulationComponent } from './agent/simulation/simulation.component';
+import { TarificationComponent } from './agent/tarification/tarification.component';
+import { AddUserComponent } from './admin-global/add-user/add-user.component';
+import { ListUsersComponent } from './admin-global/list-users/list-users.component';
+import { UpdateUserComponent } from './admin-global/update-user/update-user.component';
+import { ListeSouscriptionsComponent } from './agent/liste-souscriptions/liste-souscriptions.component';
+import { ValiderSouscriptionComponent } from './agent/valider-souscription/valider-souscription.component';
+import { ContratComponent } from './agent/contrat/contrat.component';
+import { NgxPrintModule } from 'ngx-print';
+import { ListeContratsComponent } from './agent/liste-contrats/liste-contrats.component';
+import { CompteComponent } from './components/compte/compte.component';
+import { SearchPipe } from './search.pipe';
+import { AdminModule } from './admin/admin.module';
+import { AdminGlobalModule } from './admin-global/admin-global.module';
+import { AgentModule } from './agent/agent.module';
 import { LoginComponent } from './components/login/login.component';
-import { ListUsersComponent } from './components/list-users/list-users.component';
-import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddcompagnieComponent,
-    ListeCompagniesComponent,
-    HeaderComponent,
+
+   // CompteComponent,
     FooterComponent,
-    OffresComponent,
-    AddOffreComponent,
-    SouscriptionComponent,
-    UpdateOffreComponent,
-    SimulationComponent,
-    TarificationComponent,
-    AddUserComponent,
     LoginComponent,
-    ListUsersComponent,
-    UpdateUserComponent
+   
+   
+    
   
   ],
   imports: [
@@ -70,10 +74,18 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
   MatSidenavModule,
   MatInputModule,
   MatFormFieldModule,
-  MatSelectModule
+  MatSelectModule,
+  NgxPrintModule,
+  SharedModule,
+
+  //AdminModule,
+  //AgentModule,
+  //AdminGlobalModule
   
   
   ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })

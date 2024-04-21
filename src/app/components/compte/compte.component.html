@@ -1,0 +1,29 @@
+
+  <body>
+    
+
+    <div class="container">
+    
+    <form  *ngIf="user">
+        <div class="form-icon">
+    <i class="fa fa-user"></i>
+        </div>
+        <h3 class="title">User Account</h3>
+        <div>
+            <p><strong>Email :  </strong> <span>{{ userEmail }}</span></p>
+        </div>
+       
+        <div >
+            <p><strong>Prénom :  </strong> <span>{{ user.prenom }}</span></p>
+    </div>
+    <div>
+        <p><strong>Nom :  </strong><span>{{ user.nom }}  </span></p>
+</div>
+
+  <div >
+        <p><strong>Role :  </strong> <span>{{ user.role }}  </span></p>
+</div>
+    </form>
+    </div>
+    </body>
+    

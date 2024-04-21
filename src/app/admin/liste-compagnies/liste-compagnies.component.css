@@ -1,0 +1,77 @@
+.cont{
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+.nom{
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
+}
+.small-fab-button {
+width: 25px; 
+height: 25px; 
+border-radius: 50%; 
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #f44336; 
+color: white;
+border: none; 
+cursor: pointer; 
+}
+.small-fab-button mat-icon {
+  font-size: 20px; 
+}
+.small-fab-button:hover {
+  background-color: #d32f2f; 
+}
+.example-card{
+  width: 400px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+h2{
+  
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+.center-container{
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh; 
+margin: 380px;
+margin-top: 300pxng ;
+}
+mat-card-actions{
+ display: flex; 
+ justify-content: flex-end
+}
+.addContainer{
+  display: flex;
+   justify-content: flex-end;
+ 
+}
+.card-actions {
+position: absolute;
+top: 0;
+right: 1;
+}
+.bottom-offres {
+display: flex;
+justify-content: flex-end;
+margin-top: auto; /* Pour pousser le bouton en bas de la carte */
+}
+
+
+.mat-raised-button[color="beige"] {
+background-color: beige;
+color: black; 
+}
+.mat-raised-button[color="beige"]:hover {
+background-color: rgb(179, 179, 160); 
+color: black; 
+}

@@ -9,14 +9,21 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ClientServiceService {
-private url ="http://localhost:9630/clients/"
+private url ="http://localhost:9630/clients"
 private headers: HttpHeaders;
   constructor(private http:HttpClient,  private authService : AuthService) { 
     this.headers = this.authService.getTokenHeaders();
   }
-
+  getAllClients(): Observable<Client[]> {
+    return this.http.get<Client[]>(this.url, { headers: this.headers });
+  }
+  
   getClientByNumCompte(numCompte:number): Observable<Client> {
-    return this.http.get<Client>(this.url +numCompte, { headers: this.headers });
+    return this.http.get<Client>(`${this.url}/${numCompte}`, { headers: this.headers });
+  }
+
+  getClientById(idClient: number): Observable<Client> {
+    return this.http.get<Client>(`${this.url}/id/${idClient}`, { headers: this.headers });
   }
   }
 

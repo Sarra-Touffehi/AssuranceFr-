@@ -1,0 +1,305 @@
+<!--<h1>Contrat</h1>
+
+<div *ngIf="client">
+  <h2>Informations du Client</h2>
+  <p>ID du Client : {{ idClient }}</p>
+  <p>Numero compte  : {{ client.numCompte }}</p>
+  <p>Nom du Client : {{ client.nom }}</p>
+  <p>Prénom du Client : {{ client.prenom }}</p>
+  <p>Email du Client : {{ client.email }}</p>
+  <p>Tel du Client : {{ client.tel }}</p>
+</div>
+
+<div *ngIf="credit && credit.length > 0"> 
+    <h2>Informations du Crédit</h2>
+    <div *ngFor="let c of credit"> 
+      <p>Numéro du Crédit : {{ numCredit }}</p>
+      <p>Type de Crédit : {{ c.typeCredit }}</p>
+      <p>Date d'Accord : {{ c.dateAccord | date }}</p>
+      <p>Date d'Echéance : {{ c.dateEcheance | date }}</p>
+      <p>Durée : {{ c.duree }}</p>
+      <p>Montant : {{ c.montant }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="compagnie"> 
+    <h2>Informations de la compagnie</h2>
+    <img *ngIf="compagnie && compagnie.logo" src="http://localhost:9630/images/{{ compagnie.logo }}" alt="Compagnie Logo" width="150" height="200">
+
+    <p>Nom : {{ compagnie.nom }}</p>
+    <p>Siege : {{ compagnie.siege }}</p>
+  </div>
+  
+  <div *ngIf="offre">
+    <h2>Informations de l'offre</h2>
+    <p>ID de l'offre : {{ idOffre }}</p>
+    <p> Couverture : {{offre.couverture}}</p>
+  </div>
+
+-->
+  
+
+
+
+
+<div class="container"  id="print-section">
+  
+      <div *ngIf="compagnie" style="display:flex; justify-content: space-between;">
+        <span> <img style="width:200px; height:100px" src="../../../assets/logo2.png"> </span>
+        <span>    <img *ngIf="compagnie && compagnie.logo" src="http://localhost:9630/images/{{ compagnie.logo }}" alt="Compagnie Logo" width="200" height="100">
+        </span>
+      </div>
+  
+  
+      <div *ngIf="compagnie">
+        <p style="text-align: center; font-size:30px;">Société d'assurances et de réassurances</p>
+        <p style="text-align: center;font-size:30px;">ASSURANCE {{compagnie.nom}}</p>
+        <p style="text-align: center;"><b>Siège social :</b><span>{{compagnie.siege}}</span> </p>
+        <p style="margin-left:350px; display:flex; justify-content: space-between;">
+          <span style="text-align: center;">
+            <div><b>Fax :</b>&nbsp;<img src="../../../assets/tunisia.jpg" style="width: 18px"/>   <span>&nbsp;{{compagnie.tel}}</span> </div>
+          </span>
+        </p>
+        <div>
+          <span><b>Tunis, le :</b> </span> <span>&nbsp;&nbsp;&nbsp;&nbsp;{{currentDate| date:'dd/MM/yyyy'}}</span>
+        </div>
+      </div>
+  
+      <div>
+  
+      </div>
+  
+      <div class="box">
+        <div class="header"><b>Souscripteur</b></div>
+          <p style="text-align: center; font-size:20px">
+            La société assurances et réassurances Maghrebia certifie que : 
+          </p>
+  
+          <div *ngIf="client" style="margin-left:60px; text-align: center;" >
+            <p >
+              <span style=""><b>Mr/Mme : </b>  <span style="margin-left:50px" >{{client.nom}} {{client.prenom}}</span> </span> 
+        
+            </p>
+            <p *ngIf="client" >
+                <span><b>CIN :</b> <span style="margin-left:100px">{{client.cin}}</span> </span> 
+               
+              </p>
+            <p *ngIf="client" >
+              <span><b>Né(e) le :</b> <span style="margin-left:60px">{{client.dateNaissance| date:'dd/MM/yyyy'}}</span> </span> 
+             
+            </p>
+  
+            <p>
+              <b>Adresse :</b> <span style="margin-left:60px">{{client.adresse}}</span>
+            </p>
+            <p>
+                <b>Email :</b> <span style="margin-left:60px">{{client.email}}</span>
+              </p>
+        </div>
+  
+      </div>
+  
+      <div style="margin-left:13px"  *ngIf="compagnie">
+        <p> -est garanti(e) en cas d'incendie et/ou explosions par le contrat d'assurance groupe Crédits Immobiliers. Le règlement de 
+          l'indémnisation, jusqj'à concurrence du montant du crédit ci-après indiqué ne pourra être fait qu'en présence de la <i style="color:orange"><b>BANQUE ATTIJARI 
+        DE TUNISIE</b></i> ou de son mandataire, entre les mains de qui le paiement des sommes dues, échues ou à échoir devra être effectuée 
+        </p>
+  
+        <p>En tout état de cause, la présente vaudra transport et délégation pour toutes sommes qui pourraient être dues par la <b>SOCIETE ASSURANCES {{compagnie.nom}}</b>
+          en cas d'incendie et/ou d'explosions conformément aux limites de contrat.
+        </p>
+  
+        <p>
+          La présente garantie continuera à couvrir vis-à-vis de la <i style="color:orange"><b>BANQUE ATTIJARI DE TUNISIE</b></i> 
+          tant que <b>LA SOCIETE ASSURANCES {{compagnie.nom}}</b> ne l'aura pas avisée par lettre recommandée avec accusé de réception de la suspension de garantie ou de toute modification de contrat.
+        </p>
+      </div>
+      <div class="cadreContrat" *ngFor="let c of credit" >
+        <p  style="display:flex; justify-content: space-between;">
+          <span style="margin-left:60px"><b>Date d'effet : </b>  <span  >{{c.dateAccord| date:'dd/MM/yyyy'}}</span> </span> 
+          <span style="margin-right: 120px;"><b>Montant du prêt :</b>{{c.montant}}</span> 
+        </p>
+  
+        <p style="display:flex; justify-content: space-between;" >
+          <span style="margin-left:60px"><b>Durée du crédit : {{c.duree}}</b> <span style="margin-left:88px">{{c.dateEcheance| date:'dd/MM/yyyy'}}</span> </span> 
+          <span style="margin-right: 120px;" ><b>Amortissement : </b>1 580,153DT</span>
+        </p>
+      </div>
+  
+      <div class="cadreContrat" *ngIf="offre">
+        <p style="display:flex; justify-content: space-between;">
+          <span style="margin-left:60px">
+            <b>Prime d'assurance :</b> <span>825,000 DT</span>
+          </span>
+          <span style="margin-right: 120px;">
+            <b>Frais fixes :</b>{{offre.frais}} DT
+          </span>
+        </p>
+      </div>
+  
+      <div>
+        <p style="text-align: center;"><b>Prime à payer à la souscription : </b>prime  DT</p>
+      </div>
+  
+      <div>
+        <p style="display:flex; justify-content: space-between;">
+          <span style="margin-left:60px"><b>Signature du bénéficiare du crédit</b></span>
+          <span style="margin-right: 60px;"><b>Signature et cachet de l'agence</b></span>
+        </p>
+        <div style="height:150px"></div>
+      </div>
+  
+      <p style="color:rgb(255, 102, 0); margin-bottom:0; text-align: center;"><b>Page 1/2</b></p>
+      <hr>
+  
+ 
+      <div style="height:15px"></div>
+  
+      <div style="height:60px" class="cadreContrat">
+        <p style="text-align: center;">
+          <b>Assurances des crédits immobiliers - conditions particuliers</b>
+        </p>
+      </div>
+  
+      <div style="margin:13px">
+        <p><b style="color:orange">OBJET DE LA GARANTIE</b></p>
+        <p>La présente garantie a pour objet de rembourser au bénéficiare du crédit immobilier les dommages subis par le batiment objet du crédit et consécutifs à un incendie dans les termes de 
+          l'article 27 du Code des Assurances
+        </p>
+        <p>
+          La garantie de la présente assurance est étendue aux risques recours des voisins et des tiers, fouire, chute d'aeronefs, choc de véhicules terrestres identifiés et trembelement
+          de terre conformément aux conditions ci-après
+        </p>
+        <p>
+          <b>EXCLUSIONS:</b>
+        </p>
+  
+        <p>
+          LE PRESENT CONTRAT NE GARANTIT PAS LES DOMMAGES INTENTIONNELMENT CAUSES OU PROVOQUES PAR L'ASSURE OU AVEC SA COMPLICIE.
+        </p>
+  
+        <p>
+          LE PRESENT CONTRAT NE GARANTIT PAS, SAUF STIPULATION CONTRAIRES AUX CONDITIONS PARTICULIERS:
+        </p>
+  
+        <ul>
+          <li>LES DOMMAGES D'ORDRE ELECTRIQUE NE POUVANT ETRE CONSIDERES COMME UN INCENDIE AU SENS DE L'ARTICLE 27 DU CODE, LES DOMMAGES SUBIS PAR LES
+            TRANSFORMATEURS, APPAREILS ELECTRIQUES OU ELECTRONIQUES QUELCONQUES, CANALISATIONS ELECTRIQUES ET LEURS ACCESSOIRES.
+          </li> <br>
+  
+          <li>LES DOMMAGES RESULTANT DE LA GUERRE ETRANGERE OU DE LA GUERRE CIVILE</li>
+          <br>
+          <li>LES DOMMAGES RESULTANT D'ACTES DE TERRORISME OU DE SABOTAGE COMMIS DANS LE CADRE D'ACTIONS CONCERTEES DE TERRORISME OU DE SABOTAGE
+            LES EMEUTES ET MOUVEMENTS POPULAIRES.
+          </li>
+          <br>
+          <li>
+            LES DOMMAGES RESULTANT D'INONDATIONS, RAZ DE MAREE OU AUTRES CATACLSMES PAS COUVERTS PAR LA GARANTIE DES RISQUES SPECIAUX DEFINIS CI-APRES 
+          </li>
+          <br>
+          <li>
+            LES DOMMAGES DUS AUX EFFETS DIRECT OU INDIRECTS D'EXPLOSION, DE DEGAGEMENT DE CHALEUR, D'IRRADIATION PROVENANT DE TRANSMUTATION DE NOYAU D'ATOME 
+            OU DE LA RADIO-ACTIVITE AINSI QUE LES SINISTRES DUS AUX EFFETS DE RADIATIONS PROVOQUES PAR L'ACCELERATION ARTICIELLE DE PARTICULIERS
+          </li>
+          <br>
+          <li>
+            LA DESTRUCTION D'ESPECES MONNAIES, DE TITRES DE TOUTE NATURE ET DES BILLETS DE BANQUE
+          </li>
+          <br>
+          <li>
+            LE VOL DES OBJETS ASSURES SURVENU PENDANT UN INCENDIE, LA PREUVE DU VOL ETANT A LA CHARGE DE LA SOCIETE
+          </li>
+        </ul>
+  
+        <div *ngIf="offre">
+          <div *ngIf="offre.couverture == 'Dégâts occasionnées par un incendie, une explosion ou une implosion'">
+            <p>
+              <b style="color:orange">GARANTIES DES RISQUES ANNEXES </b>
+            </p>
+  
+            <p><b style="text-decoration: underline">GARANTIE EXPLOSIONS - FOUDRE - ELECTRICITE</b></p>
+            <p>Les garanties du présent contrat sont étendues à : 
+              <br><br>
+              - L'explosion des gaz et fluides de toute nature dont l'assuré est détenteur ou utilisateur à quelque titre que ce soit,
+              l'explosion ou l'implosion des machines quelconques, des fours et des appareils à vapeur de chauffage central et de climatisation, y compris
+              les coups d'eau dans les machines à vapeur.
+              - L'explosion de toutes matières ou substances pouvant survenir chez l'assuré ou dans les voisinage.
+              <br><br>
+              - L'explosion de tout explosif qui, à l'insu de l'Assuré, seraient introduits dans les risques garantis ou placés aux alentours,
+              <br><br>
+              - L'électricité, y compris l'électricité statique et atomsphérique et la chute de foutre, mais seulement en ce qui concerne leurs conséquences 
+              directes et à l'exclusion, en l'absence de garantie "Dommages Electriques", des dommages causés aux machines électriques, transformateurs, 
+              appreils électriques ou électroniques quelconques, canalisations électriques et à leurs accessoires, en dehors de ceux causés par l'incendie ou 
+              l'explosion d'un objet voisin.
+            </p>
+          </div>
+        </div>
+  
+        <p>
+          <b style="color:orange">GARANTIE DES RISQUES SPECIAUX :</b>
+        </p>
+  
+        <div *ngIf="offre">
+          <div *ngIf="offre.couverture=='Chute d\'appareils de navigation aérienne'">
+            <p><b>GARANTIE CHUTE D'APPAREILS DE NAVIGATION AERIENNE </b></p>
+            <p>La SOCIETE ASSURANCE MAGHREBIA, Société d'Assurances garantit les dommages matériels autres que ceux d'incendie
+              et d'explosions causés aux objets assurés soit par l'entrée en contact d'appareils de navigation aérienne avec les objets assurés soit par la chute 
+              de ces appareils ou objets tombant de ceux-ci. Elle garantit également les dommages matériels causés aux objets assurés par l'ébranlement résultant du
+              franchissement du mur du son par un avion passant au voisinage. </p>
+          </div>
+  
+          <div *ngIf="offre.couverture == 'Choc de véhicules terrestres identifiés'">
+            <p style="text-decoration: underline;"><b>GARANTIE CHOC DE VEHICULES TERRESTRES IDENTIFIES</b></p>
+            <p>
+            Les Assureurs garantissent les dommages matériels outre ceux d'incendie ou d'explosion causés aux biens assurés par le choc d'un véhicule terrestre identifié
+            </p>
+            <p><b>EXCLUSIONS:</b></p>
+            <p>
+              Les assureurs ne répondent pas aux dommages : <br>
+              -Occasionnés par tout véhicule dont l'assuré ou tout locataire des locaux est propriétaire ou usager. <br>
+              -Causés aux routes, pistes ou pelouses.
+              -Subis par tout véhicule et son contenu.
+            </p>
+          </div>
+          <br>
+  
+          <div *ngIf="offre.couverture == 'Catastrophes naturelles'">
+            <p style="text-decoration: underline;"><b>GARANTIE TREMBLEMENT DE TERRE:</b></p>
+            <p>L'assureur garantit à l'exlcusion des dommages occasionnés par l'inondation des dommages matériels, y compris ceux d'incendie et/ou d'explosion, causés directement aux bien 
+              assurés au titre du présent contrat : <br>
+              Par un tremblement de terre, c'est à dire l'ensemble des phénomènes liés à la déformation de l'ecorce terrestre en un lieu, dans la mesure où ils sont perçus par la population 
+              et/ou par les sismographes, par une éruption volcanique ou par un raz-de marée, s'il est consécutif à unn tremblement de terre ou à une éruption volcanique, sous réserve 
+              qu'un certain nombre de bâtiments soient détruits ou endommagés à l'occassion du même événement.
+              <br>
+              Le choc sismique initial et les répliques survenant dans un délai de 72 heures sont considérés comme constituant un seul et même tremblement de terre.
+            </p>
+          </div>
+  
+          <div>
+            <p *ngIf="offre.couverture != 'Dégâts occasionnées par un incendie, une explosion ou une implosion' && offre.couverture != 'Choc de véhicules terrestres identifiés' && offre.couverture != 'Catastrophes naturelles' && offre.couverture != 'Chute d\'appareils de navigation aérienne'">
+              <b style="text-decoration: underline;text-transform: uppercase;">{{offre.couverture}}</b>
+            </p>
+          </div>
+        </div>
+  
+        <div style="height:50px"></div>
+        <div>
+          <p style="display:flex; justify-content: space-between;">
+            <span style="margin-left:60px"><b>Signature du bénéficiare du crédit</b></span>
+            <span style="margin-right: 60px;"><b>Signature et cachet de l'agence</b></span>
+          </p>
+          <div style="height:150px"></div>
+        </div>
+  
+        <p style="color:rgb(255, 102, 0); margin-bottom:0; text-align: center;"><b>Page 2/2</b></p>
+      
+      </div>
+   
+   
+  
+    <button class="btn"  printTitle="Contrat assurance habitation"
+    printSectionId="print-section" ngxPrint
+    [useExistingCss]="true"  style="background-color: #ef5800e5;border-color: #ef5800e5; color: #ffffff;"> Imprimer </button>
+
+</div>
+      

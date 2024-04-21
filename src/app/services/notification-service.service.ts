@@ -25,4 +25,16 @@ export class NotificationServiceService {
       
     });
   }
+
+  showConfirmation(message: string, callback: () => void): void {
+    const confirmation = this.snackbar.open(message, 'Confirmer', {
+      duration: 0,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
+
+    confirmation.onAction().subscribe(() => {
+      callback();
+    });
+  }
 }

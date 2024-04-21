@@ -11,6 +11,7 @@ export class Client {
         public dateNaissance: Date,
         public tel: string,
         public revenu: number,
+        public adresse :string,
         public credits: Credit[] = [] 
     ) {}
 }

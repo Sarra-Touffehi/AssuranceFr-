@@ -1,0 +1,53 @@
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .user-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .modify-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgb(137, 137, 241);
+  }
+  .activate-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    text-align: center;
+  }
+  
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  border-radius: 1.5rem;
+  border: none;
+  height: 3rem;
+  width: 22rem; 
+  background-color: #f1f1f1;
+  padding: 0 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: auto rgb(174, 174, 174);
+  box-shadow: 0 0 5px rgba(0, 0.1, 0.1, 0.1);
+}
+
+  

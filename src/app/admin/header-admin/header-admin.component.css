@@ -1,0 +1,64 @@
+mat-toolbar {
+    background-color: beige; 
+    color: black; 
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  mat-sidenav-container {
+    height: 100vh; 
+  }
+  
+  .mat-sidenav {
+    background-color: #f8f9fa; 
+    color: #495057; 
+  }
+  
+  .mat-nav-list a {
+    color: black;
+  }
+  
+  .mat-sidenav-content {
+    padding: 20px; 
+  }
+  
+  .main-content {
+    background-size: cover;
+    background-position: center;
+    background-color: #efeee9; 
+  }
+  
+  @media screen and (max-width: 768px) {
+    .mat-sidenav {
+      width: 100%; 
+    }
+  
+    .mat-sidenav-container {
+      height: auto; 
+    }
+  }
+  
+  .custom-icon-button {
+    background-color: beige; 
+    color: black; 
+  }
+  
+  .custom-icon-button:hover {
+    background-color: white; 
+  }
+  
+  .logout-button {
+    background-color: beige;
+  }
+  
+  .account-button {
+    background-color: beige;
+  }
+  .message-button {
+    background-color: beige;
+  }
+  
+  .spacer {
+    flex: 1; /* Le div vide prendra autant d'espace que possible */
+  }
+  

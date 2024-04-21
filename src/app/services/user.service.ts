@@ -39,9 +39,18 @@ export class UserService {
     return this.http.get<User>(url, { headers: this.headers });
   }
 
-  getUserByEmail(email: string): Observable<User> {
+  getUserByEmail(email: any): Observable<any> {
     const url = `${this.url}/email/${email}`;
-    return this.http.get<User>(url, { headers: this.headers });
+    return this.http.get<any>(url, { headers: this.headers });
+  }
+
+  getUserRole(userId: number): Observable<string> {
+    const url = `${this.url}/${userId}/role`;
+    return this.http.get<string>(url, { headers: this.headers });
+  }
+  getUserRoleByMail(email: string): Observable<string> {
+    const url = `${this.url}/${email}/role`;
+    return this.http.get<string>(url, { headers: this.headers });
   }
 }
 
