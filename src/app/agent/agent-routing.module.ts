@@ -7,6 +7,7 @@ import { ListeSouscriptionsComponent } from './liste-souscriptions/liste-souscri
 import { SimulationComponent } from './simulation/simulation.component';
 import { SouscriptionComponent } from './souscription/souscription.component';
 import { ValiderSouscriptionComponent } from './valider-souscription/valider-souscription.component';
+import { ChatComponent } from '../components/chat/chat.component';
 
 const routes: Routes = [
   {path:'agent', component:HeaderComponent,
@@ -20,6 +21,7 @@ const routes: Routes = [
      {path:'validerSousc', title:'validerSousc', component:ValiderSouscriptionComponent},
      {path:'contrat', title:'contrat', component:ContratComponent},
      {path:'listeContrats', title:'listeContrats', component:ListeContratsComponent},
+     {path:'chat/:iduser', component:ChatComponent},
    ]
  },
 ];

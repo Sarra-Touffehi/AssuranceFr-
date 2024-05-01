@@ -43,6 +43,7 @@ import { AdminGlobalModule } from './admin-global/admin-global.module';
 import { AgentModule } from './agent/agent.module';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './shared/shared.module';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SharedModule } from './shared/shared.module';
    // CompteComponent,
     FooterComponent,
     LoginComponent,
+    ChatComponent,
    
    
     

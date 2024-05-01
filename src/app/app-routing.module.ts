@@ -18,6 +18,7 @@ import { CompteComponent } from './components/compte/compte.component';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { HeaderAdminGlobalComponent } from './admin-global/header-admin-global/header-admin-global.component';
 import { LoginComponent } from './components/login/login.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
 {path:'userAccount', title:'userAccount', component:CompteComponent},
 {path:'headerAdmin', title:'headerAdmin', component:HeaderAdminComponent},
 {path:'headerAdminGlobal', title:'headerAdminGlobal',component:HeaderAdminGlobalComponent},
+{path:'chat/:iduser', component:ChatComponent},
 
 
 

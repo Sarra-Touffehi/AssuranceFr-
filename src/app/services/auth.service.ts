@@ -110,7 +110,7 @@ getTokenExpirationDate(token: string): Date | null {
 
 // Method to check if token is expired
 isTokenExpired(token?: string): boolean {
-  if (!token) token = localStorage.getItem('token') || undefined; // Assurez-vous que token est de type 'string | undefined'
+  if (!token) token = localStorage.getItem('token') || undefined; 
   if (!token) return true;
   const date = this.getTokenExpirationDate(token);
   if (!date) return false; // Vérifiez si date est null ou undefined

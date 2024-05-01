@@ -52,5 +52,12 @@ export class UserService {
     const url = `${this.url}/${email}/role`;
     return this.http.get<string>(url, { headers: this.headers });
   }
+
+  getUserIdByMail(email: any): Observable<number> {
+    const url = `${this.url}/${email}/id`; 
+    return this.http.get<number>(url, { headers: this.headers });
+  }
+
+
 }
 
