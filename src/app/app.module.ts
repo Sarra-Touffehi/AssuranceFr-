@@ -44,6 +44,7 @@ import { AgentModule } from './agent/agent.module';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import { ChatComponent } from './components/chat/chat.component';
+import { NgxPrintDirective } from 'ngx-print';
 
 @NgModule({
   declarations: [

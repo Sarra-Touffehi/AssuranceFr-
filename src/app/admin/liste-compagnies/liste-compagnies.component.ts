@@ -90,8 +90,10 @@ private headers: HttpHeaders;
   }*/
   openDialog(){
     this.matDialog.open(AddcompagnieComponent,{
-      width:'400px',
-      
+      width:'350px',
+      hasBackdrop: true,
+      backdropClass: 'custom-backdrop',
+      panelClass: 'custom-dialog-container'
       
       
     })

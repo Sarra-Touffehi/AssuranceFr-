@@ -158,4 +158,13 @@ saveData(token:any){
   }
 
 
+
+  getCurrentUser(): User | null {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = this.helper.decodeToken(token);
+      const userId = decodedToken.userId;
+    }
+    return null;
+  }
 }

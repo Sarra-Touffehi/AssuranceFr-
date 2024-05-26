@@ -1,12 +1,18 @@
-.cont{
+
+.header-container{
+  position: relative;
+}
+.cont , .name{
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
   font-size: 20px;
+  color: #0b2e13; 
 }
 .nom{
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
   font-size: 30px;
+  color: #005a8e; 
 }
 .small-fab-button {
 width: 25px; 
@@ -20,35 +26,47 @@ color: white;
 border: none; 
 cursor: pointer; 
 }
+
 .small-fab-button mat-icon {
   font-size: 20px; 
+
 }
 .small-fab-button:hover {
   background-color: #d32f2f; 
 }
 .example-card{
-  width: 400px;
+  width: 300px;
+  height:450px ;
   margin-bottom: 20px;
   border-radius: 10px;
-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff9e6; 
+
 }
+
 h2{
-  
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 30px;
   text-transform: capitalize;
   margin-bottom: 20px;
+  color: #0b2e13; 
 }
-.center-container{
-  display: flex;
+.container{
+display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 height: 100vh; 
-margin: 380px;
-margin-top: 300pxng ;
+margin-top: 300px ;
+margin-bottom: 200px ;
+max-width: 800px; 
 }
+
 mat-card-actions{
  display: flex; 
- justify-content: flex-end
+ justify-content: flex-end;
+ 
 }
 .addContainer{
   display: flex;
@@ -67,11 +85,21 @@ margin-top: auto; /* Pour pousser le bouton en bas de la carte */
 }
 
 
-.mat-raised-button[color="beige"] {
-background-color: beige;
-color: black; 
+.mat-raised-button{
+  background-color: #ffc700; /* Couleur du bouton */
+  color: #0b2e13; /* Couleur du texte */
+
 }
-.mat-raised-button[color="beige"]:hover {
-background-color: rgb(179, 179, 160); 
-color: black; 
+.mat-raised-button:hover {
+background-color:#e85641; /* Couleur du bouton au survol */
+  color: #0b2e13; /* Couleur du texte */
 }
+.example-card:hover {
+  transform: scale(1.1);
+  filter: none;
+}
+
+.example-card {
+  transition: transform 0.3s, filter 0.3s;
+}
+

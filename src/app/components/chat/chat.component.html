@@ -38,8 +38,17 @@
     <div class="message_input_wrapper">
       <textarea class="message_input" placeholder="Message..." [(ngModel)]="messageInput" 
       (keyup.enter)="sendMessage()"></textarea>
+      
     </div>
-    
+    <input id="fileInput" type="file"  (change)="onFileChange($event)">
+
+      <label for="fileInput" title="Sélectionner un fichier">
+      <button   class="message-button" mat-icon-button  aria-label="Sélectionner un fichier">
+        <mat-icon>link</mat-icon>
+      </button>
+    </label>
+    <img   *ngIf="imageURL" [src]="imageURL" alt="messageimage" width="50px" height="50px">
+
     <div class="send_message" (click)="sendMessage()">
       <div class="icon"></div>
       <div class="text">Send</div>

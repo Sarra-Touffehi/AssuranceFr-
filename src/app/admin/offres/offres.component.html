@@ -1,46 +1,47 @@
+<div class="header-container">
+  <app-header-admin></app-header-admin>
+</div>
 <div class="container">
   <h2>Liste des Offres</h2>
   <div *ngIf="offres && offres.length > 0; else noOffres">
     <div *ngFor="let offre of offres" class="offre-card">
      
       <div class="card">
-        
-          <button mat-icon-button class="edit-icon" aria-label="Modifier" (click)="openModifyDialog(offre)" style="color: green;padding: 20px;">
-            <mat-icon>edit</mat-icon>
+          <button mat-icon-button class="edit-icon" aria-label="Modifier" (click)="openModifyDialog(offre)" >
+            <mat-icon> border_color</mat-icon>
           </button>
           <div class="card-body">
           <div *ngFor="let c of lesCompagnies">
            
-            <img  mat-card-image  src="http://localhost:9630/images/{{c.logo}}" alt="Compagnie Logo" width="150" height="200">
+            <img  mat-card-image  src="http://localhost:9630/images/{{c.logo}}" alt="Compagnie Logo" width="100" height="150">
             <h5 class="card-title">{{ offre.nom }}</h5>
           </div>
           
           <table class="table">
             <tr>
-              <td>Conditions:</td>
-              <td>{{ offre.conditions }}</td>
+              <th>Conditions :</th>
+              <td >{{ offre.conditions }}</td>
             </tr>
             <tr>
-              <td>Couverture:</td>
+              <th>Couverture :</th>
               <td>{{ offre.couverture }}</td>
             </tr>
             <tr>
-              <td>Frais:</td>
+              <th>Frais :</th>
               <td>{{ offre.frais }}</td>
             </tr>
             <tr>
-              <td>Taux de risque:</td>
+              <th>Taux de risque :</th>
               <td>{{ offre.taux_risque }}</td>
             </tr>
           </table>
-
         </div>
       </div>
     </div>
   </div>
   <div class="addContainer">
       <mat-dialog-actions >
-        <button mat-raised-button color="primary" (click)="openDialog()">Ajouter Offre</button>
+        <button mat-raised-button  (click)="openDialog()">Ajouter Offre</button>
       </mat-dialog-actions>
   </div>
   <ng-template #noOffres>

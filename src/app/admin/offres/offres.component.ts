@@ -67,7 +67,11 @@ export class OffresComponent implements OnInit {
     // Passer l'ID de la compagnie au dialogue AddOffreComponent
     const dialogRef = this.matDialog.open(AddOffreComponent, {
       width: '400px',
-      data: { idCompagnie: this.idCompagnie } 
+      
+      data: { idCompagnie: this.idCompagnie } ,
+      hasBackdrop: true,
+      backdropClass: 'custom-backdrop',
+      panelClass: 'custom-dialog-container'
     });
   }
  

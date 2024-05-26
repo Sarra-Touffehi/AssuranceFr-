@@ -1,2 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+  
+  .custom-dialog-container {
+    background-color: #fff9e6 !important; /* Assurez-vous que cette couleur s'applique */
+   backdrop-filter: blur(4px) !important;
+    border-radius: 40px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    padding: 0 !important; /* Enlevez tout padding par défaut */
+   margin: 0 !important; /* Enlevez toute marge par défaut */
+   overflow: hidden; /* Assurez-vous qu'il n'y a pas de débordement */
+  }
+
+  
+  /* Cibler les éléments internes pour s'assurer qu'ils héritent des styles désirés */
+  .custom-dialog-container .mat-dialog-container {
+    background: transparent !important; /* Rendre transparent tout arrière-plan interne */
+    padding: 0 !important; /* Enlevez tout padding interne */
+  }
+  
+  .mat-dialog-container .custom-dialog-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  

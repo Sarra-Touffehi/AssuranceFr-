@@ -1,9 +1,16 @@
-h2{
-    text-align: center;}
+span{
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+    }
 .centered-button{
     display: flex;
     align-items: center;
   justify-content: center;
+  background: none; 
+  border: none; 
+  cursor: pointer;
 }
 form {
   margin-bottom: 50px;
@@ -12,16 +19,45 @@ form {
     padding: 20px; 
   }
   
-
+label{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+}
   label, input {
     display: block; 
     width: 100%; 
     margin-bottom: 10px;
   }
+  .div1{
+  display: flex; 
+    justify-content: flex-end;
+  }
+ 
+ .dialog-content {
+  background-color: #fff9e6 !important;
+  backdrop-filter: blur(4px);
+  border-radius: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 0;
+}
+  mat-icon{
+  background-color: #f44336;
+  border-radius: 30px;
+  }
   
-
-  .mat-dialog-container {
-    border-radius: 60px;
+  mat-icon:hover{
+  background-color: #d32f2f; 
+  }
+  
+  .addicon{
+    /*font-size: 36px;*/
+    background-color: #ffc700;
+    transform: scale(1.5);
+  }
+  
+  .addicon:hover{
+    background-color:#e85641;
   }
   /* Media Query pour les écrans plus petits */
   @media screen and (max-width: 768px) {

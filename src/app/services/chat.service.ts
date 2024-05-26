@@ -39,6 +39,7 @@ joinRoom(roomId: string) {
     
   })
 }
+/*
 private addMessage(message: ChatMessage) {
   const currentMessages = this.messageSubject.getValue();
   // Déterminer le côté du message en fonction de l'utilisateur connecté
@@ -48,6 +49,23 @@ private addMessage(message: ChatMessage) {
   this.messageSubject.next(updatedMessages);
   this.saveMessagesToLocalStorage(updatedMessages);
 }
+*/
+
+// Méthode pour envoyer un message avec un fichier
+addMessage(message: ChatMessage): void {
+  const formData = new FormData();
+  formData.append('message', message.message);
+  formData.append('iduser', message.iduser.toString());
+  formData.append('senderName', message.senderName);
+  if (message.image) {
+    formData.append('file', message.image);
+  }
+  
+  // Envoyer la requête WebSocket avec les données multipart/form-data
+  this.stompClient.send('/app/chat/room123', {}, JSON.stringify(formData));
+}
+
+
 
 
 
