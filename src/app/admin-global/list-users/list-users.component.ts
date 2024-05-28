@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class ListUsersComponent implements OnInit {
   users: User[] = [];
   filteredUsers: User[] = [];
+  sideNavStatus:boolean = false;
+
   constructor(private userService: UserService, private matDialog: MatDialog) { }
 
   ngOnInit(): void {

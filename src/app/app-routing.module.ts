@@ -19,6 +19,9 @@ import { HeaderAdminComponent } from './admin/header-admin/header-admin.componen
 import { HeaderAdminGlobalComponent } from './admin-global/header-admin-global/header-admin-global.component';
 import { LoginComponent } from './components/login/login.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { DrawerComponent } from './agent/drawer/drawer.component';
+import { DrawerAdminComponent } from './admin/drawer-admin/drawer-admin.component';
+import { DrawerAdminGlobalComponent } from './admin-global/drawer-admin-global/drawer-admin-global.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -40,6 +43,10 @@ const routes: Routes = [
 {path:'headerAdmin', title:'headerAdmin', component:HeaderAdminComponent},
 {path:'headerAdminGlobal', title:'headerAdminGlobal',component:HeaderAdminGlobalComponent},
 {path:'chat/:iduser', component:ChatComponent},
+{path:'drawer',title :'drawer' , component:DrawerComponent},
+{path:'drawerAdmin', component:DrawerAdminComponent},
+{path:'drawerAdminG', component:DrawerAdminGlobalComponent},
+
 
 
 

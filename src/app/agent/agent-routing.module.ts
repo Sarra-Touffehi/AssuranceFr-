@@ -8,12 +8,13 @@ import { SimulationComponent } from './simulation/simulation.component';
 import { SouscriptionComponent } from './souscription/souscription.component';
 import { ValiderSouscriptionComponent } from './valider-souscription/valider-souscription.component';
 import { ChatComponent } from '../components/chat/chat.component';
+import { DrawerComponent } from './drawer/drawer.component';
 
 const routes: Routes = [
-  {path:'agent', component:HeaderComponent,
+  {path:'agent', component:DrawerComponent,
   // canActivate: [AuthEmpGuard],
    children:[
-     {path:'', redirectTo:'header', pathMatch:'full'},
+     {path:'', redirectTo:'drawer', pathMatch:'full'},
      {path:'header',component:HeaderComponent},
      {path:'simulation', title:'simulation', component:SimulationComponent},
      {path:'souscription', title:'souscription', component:SouscriptionComponent},
@@ -22,6 +23,8 @@ const routes: Routes = [
      {path:'contrat', title:'contrat', component:ContratComponent},
      {path:'listeContrats', title:'listeContrats', component:ListeContratsComponent},
      {path:'chat/:iduser', component:ChatComponent},
+     {path:'drawer',title :'drawer' , component:DrawerComponent},
+
    ]
  },
 ];

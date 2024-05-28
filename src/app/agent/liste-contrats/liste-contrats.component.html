@@ -1,38 +1,50 @@
-<h2 style="text-align: center;">Liste des contrats</h2>
-<div class="search-container">
-  <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+  <main>
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+
+
+      <h2 style="text-align: center;">Liste des contrats</h2>
+      <div class="search-container">
+        <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+      </div>
+      <table class="souscriptions-table">
+        <thead>
+          <tr>
+            <th>Num Souscription</th>
+            <th >Num Comp client</th>
+            <th >Compagnie</th>
+            <th >Offre</th>
+            <th >Date de souscription</th>
+            <th >Date d'échéance</th>
+            <th >Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let souscription of souscriptionsValide() | search :searchText ; let odd = odd" class="souscription-row">
+            <td style="padding: 8px; text-align: left;">{{ souscription.idSousc }}</td>
+            <td style="padding: 8px; text-align: left;">{{ getClientNumCompte(souscription.idClient) }}</td>
+            <td style="padding: 8px; text-align: left;" >
+              <span *ngIf="afficherCompagnieByIdOffre(souscription.idOffre) ">
+                <img  src="http://localhost:9630/images/{{ getCompagnieLogo(souscription.idOffre)}}" alt="Compagnie Logo" width="60" height="60">
+              </span>
+            </td>
+            <td style="padding: 8px; text-align: left;">{{ getOffreName(souscription.idOffre) }}</td>
+            <td style="padding: 8px; text-align: left;">{{ souscription.dateSouscription | date:'dd/MM/yyyy' }}</td>
+            <td style="padding: 8px; text-align: left;" >
+              <span *ngIf="afficherCreditByNumCompte(getClientNumCompte(souscription.idClient)) ">
+                {{ credits[0]?.dateEcheance| date:'dd/MM/yyyy' }}
+              </span>
+            </td>
+            <td>
+              <button (click)="resilierContrat(souscription.idSousc)">Résilier</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+  </main>
 </div>
-<table class="souscriptions-table">
-  <thead>
-    <tr>
-      <th>Num Souscription</th>
-      <th >Num Comp client</th>
-      <th >Compagnie</th>
-      <th >Offre</th>
-      <th >Date de souscription</th>
-      <th >Date d'échéance</th>
-      <th >Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let souscription of souscriptionsValide() | search :searchText ; let odd = odd" class="souscription-row">
-      <td style="padding: 8px; text-align: left;">{{ souscription.idSousc }}</td>
-      <td style="padding: 8px; text-align: left;">{{ getClientNumCompte(souscription.idClient) }}</td>
-      <td style="padding: 8px; text-align: left;" >
-        <span *ngIf="afficherCompagnieByIdOffre(souscription.idOffre) ">
-          <img  src="http://localhost:9630/images/{{ getCompagnieLogo(souscription.idOffre)}}" alt="Compagnie Logo" width="60" height="60">
-        </span>
-      </td>
-      <td style="padding: 8px; text-align: left;">{{ getOffreName(souscription.idOffre) }}</td>
-      <td style="padding: 8px; text-align: left;">{{ souscription.dateSouscription | date:'dd/MM/yyyy' }}</td>
-      <td style="padding: 8px; text-align: left;" >
-        <span *ngIf="afficherCreditByNumCompte(getClientNumCompte(souscription.idClient)) ">
-          {{ credits[0]?.dateEcheance| date:'dd/MM/yyyy' }}
-        </span>
-      </td>
-      <td>
-        <button (click)="resilierContrat(souscription.idSousc)">Résilier</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+

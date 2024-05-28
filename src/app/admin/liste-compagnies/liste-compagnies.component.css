@@ -1,105 +1,150 @@
-
-.header-container{
-  position: relative;
+/* Header */
+app-header-admin {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  height: 4rem;
+  z-index: 2;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.cont , .name{
+
+/* Main content positioning */
+main {
+  position: relative;
+  top: 4rem;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Side navigation */
+app-sidenav {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  width: 56px;
+  height: calc(100vh - 4rem); /* Adjust to fit below the header */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: #fff9e6; /* Background color */
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 250ms ease-in;
+}
+
+.app-side-nav-open {
+  width: 250px;
+}
+
+/* Display area */
+.display-area {
+  position: relative;
+  margin-left: 56px;
+  width: calc(100% - 56px); /* Adjust to fit next to the collapsed sidenav */
+  transition: margin-left 250ms ease-in, width 250ms ease-in;
+}
+
+.display-area-shrink {
+  margin-left: 250px;
+  width: calc(100% - 250px); /* Adjust to fit next to the expanded sidenav */
+}
+
+/* Other styles */
+.cont, .name {
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
   font-size: 20px;
-  color: #0b2e13; 
+  color: #0b2e13;
 }
-.nom{
+
+.nom {
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
   font-size: 30px;
-  color: #005a8e; 
+  color: #005a8e;
 }
+
 .small-fab-button {
-width: 25px; 
-height: 25px; 
-border-radius: 50%; 
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: #f44336; 
-color: white;
-border: none; 
-cursor: pointer; 
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .small-fab-button mat-icon {
-  font-size: 20px; 
+  font-size: 20px;
+}
 
-}
 .small-fab-button:hover {
-  background-color: #d32f2f; 
+  background-color: #d32f2f;
 }
-.example-card{
+
+.example-card {
   width: 300px;
-  height:450px ;
+  height: 450px;
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff9e6; 
-
+  background-color: #fff9e6;
+  transition: transform 0.3s, filter 0.3s;
 }
 
-h2{
+.example-card:hover {
+  transform: scale(1.1);
+}
+
+h2 {
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   font-size: 30px;
   text-transform: capitalize;
   margin-bottom: 20px;
-  color: #0b2e13; 
-}
-.container{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh; 
-margin-top: 300px ;
-margin-bottom: 200px ;
-max-width: 800px; 
+  color: #0b2e13;
 }
 
-mat-card-actions{
- display: flex; 
- justify-content: flex-end;
- 
-}
-.addContainer{
+.container {
   display: flex;
-   justify-content: flex-end;
- 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 30px;
+  margin-bottom: 200px;
+  max-width: 800px;
 }
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .card-actions {
-position: absolute;
-top: 0;
-right: 1;
+  position: absolute;
+  top: 0;
+  right: 1;
 }
+
 .bottom-offres {
-display: flex;
-justify-content: flex-end;
-margin-top: auto; /* Pour pousser le bouton en bas de la carte */
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto; /* To push the button to the bottom of the card */
 }
 
-
-.mat-raised-button{
-  background-color: #ffc700; /* Couleur du bouton */
-  color: #0b2e13; /* Couleur du texte */
-
+.mat-raised-button {
+  background-color: #ffc700; /* Button color */
+  color: #0b2e13; /* Text color */
 }
+
 .mat-raised-button:hover {
-background-color:#e85641; /* Couleur du bouton au survol */
-  color: #0b2e13; /* Couleur du texte */
+  background-color: #e85641; /* Button hover color */
+  color: #0b2e13; /* Text color */
 }
-.example-card:hover {
-  transform: scale(1.1);
-  filter: none;
-}
-
-.example-card {
-  transition: transform 0.3s, filter 0.3s;
-}
-

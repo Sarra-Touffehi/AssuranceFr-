@@ -23,6 +23,7 @@ export class SouscriptionComponent implements OnInit {
   FormCredit!:FormGroup;
   lesClients: Client[]=[];
   lesCredits:Credit[]=[];
+  sideNavStatus:boolean = false;
 constructor(private clientservice:ClientServiceService,private creditservice:CreditService, private fb:FormBuilder, 
   private router : Router,
   private notificationservice : NotificationServiceService,

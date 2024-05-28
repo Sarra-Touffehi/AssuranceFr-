@@ -1,0 +1,109 @@
+/*:host {
+  .mat-icon {
+    vertical-align: middle;
+    margin-right: 1rem;
+  }
+}
+.logo {
+  text-align: center;
+  padding: 2.6rem 1rem;
+  img {
+    width: 200px;
+  }
+}
+.mat-divider {
+  border-top-width: 2px;
+  border-color: white;
+}
+.mat-list-item {
+  color: #94a3b8 !important;
+  font-size: 0.8rem;
+  height: 44px !important;
+  margin-bottom: 4px;
+  &:hover {
+    color: #f2f5f7 !important;
+  }
+  ::ng-deep {
+    .mat-list-item-content {
+      border-radius: 5px;
+      margin: 0 8px;
+      &:hover {
+        background: #2c3344 !important;
+      }
+    }
+  }
+}
+.list-item-active {
+ 
+
+  color: #f2f5f7 !important;
+  ::ng-deep {
+    .mat-list-item-content {
+      background: #2c3344 !important;
+      &:hover {
+        background: #2c3344 !important;
+      }
+    }
+  }
+}
+.mat-subheader {
+  color: #818cf8;
+  font-size: 0.6rem;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+*/
+.border-white {
+    border: 1px solid white;
+  }
+  
+  .side-nav-content {
+    background-color: #fff9e6; /* Changer la couleur de fond en beige */
+    color: black; /* Couleur par défaut du texte en noir */
+    width: 230px;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 30px;
+  }
+  
+  .nav-list {
+    list-style: none;
+   /* height: 100%; */
+    padding: 0;
+  /*  margin-bottom: 0; */
+  }
+  
+  .nav-list-item {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-list-open .nav-list-item:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Couleur de fond en noir transparent au survol */
+    border-radius: 5px;
+  }
+  
+  .nav-list-item i {
+    font-size: 20px;
+    width: 40px; /* Taille uniforme pour les icônes */
+    text-align: center;
+    line-height: 50px; /* Centrer verticalement */
+    color: black; /* Couleur des icônes en noir */
+  }
+  
+  .nav-list-item span {
+    flex-grow: 1; /* Expansion pour remplir l'espace restant */
+    padding: 0 15px; /* Espacement autour du texte */
+    font-weight: bold;
+}
+  a {
+    text-decoration: none;
+    color: black; /* Couleur des liens en noir */
+  }
+  a.active {
+    font-weight: bold; /* Mettre en gras pour le lien actif */
+    color: #007bff; /* Couleur de lien actif */
+}
+  

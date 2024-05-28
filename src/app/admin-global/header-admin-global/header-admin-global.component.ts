@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Role, User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,6 +12,9 @@ export class HeaderAdminGlobalComponent implements OnInit {
 
   user: User = new User(0, '', '', '', '', Role.ADMIN_GLOBAL, false);
   userEmail!: string | null;
+  @Output() sideNavToggled=new EventEmitter<boolean>();
+
+  menuStatus:boolean=false;
   constructor(private userService: UserService, private authService: AuthService) {
 
     
@@ -29,5 +32,8 @@ export class HeaderAdminGlobalComponent implements OnInit {
       this.user.iduser = id; // Mettez à jour l'ID de l'utilisateur une fois reçu
     });
   }
-
+  sideNavToggle(){
+    this.menuStatus = !this.menuStatus;
+    this.sideNavToggled.emit(this.menuStatus);
+  }
 }

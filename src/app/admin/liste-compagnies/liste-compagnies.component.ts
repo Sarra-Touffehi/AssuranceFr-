@@ -13,6 +13,8 @@ import { HttpHeaders } from '@angular/common/http';
 export class ListeCompagniesComponent implements OnInit {
 lesCompagnies!: Compagnie[];
 private headers: HttpHeaders;
+sideNavStatus:boolean = false;
+
   constructor(private compagnieservice:CompagnieserviceService,private matDialog:MatDialog ,private authService : AuthService) { 
     this.headers = this.authService.getTokenHeaders();
 

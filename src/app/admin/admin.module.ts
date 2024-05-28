@@ -26,6 +26,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { UpdateOffreComponent } from './update-offre/update-offre.component';
 import { SharedModule } from '../shared/shared.module';
+import { DrawerAdminComponent } from './drawer-admin/drawer-admin.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,8 @@ import { SharedModule } from '../shared/shared.module';
     OffresComponent,
     AddOffreComponent,
     UpdateOffreComponent,
+    DrawerAdminComponent,
+    SidenavComponent,
   ],
   imports: [
     CommonModule,
@@ -57,7 +63,9 @@ import { SharedModule } from '../shared/shared.module';
   MatInputModule,
   MatFormFieldModule,
   MatSelectModule,
-  SharedModule
+  SharedModule,
+  MatMenuModule,
+  MatDividerModule,
   ]
 })
 export class AdminModule { }

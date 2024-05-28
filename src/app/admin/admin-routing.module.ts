@@ -5,6 +5,7 @@ import { AddcompagnieComponent } from './addcompagnie/addcompagnie.component';
 import { ListeCompagniesComponent } from './liste-compagnies/liste-compagnies.component';
 import { OffresComponent } from './offres/offres.component';
 import { ChatComponent } from '../components/chat/chat.component';
+import { DrawerAdminComponent } from './drawer-admin/drawer-admin.component';
 
 const routes: Routes = [
   {path:'admin', component:HeaderAdminComponent,
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path:'listecompagnie', title:'ListeCompagnie', component:ListeCompagniesComponent},
     {path:'offres/:idcomp', component:OffresComponent},
     {path:'chat/:iduser', component:ChatComponent},
+    {path:'drawerAdmin', component:DrawerAdminComponent},
   ]
 },
 ];

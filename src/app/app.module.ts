@@ -45,13 +45,15 @@ import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import { ChatComponent } from './components/chat/chat.component';
 import { NgxPrintDirective } from 'ngx-print';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     AppComponent,
 
    // CompteComponent,
-    FooterComponent,
+   
     LoginComponent,
     ChatComponent,
    
@@ -80,7 +82,8 @@ import { NgxPrintDirective } from 'ngx-print';
   MatSelectModule,
   NgxPrintModule,
   SharedModule,
-
+  MatMenuModule,
+  MatDividerModule,
   //AdminModule,
   //AgentModule,
   //AdminGlobalModule

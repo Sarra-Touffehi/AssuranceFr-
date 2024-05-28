@@ -1,68 +1,80 @@
-<mat-toolbar class="toolbar">
-    <span >Informations Clients</span>
-  </mat-toolbar>
-
-  <form class="example-form" [formGroup]="FormClient" (ngSubmit)="afficherClientsByNumCompte()">
-    <mat-form-field class="example-full-width">
-      <mat-label>Numéro Compte Client</mat-label>
-      <input type="number"
-             placeholder="Entrez Numéro Compte"
-             aria-label="Number"
-             matInput
-             formControlName="numcompte">
-      
-    </mat-form-field>
-  </form>
-
-<div class="box" >
-    <div class="row">
-      <div class="col-4"><strong>Code Client :</strong> {{ lesClients[0]?.idClient }} </div>
-      <div class="col-4"><strong>Nom :</strong>{{ lesClients[0]?.nom }} </div>
-      <div class="col-4"><strong>Prénom : </strong>{{ lesClients[0]?.prenom }}</div>
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+  <main>
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+      <mat-toolbar class="toolbar">
+        <span >Informations Clients</span>
+      </mat-toolbar>
+    
+      <form class="example-form" [formGroup]="FormClient" (ngSubmit)="afficherClientsByNumCompte()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Numéro Compte Client</mat-label>
+          <input type="number"
+                 placeholder="Entrez Numéro Compte"
+                 aria-label="Number"
+                 matInput
+                 formControlName="numcompte">
+          
+        </mat-form-field>
+      </form>
+    
+    <div class="box" >
+        <div class="row">
+          <div class="col-4"><strong>Code Client :</strong> {{ lesClients[0]?.idClient }} </div>
+          <div class="col-4"><strong>Nom :</strong>{{ lesClients[0]?.nom }} </div>
+          <div class="col-4"><strong>Prénom : </strong>{{ lesClients[0]?.prenom }}</div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-4"><strong>Email :</strong>{{ lesClients[0]?.email }} </div>
+          <div class="col-sm-4"><strong>Date de naissance : </strong>{{ lesClients[0]?.dateNaissance }}</div>
+          <div class="col-sm-4"><strong>CIN : </strong>{{ lesClients[0]?.cin }}</div>
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-4"><strong>Revenu : </strong>{{ lesClients[0]?.revenu }}</div>
+            <div class="col-sm-4"><strong>Tel : </strong>{{ lesClients[0]?.tel}} </div>
+            <div class="col-sm-4"><strong>Tel : </strong>{{ lesClients[0]?.adresse}} </div>
+          </div>
+        
+        </div>
+    
+    <mat-toolbar class="toolbar">
+        <span >Informations Crédits</span>
+      </mat-toolbar>
+     <form [formGroup]="FormCredit">
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Numéro Credit </mat-label>
+        <select matNativeControl formControlName="numCredit" (ngModelChange)="afficherCreditByNumCredit()">
+          <option *ngFor="let credit of lesCredits " [value]="credit?.numCredit">{{ credit?.numCredit}} </option>
+    
+        </select>
+      </mat-form-field>
+      </form>
+      <div class="box">
+        <div class="row">
+          <div class="col-4"><strong>Num Credit: </strong>{{ FormCredit.get('numCredit')?.value }}</div>
+            <div class="col-4"><strong>Type de Crédit: </strong>{{ FormCredit.get('typeCredit')?.value }}</div>
+            <div class="col-4"><strong>Montant: </strong>{{ FormCredit.get('montant')?.value }}</div>
+            <div class="col-4"><strong>Durée: </strong>{{ FormCredit.get('duree')?.value }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4"><strong>Date d'accord: </strong>{{ FormCredit.get('dateAccord')?.value }}</div>
+            <div class="col-4"><strong>Date d'échéance: </strong>{{ FormCredit.get('dateEcheance')?.value }}</div>
+        </div>
+    </div>
+    <div class="simulerContainer">
+      <mat-dialog-actions>
+        <button mat-raised-button style="background-color: rgb(252, 134, 92); color: white; margin: 20px;" (click)="simuler()">Simuler</button>
+        <button mat-raised-button style="background-color: rgb(252, 134, 92); color: white; margin: 20px;" (click)="reset()">Annuler</button>
+      </mat-dialog-actions>
     </div>
     
-    <div class="row">
-      <div class="col-sm-4"><strong>Email :</strong>{{ lesClients[0]?.email }} </div>
-      <div class="col-sm-4"><strong>Date de naissance : </strong>{{ lesClients[0]?.dateNaissance }}</div>
-      <div class="col-sm-4"><strong>CIN : </strong>{{ lesClients[0]?.cin }}</div>
     </div>
-
-    <div class="row">
-        <div class="col-sm-4"><strong>Revenu : </strong>{{ lesClients[0]?.revenu }}</div>
-        <div class="col-sm-4"><strong>Tel : </strong>{{ lesClients[0]?.tel}} </div>
-        <div class="col-sm-4"><strong>Tel : </strong>{{ lesClients[0]?.adresse}} </div>
-      </div>
-    
-    </div>
-
-<mat-toolbar class="toolbar">
-    <span >Informations Crédits</span>
-  </mat-toolbar>
- <form [formGroup]="FormCredit">
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Numéro Credit </mat-label>
-    <select matNativeControl formControlName="numCredit" (ngModelChange)="afficherCreditByNumCredit()">
-      <option *ngFor="let credit of lesCredits " [value]="credit?.numCredit">{{ credit?.numCredit}} </option>
-
-    </select>
-  </mat-form-field>
-  </form>
-  <div class="box">
-    <div class="row">
-      <div class="col-4"><strong>Num Credit: </strong>{{ FormCredit.get('numCredit')?.value }}</div>
-        <div class="col-4"><strong>Type de Crédit: </strong>{{ FormCredit.get('typeCredit')?.value }}</div>
-        <div class="col-4"><strong>Montant: </strong>{{ FormCredit.get('montant')?.value }}</div>
-        <div class="col-4"><strong>Durée: </strong>{{ FormCredit.get('duree')?.value }}</div>
-    </div>
-    <div class="row">
-        <div class="col-4"><strong>Date d'accord: </strong>{{ FormCredit.get('dateAccord')?.value }}</div>
-        <div class="col-4"><strong>Date d'échéance: </strong>{{ FormCredit.get('dateEcheance')?.value }}</div>
-    </div>
+  </main>
 </div>
-<div class="simulerContainer">
-  <mat-dialog-actions>
-    <button mat-raised-button style="background-color: rgb(252, 134, 92); color: white; margin: 20px;" (click)="simuler()">Simuler</button>
-    <button mat-raised-button style="background-color: rgb(252, 134, 92); color: white; margin: 20px;" (click)="reset()">Annuler</button>
-  </mat-dialog-actions>
-</div>
+
+
+

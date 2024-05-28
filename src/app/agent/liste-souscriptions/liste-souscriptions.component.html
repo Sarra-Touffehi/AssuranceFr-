@@ -1,42 +1,57 @@
-<h2 style="text-align: center;">Liste des souscriptions</h2>
-<div class="search-container">
-  <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+  <main>
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+
+      <h2 style="text-align: center;">Liste des souscriptions</h2>
+      <div class="search-container">
+        <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+      </div>
+      <table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
+        <thead style="background-color: #f2f2f2;">
+          <tr>
+            <th style="padding: 12px; text-align: left;">Id Souscription</th>
+            <th style="padding: 12px; text-align: left;">Num Compte client</th>
+            <th style="padding: 12px; text-align: left;">Compagnie</th>
+            <th style="padding: 12px; text-align: left;">Offre</th>
+            <th style="padding: 12px; text-align: left;">Date de souscription</th>
+            <th style="padding: 12px; text-align: left;">Date d'échéance</th>
+            <th style="padding: 12px; text-align: left;">Statut</th>
+           
+            
+      
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let souscription of souscriptions | search :searchText ; let odd = odd" [style.background-color]="odd ? '#f9f9f9' : 'white'">
+            <td style="padding: 8px; text-align: left;">{{ souscription.idSousc }}</td>
+            <td style="padding: 8px; text-align: left;">{{ getClientNumCompte(souscription.idClient) }}</td>
+            <td style="padding: 8px; text-align: left;">
+              <img  src="http://localhost:9630/images/{{ getCompagnieLogo(souscription.idOffre)}}" alt="Compagnie Logo" width="60" height="60">
+            </td>
+      
+            <td style="padding: 8px; text-align: left;">{{ getOffreName(souscription.idOffre) }}</td>
+            <td style="padding: 8px; text-align: left;">{{ souscription.dateSouscription | date:'dd/MM/yyyy' }}</td>
+            <td style="padding: 8px; text-align: left;" >
+              <span *ngIf="afficherCreditByNumCompte(getClientNumCompte(souscription.idClient)) ">
+                {{ credits[0]?.dateEcheance| date:'dd/MM/yyyy' }}
+              </span>
+            </td>
+            <td style="padding: 8px; text-align: left;" [ngStyle]="{'color': getStatutColor(souscription.statut)}">{{ souscription.statut }}</td>
+        
+          
+            
+            
+          </tr>
+        </tbody>
+      </table>
+      
+
+
+    </div>
+  </main>
 </div>
-<table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
-  <thead style="background-color: #f2f2f2;">
-    <tr>
-      <th style="padding: 12px; text-align: left;">Id Souscription</th>
-      <th style="padding: 12px; text-align: left;">Num Compte client</th>
-      <th style="padding: 12px; text-align: left;">Compagnie</th>
-      <th style="padding: 12px; text-align: left;">Offre</th>
-      <th style="padding: 12px; text-align: left;">Date de souscription</th>
-      <th style="padding: 12px; text-align: left;">Date d'échéance</th>
-      <th style="padding: 12px; text-align: left;">Statut</th>
-     
-      
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let souscription of souscriptions | search :searchText ; let odd = odd" [style.background-color]="odd ? '#f9f9f9' : 'white'">
-      <td style="padding: 8px; text-align: left;">{{ souscription.idSousc }}</td>
-      <td style="padding: 8px; text-align: left;">{{ getClientNumCompte(souscription.idClient) }}</td>
-      <td style="padding: 8px; text-align: left;">
-        <img  src="http://localhost:9630/images/{{ getCompagnieLogo(souscription.idOffre)}}" alt="Compagnie Logo" width="60" height="60">
-      </td>
 
-      <td style="padding: 8px; text-align: left;">{{ getOffreName(souscription.idOffre) }}</td>
-      <td style="padding: 8px; text-align: left;">{{ souscription.dateSouscription | date:'dd/MM/yyyy' }}</td>
-      <td style="padding: 8px; text-align: left;" >
-        <span *ngIf="afficherCreditByNumCompte(getClientNumCompte(souscription.idClient)) ">
-          {{ credits[0]?.dateEcheance| date:'dd/MM/yyyy' }}
-        </span>
-      </td>
-      <td style="padding: 8px; text-align: left;" [ngStyle]="{'color': getStatutColor(souscription.statut)}">{{ souscription.statut }}</td>
-  
-    
-      
-      
-    </tr>
-  </tbody>
-</table>
+

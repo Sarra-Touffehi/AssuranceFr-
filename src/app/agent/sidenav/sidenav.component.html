@@ -1,0 +1,36 @@
+<div class="side-nav-content">
+    <ul class="nav-list" [ngClass]="{'nav-list-open' : sideNavStatus}">
+      <li class="nav-list-item">
+        <i class="fa-solid fa-house"></i>
+        <span>
+          <a [routerLink]="['/acceuil']">Acceuil</a>
+        </span>
+      </li>
+      <li class="nav-list-item">
+        <i class="fa-solid fa-file-circle-plus"></i>
+        <span>
+          <a [routerLink]="['/souscription']">Souscription</a>
+        </span>
+      </li>
+      <li class="nav-list-item">
+        <i class="fa-solid fa-rectangle-list"></i>
+                <span>
+            <a [routerLink]="['/listsouscriptions']">Liste des souscriptions</a>       
+         </span>
+      </li>
+      <li class="nav-list-item">
+        <i class="fa-solid fa-list-check"></i>
+        <span>
+            <a [routerLink]="['/validerSousc']">Valider Souscriptions</a>
+                 </span>
+      </li>
+      <li class="nav-list-item">
+        <i class="fa-solid fa-file-contract"></i>
+        <span>
+            <a [routerLink]="['/listeContrats']">Liste des Contrats</a>
+        </span>
+      </li>
+    </ul>
+  </div>
+  
+

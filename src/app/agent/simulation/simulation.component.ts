@@ -20,7 +20,8 @@ export class SimulationComponent implements OnInit {
   clientData: any;
   idClient!: number;
   numCredit!:number;
- 
+  sideNavStatus:boolean = false;
+
 
   constructor( private route: ActivatedRoute, private offreService :OffreserviceService, private matDialog:MatDialog,
     private compagnieService : CompagnieserviceService) { }

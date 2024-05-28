@@ -11,7 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddUserComponent implements OnInit {
   RegisterForm!: FormGroup;
-  
+  sideNavStatus:boolean = false;
+
   constructor(private authService : AuthService,
     private fb : FormBuilder, private notificationservice:NotificationServiceService) {
       this.createForm();

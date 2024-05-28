@@ -24,6 +24,10 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HeaderAdminGlobalComponent } from './header-admin-global/header-admin-global.component';
 import { SearchPipe } from '../search.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { DrawerAdminGlobalComponent } from './drawer-admin-global/drawer-admin-global.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -32,6 +36,8 @@ import { SharedModule } from '../shared/shared.module';
     ListUsersComponent,
     UpdateUserComponent,
     HeaderAdminGlobalComponent,
+    SidenavComponent,
+    DrawerAdminGlobalComponent,
   
   ],
   imports: [
@@ -56,6 +62,8 @@ import { SharedModule } from '../shared/shared.module';
   MatFormFieldModule,
   MatSelectModule,
   SharedModule,
+  MatMenuModule,
+  MatDividerModule,
   ]
 })
 export class AdminGlobalModule { }

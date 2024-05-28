@@ -1,4 +1,4 @@
-mat-toolbar {
+/*mat-toolbar {
     background-color: beige; 
     color: black; 
     display: flex;
@@ -59,6 +59,58 @@ mat-toolbar {
   }
   
   .spacer {
-    flex: 1; /* Le div vide prendra autant d'espace que possible */
+    flex: 1; 
   }
   
+  */
+
+  
+
+    nav {
+      height: 100%;
+      background-color: #fff9e6; 
+      padding: 40px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    }
+    
+    .side-nav-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .side-nav-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 30%;
+    }
+    
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-logo {
+      height: 85px; 
+      width: 250px; 
+      margin: 10px;
+    }
+    
+    .navbar-title {
+      font-weight: bold;
+    }
+    
+    .navbar-actions {
+      margin-left: auto;
+    }
+    
+    .action-button {
+      font-size: 1.4rem;
+      margin-left: 10px;
+      color: black; /* Couleur des icônes */
+    }
+    
+    .action-button:hover {
+      color: #717171; /* Changement de couleur au survol */
+    }

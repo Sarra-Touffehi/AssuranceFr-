@@ -137,11 +137,11 @@ getMailToConnect(){
       if (user.active) {
         // Vérifier le rôle de l'utilisateur
         if (user.role === 'ADMIN') {
-          this.router.navigate(['/headerAdmin']);
+          this.router.navigate(['/drawerAdmin']);
         } else if (user.role === 'AGENT') {
-          this.router.navigate(['/header']);
+          this.router.navigate(['/drawer']);
         }else if (user.role === 'ADMIN_GLOBAL') {
-          this.router.navigate(['/headerAdminGlobal']);
+          this.router.navigate(['/drawerAdminG']);
         } else {
           console.error('Rôle non reconnu :', user.role);
           this.notificationservice.showError('Rôle non reconnu : Veuillez contacter l\'administrateur.');

@@ -27,7 +27,8 @@ export class ValiderSouscriptionComponent implements OnInit {
   compagnie: Compagnie | undefined;
   offre: Offre | undefined;
   client: Client | undefined;
-  
+  sideNavStatus:boolean = false;
+
   constructor(private souscriptionService: SouscriptionService,
     private clientService : ClientServiceService,
     private offreService :OffreserviceService,

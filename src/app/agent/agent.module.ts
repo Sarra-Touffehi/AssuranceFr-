@@ -30,7 +30,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { DrawerComponent } from './drawer/drawer.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     SouscriptionComponent,
@@ -42,6 +45,8 @@ import { SharedModule } from '../shared/shared.module';
     ContratComponent,
     ListeContratsComponent,
    HeaderComponent,
+   SidenavComponent,
+   DrawerComponent,
     
   ],
   imports: [
@@ -64,7 +69,9 @@ import { SharedModule } from '../shared/shared.module';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-  SharedModule
+  SharedModule,
+  MatMenuModule,
+  MatDividerModule,
   ]
 })
 export class AgentModule { }

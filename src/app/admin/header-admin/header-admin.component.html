@@ -1,4 +1,4 @@
-<header>
+<!--<header>
     <mat-toolbar>
       <mat-toolbar-row>
         <button class="custom-icon-button" mat-icon-button (click)="sidenav.toggle()">
@@ -42,4 +42,27 @@
     </mat-sidenav-container>
   
 
+  -->
+  
+  <nav class="navbar navbar-expand px-2">
+    <div class="side-nav-button p-2" (click)="sideNavToggle()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="navbar-brand px-2">
+      <img src=".../../../../../assets/attijari.png" alt="Logo" class="navbar-logo">
+     
+    </a>
+    <div class="navbar-actions">
+      <button class="action-button" mat-icon-button [routerLink]="['/chat', user.iduser]">
+        <i class="fa-regular fa-message"></i>
+      </button>
+      <button class="action-button" mat-icon-button [routerLink]="['/userAccount']">
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+      <button class="action-button" mat-icon-button>
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </button>
+    </div>
+  </nav>
+  
   

@@ -23,7 +23,8 @@ export class ContratComponent implements OnInit {
   compagnie: Compagnie | undefined;
   offre: Offre | undefined;
   currentDate: Date = new Date();
-  
+  sideNavStatus:boolean = false;
+
   constructor(private route: ActivatedRoute, private clientService: ClientServiceService, private creditService : CreditService,
     private compagnieService: CompagnieserviceService,
     private offreService: OffreserviceService

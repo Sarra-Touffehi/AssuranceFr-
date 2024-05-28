@@ -18,6 +18,7 @@ export class OffresComponent implements OnInit {
   lesCompagnies!: Compagnie[];
   idCompagnie!: number;
  
+  sideNavStatus:boolean = false;
 
   constructor( private route: ActivatedRoute, private offreService :OffreserviceService, private matDialog:MatDialog,
     private compagnieService : CompagnieserviceService) { }
