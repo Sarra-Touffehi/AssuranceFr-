@@ -7,6 +7,8 @@ import { OffresComponent } from './offres/offres.component';
 import { ChatComponent } from '../components/chat/chat.component';
 import { DrawerAdminComponent } from './drawer-admin/drawer-admin.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { ListSouscriptionsComponent } from './list-souscriptions/list-souscriptions.component';
+import { ListContratsComponent } from './list-contrats/list-contrats.component';
 
 const routes: Routes = [
   {path:'admin', component:HeaderAdminComponent,
@@ -20,6 +22,8 @@ const routes: Routes = [
     {path:'chat/:iduser', component:ChatComponent},
     {path:'drawerAdmin', component:DrawerAdminComponent},
     {path:'accueilAdmin', title:'accueilAdmin', component:AcceuilComponent},
+    {path:'listSouscriptionsAdmin', title:'listSouscriptionsAdmin', component:ListSouscriptionsComponent},
+    {path:'listContratsAdmin', title:'listContratsAdmin', component:ListContratsComponent},
 
 
   ]

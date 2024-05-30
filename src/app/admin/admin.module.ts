@@ -31,6 +31,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { ListSouscriptionsComponent } from './list-souscriptions/list-souscriptions.component';
+import { ListContratsComponent } from './list-contrats/list-contrats.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
     DrawerAdminComponent,
     SidenavComponent,
     AcceuilComponent,
+    ListSouscriptionsComponent,
+    ListContratsComponent,
   ],
   imports: [
     CommonModule,

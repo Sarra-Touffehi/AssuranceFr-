@@ -1,0 +1,108 @@
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  
+  thead {
+    background-color: #f2f2f2;
+  }
+  
+  th {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  
+  tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+ 
+  td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+ 
+  a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+ 
+  a:hover {
+    text-decoration: underline;
+  }
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .search-input {
+    border-radius: 1.5rem;
+    border: none;
+    height: 3rem;
+    width: 22rem; 
+    background-color: #f1f1f1;
+    padding: 0 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline: auto rgb(174, 174, 174);
+    box-shadow: 0 0 5px rgba(0, 0.1, 0.1, 0.1);
+  }
+
+
+  
+  /* Header */
+app-header-admin {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  height: 4rem;
+  z-index: 2;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Main content positioning */
+main {
+  position: relative;
+  top: 4rem;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Side navigation */
+app-sidenav {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  width: 56px;
+  height: calc(100vh - 4rem); /* Adjust to fit below the header */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: #fff9e6; /* Background color */
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 250ms ease-in;
+}
+
+.app-side-nav-open {
+  width: 250px;
+}
+
+/* Display area */
+.display-area {
+  position: relative;
+  margin-left: 56px;
+  width: calc(100% - 56px); /* Adjust to fit next to the collapsed sidenav */
+  transition: margin-left 250ms ease-in, width 250ms ease-in;
+}
+
+.display-area-shrink {
+  margin-left: 250px;
+  width: calc(100% - 250px); /* Adjust to fit next to the expanded sidenav */
+}
