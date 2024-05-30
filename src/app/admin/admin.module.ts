@@ -30,6 +30,7 @@ import { DrawerAdminComponent } from './drawer-admin/drawer-admin.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
+import { AcceuilComponent } from './acceuil/acceuil.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatDividerModule } from '@angular/material/divider';
     UpdateOffreComponent,
     DrawerAdminComponent,
     SidenavComponent,
+    AcceuilComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,27 @@
+<body>
+    
+
+    <div class="container-fluid g-0">
+        <app-header-admin-global (sideNavToggled)="sideNavStatus = $event;"></app-header-admin-global>
+        <main>
+            <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+            <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+                <div class="photo-container">
+                    <img src="../../../assets/acc.png" alt="Photo" class="styled-photo">
+                </div>
+                <div class="welcome-text">
+                    <h1>Attijari <span>Assurance</span> , conçue par Attijari <span>Bank</span> </h1>
+                    <p>Votre application</p>
+                  <!--  <div class="card-container">
+                        <a [routerLink]="['/listecompagnie']" class="card">
+                            <h3 class="cont">Nos Compagnies</h3>
+                        </a>
+                        <a [routerLink]="['/listeoffres']" class="card">
+                            <h3 class="cont">Nos Offres</h3>
+                        </a>
+                    </div> -->
+                </div>  
+            </div>
+        </main>
+    </div>
+    </body>

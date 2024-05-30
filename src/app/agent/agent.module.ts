@@ -34,6 +34,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
+import { AcceuilAgentComponent } from './acceuil-agent/acceuil-agent.component';
 @NgModule({
   declarations: [
     SouscriptionComponent,
@@ -47,6 +48,7 @@ import { MatDividerModule } from '@angular/material/divider';
    HeaderComponent,
    SidenavComponent,
    DrawerComponent,
+   AcceuilAgentComponent,
     
   ],
   imports: [

@@ -9,6 +9,7 @@ import { SouscriptionComponent } from './souscription/souscription.component';
 import { ValiderSouscriptionComponent } from './valider-souscription/valider-souscription.component';
 import { ChatComponent } from '../components/chat/chat.component';
 import { DrawerComponent } from './drawer/drawer.component';
+import { AcceuilAgentComponent } from './acceuil-agent/acceuil-agent.component';
 
 const routes: Routes = [
   {path:'agent', component:DrawerComponent,
@@ -24,7 +25,8 @@ const routes: Routes = [
      {path:'listeContrats', title:'listeContrats', component:ListeContratsComponent},
      {path:'chat/:iduser', component:ChatComponent},
      {path:'drawer',title :'drawer' , component:DrawerComponent},
-
+     {path:'accueilAgent', component:AcceuilAgentComponent},
+     
    ]
  },
 ];

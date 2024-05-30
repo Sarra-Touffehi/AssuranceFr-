@@ -22,6 +22,9 @@ import { ChatComponent } from './components/chat/chat.component';
 import { DrawerComponent } from './agent/drawer/drawer.component';
 import { DrawerAdminComponent } from './admin/drawer-admin/drawer-admin.component';
 import { DrawerAdminGlobalComponent } from './admin-global/drawer-admin-global/drawer-admin-global.component';
+import { AcceuilComponent } from './admin/acceuil/acceuil.component';
+import { AcceuilAdminGlobalComponent } from './admin-global/acceuil-admin-global/acceuil-admin-global.component';
+import { AcceuilAgentComponent } from './agent/acceuil-agent/acceuil-agent.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -46,6 +49,9 @@ const routes: Routes = [
 {path:'drawer',title :'drawer' , component:DrawerComponent},
 {path:'drawerAdmin', component:DrawerAdminComponent},
 {path:'drawerAdminG', component:DrawerAdminGlobalComponent},
+{path:'accueilAdmin', component:AcceuilComponent},
+{path:'accueilAgent', component:AcceuilAgentComponent},
+{path:'accueilAdminGlobal', component:AcceuilAdminGlobalComponent},
 
 
 

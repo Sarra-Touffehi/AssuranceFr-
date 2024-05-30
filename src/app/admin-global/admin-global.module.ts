@@ -28,6 +28,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DrawerAdminGlobalComponent } from './drawer-admin-global/drawer-admin-global.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
+import { AcceuilAdminGlobalComponent } from './acceuil-admin-global/acceuil-admin-global.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MatDividerModule } from '@angular/material/divider';
     HeaderAdminGlobalComponent,
     SidenavComponent,
     DrawerAdminGlobalComponent,
+    AcceuilAdminGlobalComponent,
   
   ],
   imports: [
