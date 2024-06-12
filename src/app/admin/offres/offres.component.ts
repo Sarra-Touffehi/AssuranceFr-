@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Compagnie } from 'src/app/models/compagnie';
 import { CompagnieserviceService } from 'src/app/services/compagnieservice.service';
 import { UpdateOffreComponent } from '../update-offre/update-offre.component';
+import { NotificationServiceService } from 'src/app/services/notification-service.service';
 
 @Component({
   selector: 'app-offres',
@@ -21,7 +22,8 @@ export class OffresComponent implements OnInit {
   sideNavStatus:boolean = false;
 
   constructor( private route: ActivatedRoute, private offreService :OffreserviceService, private matDialog:MatDialog,
-    private compagnieService : CompagnieserviceService) { }
+    private compagnieService : CompagnieserviceService,
+    private notificationService: NotificationServiceService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -65,14 +67,18 @@ export class OffresComponent implements OnInit {
     })
   } */
   openDialog() {
-    // Passer l'ID de la compagnie au dialogue AddOffreComponent
     const dialogRef = this.matDialog.open(AddOffreComponent, {
       width: '400px',
-      
-      data: { idCompagnie: this.idCompagnie } ,
+      data: { idCompagnie: this.idCompagnie },
       hasBackdrop: true,
       backdropClass: 'custom-backdrop',
       panelClass: 'custom-dialog-container'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'added') {
+        this.AfficherOffres();
+      }
     });
   }
  
@@ -90,6 +96,18 @@ export class OffresComponent implements OnInit {
     });
 }
 
-  
+deleteOffre(offre: Offre) {
+  this.notificationService.showConfirmation('Êtes-vous sûr de vouloir supprimer cette offre ?', () => {
+    this.offreService.deleteOffre(offre.idOffre).subscribe(
+      response => {
+        this.notificationService.showSuccess(response);
+        this.AfficherOffres();
+      },
+      error => {
+        this.notificationService.showError('Erreur: ' + error.error);
+      }
+    );
+  });
+}
 
 }

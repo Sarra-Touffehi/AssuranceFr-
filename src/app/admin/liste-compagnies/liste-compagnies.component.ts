@@ -5,6 +5,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddcompagnieComponent } from '../addcompagnie/addcompagnie.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
+import { NotificationServiceService } from 'src/app/services/notification-service.service';
 @Component({
   selector: 'app-liste-compagnies',
   templateUrl: './liste-compagnies.component.html',
@@ -15,7 +16,7 @@ lesCompagnies!: Compagnie[];
 private headers: HttpHeaders;
 sideNavStatus:boolean = false;
 
-  constructor(private compagnieservice:CompagnieserviceService,private matDialog:MatDialog ,private authService : AuthService) { 
+  constructor(private compagnieservice:CompagnieserviceService,private matDialog:MatDialog ,private authService : AuthService,  private notificationService: NotificationServiceService) { 
     this.headers = this.authService.getTokenHeaders();
 
   }
@@ -91,33 +92,47 @@ sideNavStatus:boolean = false;
     );
   }*/
   openDialog(){
-    this.matDialog.open(AddcompagnieComponent,{
+    const dialogRef = this.matDialog.open(AddcompagnieComponent,{
       width:'350px',
       hasBackdrop: true,
       backdropClass: 'custom-backdrop',
       panelClass: 'custom-dialog-container'
       
       
-    })
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'added') {
+        this.afficherCompagnies();
+      }
+    });
+    
   }
 
   deleteComp(idcomp?: number) {
     if (idcomp !== undefined) {
-      this.compagnieservice.supprimerCompagnie(idcomp).subscribe({
-        next: (response) => {
-          const index = this.lesCompagnies.findIndex(c => c.idcomp === idcomp);
-          if (index !== -1) {
-            this.lesCompagnies.splice(index, 1);
+      this.notificationService.showConfirmation('Êtes-vous sûr de vouloir supprimer cette compagnie ?', () => {
+        this.compagnieservice.supprimerCompagnie(idcomp).subscribe({
+          next: (response) => {
+            const index = this.lesCompagnies.findIndex(c => c.idcomp === idcomp);
+            if (index !== -1) {
+              this.lesCompagnies.splice(index, 1);
+            }
+            this.notificationService.showSuccess("Compagnie supprimée avec succès !");
+            this.afficherCompagnies();
+          },
+          error: (error) => {
+            const errorMessage = error.error && error.error.message ? error.error.message : 'Erreur lors de la suppression de la compagnie.';
+            this.notificationService.showError(errorMessage);
+            console.error('Erreur lors de la suppression de la compagnie dans le composant', error);
           }
-        },
-        error: (error) => {
-          console.error('Erreur lors de la suppression de la compagnie dans le composant', error);
-        }
+        });
       });
     } else {
       console.log("ID non défini");
     }
   }
+
+
   
 
 

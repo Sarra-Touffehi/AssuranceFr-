@@ -94,11 +94,11 @@ submit(): void {
     password: this.LoginForm.value.password
   };
 
-  this.authService.login(credentials).pipe(
-    delay(500) // temps de latence // 1s
-  ).subscribe(
+  this.authService.login(credentials)
+  .subscribe(
     (response) => {
       localStorage.setItem('token', response.token);
+      
    //  this.router.navigate(['/header']);
 
     /* if (response && response.token) {

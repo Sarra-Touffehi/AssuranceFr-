@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -34,17 +34,18 @@ export class AddOffreComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.addOffresForm = this.fb.group({
-      nom: [''],
-      conditions: [''],
-      couverture: [''],
-      frais: [''],
-      taux_risque: [''],
-      compagnie: [this.idCompagnie]
+      nom: ['', Validators.required],
+      conditions: ['', Validators.required],
+      couverture: ['', Validators.required],
+      frais_mrh: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      taxe: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      prime_commerciale: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      compagnie: [this.idCompagnie, Validators.required]
     });
     this.loadCompagnies();
   }
+
   loadCompagnies(): void {
     this.compagnieService.getCompagnieById(this.idCompagnie).subscribe(
       data => {
@@ -59,25 +60,19 @@ export class AddOffreComponent implements OnInit {
   AddOffre(): void {
     if (this.addOffresForm.valid) {
       const offreData = this.addOffresForm.value;
-      console.log('Offres Data:', offreData);
-  
-      this.offreService.addOffresPourCompagnie(this.idCompagnie , offreData)
-        .subscribe(
-          response => {
-            console.log('Réponse du serveur:', response);
-           
-            if (response.includes('Offre ajoutée avec succès')) {
-              this.notificationservice.showSuccess('Offre ajoutée avec succès');
-              this.router.navigate(['/offres/' + this.idCompagnie]);
-            } else {
-              this.notificationservice.showError('Erreur lors de l\'ajout');
-            }
-          },
-          error => {
-            console.log('Erreur lors de l\'ajout');
+      this.offreService.addOffresPourCompagnie(this.idCompagnie, offreData).subscribe(
+        response => {
+          if (response.includes('Offre ajoutée avec succès')) {
+            this.notificationservice.showSuccess('Offre ajoutée avec succès');
+            this.matdialogref.close('added');
+          } else {
             this.notificationservice.showError('Erreur lors de l\'ajout');
           }
-        );
+        },
+        error => {
+          this.notificationservice.showError('Erreur lors de l\'ajout');
+        }
+      );
     }
   }
 

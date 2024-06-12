@@ -55,6 +55,7 @@
 */
 .border-white {
     border: 1px solid white;
+    margin-top: auto; 
   }
   
   .side-nav-content {
@@ -106,4 +107,10 @@
     font-weight: bold; /* Mettre en gras pour le lien actif */
     color: #007bff; /* Couleur de lien actif */
 }
-  
+.role {
+  display: block;
+  text-align: right; /* Alignement à droite */
+  padding: 10px; /* Espacement autour du texte */
+  font-weight: bold;
+  margin-top: auto;
+}

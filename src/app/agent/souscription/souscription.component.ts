@@ -10,6 +10,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { NotificationServiceService } from 'src/app/services/notification-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
+import { Propriete } from 'src/app/models/propriete';
 
 @Component({
   selector: 'app-souscription',
@@ -23,11 +26,18 @@ export class SouscriptionComponent implements OnInit {
   FormCredit!:FormGroup;
   lesClients: Client[]=[];
   lesCredits:Credit[]=[];
+  riskLevel: string = '';
   sideNavStatus:boolean = false;
+  private headers: HttpHeaders;
 constructor(private clientservice:ClientServiceService,private creditservice:CreditService, private fb:FormBuilder, 
   private router : Router,
   private notificationservice : NotificationServiceService,
-  ) { }
+  private http: HttpClient,
+  private authService : AuthService
+  ) {
+    this.headers = this.authService.getTokenHeaders();
+
+   }
 
   ngOnInit(): void {
    this.FormClient= this.fb.group({
@@ -65,32 +75,66 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
     
   }
 
-afficherClientsByNumCompte() {
+
+  afficherClientsByNumCompte() {
     if (this.FormClient.valid) {
       const numcompte = this.FormClient.get('numcompte')?.value;
-      this.lesClients = []; 
-
+      this.lesClients = [];
+  
       this.clientservice.getClientByNumCompte(numcompte).subscribe(
-        (data: Client) => { 
-          this.lesClients.push(data); 
+        (data: Client) => {
+          this.lesClients.push(data);
           console.log('Infos clients:', this.lesClients);
+           this.notificationservice.clearError();
         },
-        (error: any) => {
+        (error) => {
           console.log('Erreur lors de la récupération des infos client:', error);
         }
       );
-      
-
+  
       this.creditservice.getCreditByNumCompte(numcompte).subscribe(
         (data: Credit[]) => {
           this.lesCredits = data;
           console.log('Infos crédits:', this.lesCredits);
+          if (this.lesCredits.length === 0) {
+            this.notificationservice.showError('Ce compte n\'a pas de crédits associés.');
+          } else {
+            // Si des crédits sont trouvés, réinitialisez le message d'erreur
+            this.notificationservice.clearError();
+          }
         },
         (error: any) => {
           console.log('Erreur lors de la récupération des crédits:', error);
         }
       );
+    } else {
+      this.notificationservice.showError('Veuillez entrer un numéro de compte valide.');
     }
+  }
+  
+  
+  
+  preparePredictionData(propriete: Propriete): any {
+    return {
+      SystemeSecurite: propriete.systemeSecurite,
+      HistoriqueIncendie: propriete.historiqueIncendie,
+      Meteo: propriete.meteo,
+      MinTemp: propriete.minTemp,
+      MaxTemp: propriete.maxTemp,
+      AnneeAchat: propriete.anneeAchat,
+      Surface: propriete.surface,
+    };
+  }
+
+  getPrediction(Data: any) {
+    this.http.post<any>('http://localhost:5000/predict', Data, { headers: this.headers }).subscribe(
+      (response) => {
+        this.riskLevel = response.risk_level;
+      },
+      (error) => {
+        console.error('Erreur lors de la prédiction:', error.error);
+      }
+    );
   }
 
   
@@ -124,7 +168,16 @@ afficherClientsByNumCompte() {
             dateAccord: credit.dateAccord,
             dateEcheance: credit.dateEcheance
           });
-          console.log('Infos crédit:', data);
+
+          this.creditservice.getProprieteByNumCredit(numCredit).subscribe(
+            (propriete: Propriete) => {
+              const Data = this.preparePredictionData(propriete);
+              this.getPrediction(Data);
+            },
+            (error) => {
+              console.error('Erreur lors de la récupération des propriétés:', error);
+            }
+          );
         } else {
           console.log('Aucune information sur le crédit pour le numéro de crédit sélectionné.');
         }
@@ -159,6 +212,20 @@ afficherClientsByNumCompte() {
     
   } 
   
+
+  getColor() {
+    switch (this.riskLevel) {
+      case 'Elevé':
+        return 'red';
+      case 'Faible':
+        return 'green';
+      case 'Modéré':
+        return 'orange';
+      default:
+        return 'black';
+    }
+  }
+
   reset() {
     this.FormClient.reset();
     this.FormCredit.reset();

@@ -9,6 +9,15 @@
     padding: 12px;
     text-align: left;
   }
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+  }
   
   .souscriptions-table thead {
     background-color: #f2f2f2;
@@ -52,24 +61,46 @@
     
 }
 
+/* Search Box */
 .search-container {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
   margin-bottom: 1.5rem;
+  width: 100%;
+  padding: 0 15px; /* Add padding to avoid touching edges on small screens */
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 30rem; /* Limit maximum width */
 }
 
 .search-input {
-  border-radius: 1.5rem;
-  border: none;
-  height: 3rem;
-  width: 22rem; 
-  background-color: #f1f1f1;
-  padding: 0 1.2rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  outline: auto rgb(174, 174, 174);
-  box-shadow: 0 0 5px rgba(0, 0.1, 0.1, 0.1);
+  border-radius: 1rem;
+  border: 2px solid #ddd;
+  height: 3.8rem;
+  width: 100%; /* Full width */
+  background-color: #fff;
+  padding: 0 1.5rem 0 3rem; /* Space for icon */
+  font-size: 1.2rem;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #ffc700;
+  box-shadow: 0 0 10px rgba(249, 255, 69, 0.5);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1.5rem;
 }
 
 

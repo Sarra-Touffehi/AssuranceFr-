@@ -95,6 +95,7 @@ export class ListeSouscriptionsComponent implements OnInit {
   afficherCreditByNumCompte(numCompte: number): Observable<Credit[]> {
     return this.creditService.getCreditByNumCompte(numCompte);
   }
+  
 
   getCompagnies(): void {
     this.compagnieService.getCompagnies()
@@ -145,6 +146,7 @@ getClientNumCompte(clientId: number): number {
   const client = this.clients.find(client => client.idClient === clientId);
   return  client ? client.numCompte : 0; 
 }
+
 
 
 

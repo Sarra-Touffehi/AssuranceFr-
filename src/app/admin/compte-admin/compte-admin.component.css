@@ -1,0 +1,112 @@
+
+.container{
+    background: #ecf0f3;
+    padding: 30px;
+    border-radius: 20px;
+    width: 350px;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px #ecf0f3 ;
+    margin-top: 30px;
+
+}
+
+.form-icon{
+    color: rgb(252, 134, 92);
+    font-size: 55px;
+    text-align: center;
+    line-height: 100px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    border-radius: 50px;
+    box-shadow: 7px 7px 15px #cdced1, -7px -7px #ecf0f3;
+
+}
+
+.title{
+    color: rgb(252, 134, 92);
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.btn{
+    color: pink;
+    background: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px 15px 11px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 6px 6px 6px #cbced1 -6px -6px -6px #fff ;
+    margin: 25px 0 20px;
+ 
+}
+
+
+
+
+/* Header */
+app-header-admin {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 4rem;
+    z-index: 2;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Main content positioning */
+  main {
+    position: relative;
+    top: 4rem;
+    width: 100%;
+    z-index: 1;
+    background-color: #fcfaf3;
+  }
+  
+  /* Side navigation */
+  app-sidenav {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    width: 56px;
+    height: calc(100vh - 4rem); /* Adjust to fit below the header */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    background-color: #fff9e6; /* Background color */
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width 250ms ease-in;
+  }
+  
+  .app-side-nav-open {
+    width: 250px;
+  }
+  
+  /* Display area */
+  .display-area {
+    position: relative;
+    margin-left: 56px;
+    width: calc(100% - 56px); /* Adjust to fit next to the collapsed sidenav */
+    transition: margin-left 250ms ease-in, width 250ms ease-in;
+  }
+  
+  .display-area-shrink {
+    margin-left: 250px;
+    width: calc(100% - 250px); /* Adjust to fit next to the expanded sidenav */
+  }
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+  }

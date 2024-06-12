@@ -29,6 +29,7 @@ import { DrawerAdminGlobalComponent } from './drawer-admin-global/drawer-admin-g
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { AcceuilAdminGlobalComponent } from './acceuil-admin-global/acceuil-admin-global.component';
+import { CompteAdminGlobalComponent } from './compte-admin-global/compte-admin-global.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { AcceuilAdminGlobalComponent } from './acceuil-admin-global/acceuil-admi
     SidenavComponent,
     DrawerAdminGlobalComponent,
     AcceuilAdminGlobalComponent,
+    CompteAdminGlobalComponent,
   
   ],
   imports: [

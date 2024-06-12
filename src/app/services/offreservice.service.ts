@@ -58,4 +58,9 @@ export class OffreserviceService {
   getOffreById(id: number): Observable<Offre> {
     return this.http.get<Offre>(`${this.url}/offres/${id}`, { headers: this.headers });
   }
+
+
+  deleteOffre(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/offres/${id}`, { headers: this.headers, responseType: 'text' as 'json' });
+  }
 }

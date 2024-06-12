@@ -23,8 +23,8 @@
   .chat_window {
     position: absolute;
     width: calc(100% - 20px);
-    max-width: 600px;
-    height: 510px;
+    max-width: 600px; /* Augmentez la largeur maximale selon vos besoins */
+    height: 510px; /* Augmentez la hauteur selon vos besoins */
     border-radius: 20px;
     background-color: #fff;
     left: 50%;
@@ -33,7 +33,8 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     background-color: #f8f8f8;
     overflow: hidden;
-  }
+}
+
   
   .top_menu {
     background-color: #fff;
@@ -119,12 +120,12 @@
   }
   
   .messages .message.right .avatar {
-    background-color: #008069;
+    background-color: #ffc700;
     float: right;
   }
   
   .messages .message.right .text_wrapper {
-    background-color: #00a884;
+    background-color: #ffc700;
     margin-right: 20px;
     float: right;
   }
@@ -132,11 +133,11 @@
   .messages .message.right .text_wrapper::after,
   .messages .message.right .text_wrapper::before {
     left: 100%;
-    border-left-color: #00a884;
+    border-left-color: #ffc700;
   }
   
   .messages .message.right .text {
-    color: #ffffff;
+    color: black;
   }
   
   .messages .message.appeared {

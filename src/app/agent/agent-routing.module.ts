@@ -10,10 +10,12 @@ import { ValiderSouscriptionComponent } from './valider-souscription/valider-sou
 import { ChatComponent } from '../components/chat/chat.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { AcceuilAgentComponent } from './acceuil-agent/acceuil-agent.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { CompteAgentComponent } from './compte-agent/compte-agent.component';
 
 const routes: Routes = [
   {path:'agent', component:DrawerComponent,
-  // canActivate: [AuthEmpGuard],
+  canActivate: [AuthGuard],
    children:[
      {path:'', redirectTo:'drawer', pathMatch:'full'},
      {path:'header',component:HeaderComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
      {path:'chat/:iduser', component:ChatComponent},
      {path:'drawer',title :'drawer' , component:DrawerComponent},
      {path:'accueilAgent', component:AcceuilAgentComponent},
+     {path:'agentcompte',title :'agentcompte' , component:CompteAgentComponent},
+
      
    ]
  },

@@ -3,14 +3,20 @@
   <main>
     <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
     <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
-
-
-      <h2 style="text-align: center;">Liste des utilisateurs</h2>
+      <mat-toolbar class="toolbar">
+        <span><strong>Utilisateurs Attijari <span style="color: #e85641;">Assurance</span></strong> </span>
+      </mat-toolbar>
       <div class="search-container">
-        <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+        <div class="search-box">
+          <i class="fa fa-search search-icon"></i>
+          <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+        </div>
       </div>
-      
-      
+      <div class="filter-buttons">
+        <button class="filter-btn" [ngClass]="{'active': currentFilter === 'ALL'}" (click)="filterUsers('ALL')"><strong>Tous</strong></button>
+        <button class="filter-btn" [ngClass]="{'active': currentFilter === 'ADMIN'}" (click)="filterUsers('ADMIN')"><strong>Admins</strong></button>
+        <button class="filter-btn" [ngClass]="{'active': currentFilter === 'AGENT'}" (click)="filterUsers('AGENT')"><strong>Agents</strong></button>
+      </div>
       <table class="user-table">
         <thead>
           <tr>
@@ -23,7 +29,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users | search :searchText">
+          <tr *ngFor="let user of filteredUsers | search: searchText">
             <td>{{ user.nom }}</td>
             <td>{{ user.prenom }}</td>
             <td>{{ user.email }}</td>
@@ -31,10 +37,10 @@
             <td>
               <button class="activate-btn" (click)="toggleUserStatus(user)">
                 <ng-container *ngIf="user.active; else inactiveIcon">
-                  <i class="fa-solid fa-toggle-on" style="color: green;background-color: transparent;"></i> 
+                  <i class="fa-solid fa-toggle-on" style="color:#ffc700; background-color: transparent;"></i>
                 </ng-container>
                 <ng-template #inactiveIcon>
-                  <i class="fa-solid fa-toggle-off" style="color: red;background-color: transparent;"></i>
+                  <i class="fa-solid fa-toggle-off" style="color: #e85641; background-color: transparent;"></i>
                 </ng-template>
               </button>
             </td>
@@ -46,11 +52,6 @@
           </tr>
         </tbody>
       </table>
-          </div>
+    </div>
   </main>
-
 </div>
-
-
-
-

@@ -1,56 +1,85 @@
 <div class="container-fluid g-0">
   <app-header-admin-global (sideNavToggled)="sideNavStatus = $event;"></app-header-admin-global>
-  <main>
-    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
-    <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
-
-
-      <div class="container">
-        <h2> Ajouter Utilisateur</h2>
+  <main class="d-flex">
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+      <div>
+        <mat-toolbar class="toolbar">
+          <span> <strong>Ajouter utilisateur à Attijari <span style="color: #e85641;">Assurance</span> </strong></span>
+        </mat-toolbar>
       </div>
       <form id="userForm" [formGroup]="RegisterForm" (ngSubmit)="submit()">
         <div class="form-group">
-          <label for="nom">Nom</label>
-          <input type="text" class="form-control" id="nom" formControlName="nom">
+          <label for="nom" class="large-label">Nom</label>
+          <input type="text" class="form-control" id="nom" formControlName="nom" required>
         </div>
       
         <div class="form-group">
-          <label for="prenom">Prénom</label>
-          <input type="text" class="form-control" id="prenom" formControlName="prenom">
+          <label for="prenom" class="large-label">Prénom</label>
+          <input type="text" class="form-control" id="prenom" formControlName="prenom" required>
         </div>
       
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" formControlName="email">
-        </div>
-      
-        <div class="form-group">
-          <label for="password">Mot de passe</label>
-          <input type="password" class="form-control" id="password" formControlName="password">
-        </div>
-      
-        <div class="form-group">
-            <label for="confirmPassword">Confirmation du mot de passe</label>
-            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
-            <div class="error-message" *ngIf="RegisterForm.get('confirmPassword')?.hasError('passwordMismatch') && (RegisterForm.get('confirmPassword')?.dirty || RegisterForm.get('confirmPassword')?.touched)">
-                Mot de passe incorrect
-              </div>
-              
+          <label for="email" class="large-label">Email *</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required>
+          <div class="error-message" *ngIf="RegisterForm.get('email')?.hasError('required') && (RegisterForm.get('email')?.dirty || RegisterForm.get('email')?.touched)">
+            L'email est requis
           </div>
+          <div class="error-message" *ngIf="RegisterForm.get('email')?.hasError('email') && (RegisterForm.get('email')?.dirty || RegisterForm.get('email')?.touched)">
+            L'email n'est pas valide
+          </div>
+        </div>
       
         <div class="form-group">
-          <label for="role">Rôle</label>
-          <select class="form-control" id="role" formControlName="role">
+          <label for="password" class="large-label">Mot de passe *</label>
+          <input type="password" class="form-control" id="password" formControlName="password" required>
+          <div class="error-message" *ngIf="RegisterForm.get('password')?.hasError('required') && (RegisterForm.get('password')?.dirty || RegisterForm.get('password')?.touched)">
+            Le mot de passe est requis
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="confirmPassword"  class="large-label">Confirmation du mot de passe *</label>
+          <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" required>
+          <div class="error-message" *ngIf="RegisterForm.get('confirmPassword')?.hasError('required') && (RegisterForm.get('confirmPassword')?.dirty || RegisterForm.get('confirmPassword')?.touched)">
+            La confirmation du mot de passe est requise
+          </div>
+          <div class="error-message" *ngIf="RegisterForm.get('confirmPassword')?.hasError('passwordMismatch') && (RegisterForm.get('confirmPassword')?.dirty || RegisterForm.get('confirmPassword')?.touched)">
+            Les mots de passe ne correspondent pas
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="role"  class="large-label">Rôle *</label>
+          <select class="form-control" id="role" formControlName="role" required >
             <option value="AGENT">Agent</option>
             <option value="ADMIN">Admin</option>
             <option value="ADMIN_GLOBAL">Admin Global</option>
           </select>
-        </div>
-      
-        <button type="submit" class="btn btn-primary" [disabled]="RegisterForm.invalid">Register</button>
-      </form>
+          <div class="error-message" *ngIf="RegisterForm.get('role')?.hasError('required') && (RegisterForm.get('role')?.dirty || RegisterForm.get('role')?.touched)">
+            Le rôle est requis
           </div>
-  </main>
+        </div>
+
+        
+        <div class="form-group">
+          <label for="agence" class="large-label">Numéro d'agence</label>
+          <input type="text" class="form-control" id="agence" formControlName="agence" required>
+        </div>
+        <!-- Form Group for Status -->
+<div class="form-group">
+  <label for="status"  class="large-label">Statut ( <span style="color: #ffc700;">Activé</span> ,<span style="color: #e85641;">Desactivé</span>  )</label>
+  <div class="toggle-container">
+    <label class="toggle">
+      <input type="checkbox" formControlName="status" >
+      <span class="slider"></span>
+    </label>
+  </div>
 </div>
 
-
+      
+        <button type="submit" class="btn btn-primary w-100" [disabled]="RegisterForm.invalid"><strong>Ajouter</strong></button>
+      </form>
+    </div>
+  </main>
+</div>

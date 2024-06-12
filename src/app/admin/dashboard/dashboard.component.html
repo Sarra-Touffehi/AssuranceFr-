@@ -1,0 +1,18 @@
+<div class="container-fluid g-0">
+    <app-header-admin (sideNavToggled)="sideNavStatus =
+$event;"></app-header-admin>
+    <main>
+      <app-sidenav [sideNavStatus]="sideNavStatus"
+[ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
+      <div class="display-area p-3"
+[ngClass]="{'display-area-shrink':sideNavStatus}">
+
+        <iframe title="DashboardAssurance" width="1140" height="541.25"
+        src="https://app.powerbi.com/reportEmbed?reportId=822c9360-9465-4bd2-9a71-653e15c8d09e&autoAuth=true&ctid=889cdbee-d881-42dc-bd06-ad3237c34a53"
+frameborder="0" >
+    </iframe>
+
+
+      </div>
+    </main>
+  </div>

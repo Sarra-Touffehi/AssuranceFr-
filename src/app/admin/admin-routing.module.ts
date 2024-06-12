@@ -9,10 +9,13 @@ import { DrawerAdminComponent } from './drawer-admin/drawer-admin.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { ListSouscriptionsComponent } from './list-souscriptions/list-souscriptions.component';
 import { ListContratsComponent } from './list-contrats/list-contrats.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { CompteAdminComponent } from './compte-admin/compte-admin.component';
 
 const routes: Routes = [
   {path:'admin', component:HeaderAdminComponent,
- // canActivate: [AuthEmpGuard],
+  canActivate: [AuthGuard],
   children:[
     {path:'', redirectTo:'headerAdmin', pathMatch:'full'},
     {path:'headerAdmin', title:'headerAdmin',component:HeaderAdminComponent},
@@ -24,6 +27,8 @@ const routes: Routes = [
     {path:'accueilAdmin', title:'accueilAdmin', component:AcceuilComponent},
     {path:'listSouscriptionsAdmin', title:'listSouscriptionsAdmin', component:ListSouscriptionsComponent},
     {path:'listContratsAdmin', title:'listContratsAdmin', component:ListContratsComponent},
+    {path:'dashboard', title:'dashboard', component:DashboardComponent},
+    {path:'compteadmin', title:'compteadmin', component:CompteAdminComponent},
 
 
   ]

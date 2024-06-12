@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Client } from '../models/client';
 import { UserService } from './user.service';
 import { AuthService } from './auth.service';
+import { Propriete } from '../models/propriete';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,9 @@ private headers: HttpHeaders;
   getClientById(idClient: number): Observable<Client> {
     return this.http.get<Client>(`${this.url}/id/${idClient}`, { headers: this.headers });
   }
+
+
+  
   }
 
 

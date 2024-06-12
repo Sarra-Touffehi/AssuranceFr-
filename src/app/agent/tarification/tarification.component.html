@@ -1,6 +1,8 @@
 <h1 mat-dialog-title>Tarification</h1>
 <div mat-dialog-content>
-  <p>Tarif: {{ offre.frais }}</p>
+
+  <p>Frais fixes : {{ fraisFixes | number}}</p>
+  <p>Prime à payer : {{ primeAPayer | number }}</p>
 </div>
 
 <div mat-dialog-actions>

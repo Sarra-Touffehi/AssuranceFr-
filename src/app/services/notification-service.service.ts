@@ -7,12 +7,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NotificationServiceService {
 
   constructor(private snackbar:MatSnackBar) { }
-  showSuccess(message: string):void {
-    this.snackbar.open(message, 'Fermer',{
-      duration:5000,
-      horizontalPosition:'center',
-      verticalPosition:'top',
-      //panelClass:['success-snackbar'],
+  showSuccess(message: string): void {
+    this.snackbar.open(message, 'Ok', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['success-snackbar'],
     });
   }
 
@@ -21,8 +21,7 @@ export class NotificationServiceService {
       duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: ['error-snackbar'], 
-      
+      panelClass: ['error-snackbar'],
     });
   }
 
@@ -36,5 +35,11 @@ export class NotificationServiceService {
     confirmation.onAction().subscribe(() => {
       callback();
     });
+  }
+
+
+  clearError() {
+    // Fermer le snackbar
+    this.snackbar.dismiss();
   }
 }

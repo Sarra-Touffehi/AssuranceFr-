@@ -27,7 +27,9 @@ export class AddUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-      role: ['', Validators.required]
+      role: ['', Validators.required],
+      agence: ['', Validators.required], 
+      active:[false],
     },{ validators : this.passwordMathValidator}
     );
   }

@@ -150,18 +150,35 @@ AfficherOffres() {
 }
 
 
-  resilierContrat(idSousc: number) {
-    this.souscriptionService.resilierContrat(idSousc).subscribe(
-      response => {
-        console.log('Contrat resilié avec succes:', response);
-        this.notificationservice.showSuccess("Contrat résilié");
-        
-        this.souscriptions = this.souscriptions.filter(souscription => souscription.idSousc !== idSousc);
-      },
-      error => {
-        console.error('Erreur :', error);
+resilierContrat(idSousc: number) {
+  this.souscriptionService.resilierContrat(idSousc).subscribe(
+    response => {
+      console.log('Contrat résilié avec succès:', response);
+      this.notificationservice.showSuccess("Contrat résilié");
+      
+      const index = this.souscriptions.findIndex(souscription => souscription.idSousc === idSousc);
+      if (index !== -1) {
+        this.souscriptions[index].statut = 'résilié';
       }
-    );
-  }
+    },
+    error => {
+      console.error('Erreur :', error);
+    }
+  );
+}
 
+ // Filtrer les souscriptions validées à résilier
+ souscriptionsAValider(): Souscription[] {
+  return this.souscriptions.filter(souscription => souscription.statut === 'validé à résilier');
+}
+
+// Filtrer les souscriptions déjà résiliées
+souscriptionsResiliees(): Souscription[] {
+  return this.souscriptions.filter(souscription => souscription.statut === 'résilié');
+}
+
+// Filtrer les autres souscriptions
+souscriptionsAutres(): Souscription[] {
+  return this.souscriptions.filter(souscription => souscription.statut !== 'validé à résilier' && souscription.statut !== 'résilié');
+}
 }

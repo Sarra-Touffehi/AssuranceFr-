@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Credit } from '../models/credit';
 import { AuthService } from './auth.service';
+import { Propriete } from '../models/propriete';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +27,9 @@ export class CreditService {
   getAllCredits(): Observable<Credit[]> {
     return this.http.get<Credit[]>(this.url, { headers: this.headers });
   }
+  getProprieteByNumCredit(numCredit: number): Observable<Propriete> {
+    return this.http.get<Propriete>(`${this.url}/${numCredit}/propriete`, { headers: this.headers });
+  }
+
+  
 }

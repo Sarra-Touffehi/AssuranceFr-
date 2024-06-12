@@ -7,13 +7,22 @@ app-header-admin {
   z-index: 2;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
 /* Main content positioning */
 main {
   position: relative;
   top: 4rem;
   width: 100%;
   z-index: 1;
+  background-color: #fcfaf3;
 }
 
 /* Side navigation */
@@ -59,8 +68,11 @@ app-sidenav {
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
   font-size: 30px;
+  text-align: center;
   color: #005a8e;
+  margin: 0 auto; /* Ajout d'une marge automatique pour centrer le texte */
 }
+
 
 .small-fab-button {
   width: 25px;
@@ -87,12 +99,14 @@ app-sidenav {
   width: 300px;
   height: 450px;
   margin-bottom: 20px;
+  margin-top: 20px;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   background-color: #fff9e6;
   transition: transform 0.3s, filter 0.3s;
 }
 
+/* Autres styles inchangés */
 .example-card:hover {
   transform: scale(1.03);
 }
@@ -108,23 +122,19 @@ h2 {
 
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 100vh;
-  margin-top: 30px;
-  margin-bottom: 200px;
-  max-width: 800px;
-}
-
-mat-card-actions {
-  display: flex;
-  justify-content: flex-end;
+  gap: 100px;
+  margin-top: 80px; /* Ajuster la marge supérieure pour abaisser les compagnies */
+  margin-bottom: 40px; /* Ajuster la marge inférieure pour l'espacement */
 }
 
 .addContainer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0px; /* Ajuster l'espacement supérieur pour le bouton */
 }
 
 .card-actions {
@@ -136,15 +146,21 @@ mat-card-actions {
 .bottom-offres {
   display: flex;
   justify-content: flex-end;
-  margin-top: auto; /* To push the button to the bottom of the card */
+  margin-top: auto;
 }
 
 .mat-raised-button {
   background-color: #ffc700; /* Button color */
   color: #0b2e13; /* Text color */
+  font-weight: bold;
 }
 
 .mat-raised-button:hover {
   background-color: #e85641; /* Button hover color */
   color: #0b2e13; /* Text color */
+}
+.add-button {
+  font-size: 14px; /* Réduire la taille de la police du bouton "Ajouter Compagnie" */
+  padding: 5px 10px; /* Réduire le rembourrage du bouton "Ajouter Compagnie" */
+  font-weight: bold;
 }

@@ -25,10 +25,16 @@ import { DrawerAdminGlobalComponent } from './admin-global/drawer-admin-global/d
 import { AcceuilComponent } from './admin/acceuil/acceuil.component';
 import { AcceuilAdminGlobalComponent } from './admin-global/acceuil-admin-global/acceuil-admin-global.component';
 import { AcceuilAgentComponent } from './agent/acceuil-agent/acceuil-agent.component';
+import { ListSouscriptionsComponent } from './admin/list-souscriptions/list-souscriptions.component';
+import { ListContratsComponent } from './admin/list-contrats/list-contrats.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { CompteAgentComponent } from './agent/compte-agent/compte-agent.component';
+import { CompteAdminComponent } from './admin/compte-admin/compte-admin.component';
+import { CompteAdminGlobalComponent } from './admin-global/compte-admin-global/compte-admin-global.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+{ path: 'login', component: LoginComponent },
 {path:'ajoutcompagnie', title:'AjoutCompagnie', component:AddcompagnieComponent},
 {path:'listecompagnie', title:'ListeCompagnie', component:ListeCompagniesComponent},
 {path:'offres/:idcomp', component:OffresComponent},
@@ -52,10 +58,34 @@ const routes: Routes = [
 {path:'accueilAdmin', component:AcceuilComponent},
 {path:'accueilAgent', component:AcceuilAgentComponent},
 {path:'accueilAdminGlobal', component:AcceuilAdminGlobalComponent},
+{path:'listSouscriptionsAdmin', title:'listSouscriptionsAdmin', component:ListSouscriptionsComponent},
+    {path:'listContratsAdmin', title:'listContratsAdmin', component:ListContratsComponent},
+    {path:'dashboard', title:'dashboard', component:DashboardComponent},
+    {path:'agentcompte',title :'agentcompte' , component:CompteAgentComponent},
+    {path:'compteadmin', title:'compteadmin', component:CompteAdminComponent},
+    {path:'compteadminglobal', title:'compteadminglobal', component:CompteAdminGlobalComponent},
 
 
 
-
+    /*{
+  path :'admin',
+  canActivate : [AuthGuard],
+  loadChildren: () =>
+    import('./admin/admin.module').then((m)=>m.AdminModule)
+},
+{
+  path :'agent',
+  canActivate : [AuthGuard],
+  loadChildren: () =>
+    import('./agent/agent.module').then((m)=>m.AgentModule)
+},
+{
+  path :'admin_global',
+  canActivate : [AuthGuard],
+  loadChildren: () =>
+    import('./admin-global/admin-global.module').then((m)=>m.AdminGlobalModule)
+}
+*/
 ];
 
 @NgModule({

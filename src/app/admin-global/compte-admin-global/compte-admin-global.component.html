@@ -1,0 +1,44 @@
+
+
+<div class="container-fluid g-0">
+    <app-header-admin-global (sideNavToggled)="sideNavStatus = $event;"></app-header-admin-global>
+    <main>
+      <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
+      <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+  
+        <div>
+          <mat-toolbar class="toolbar">
+            <span>  <h2 style="text-align: center;"><h2 style="text-align: center;">Consulter Votre Compte </h2>
+            </h2>
+            </span>
+          </mat-toolbar>
+        </div> 
+
+<div class="container">
+
+<form  *ngIf="user">
+    <div class="form-icon">
+<i class="fa fa-user"></i>
+    </div>
+    <h3 class="title">User Account</h3>
+    <div>
+        <p><strong>Email :  </strong> <span>{{ userEmail }}</span></p>
+    </div>
+   
+    <div >
+        <p><strong>Prénom :  </strong> <span>{{ user.prenom }}</span></p>
+</div>
+<div>
+    <p><strong>Nom :  </strong><span>{{ user.nom }}  </span></p>
+</div>
+
+<div >
+    <p><strong>Role :  </strong> <span>{{ user.role }}  </span></p>
+</div>
+</form>
+</div>
+</div>
+</main>
+</div>
+
+

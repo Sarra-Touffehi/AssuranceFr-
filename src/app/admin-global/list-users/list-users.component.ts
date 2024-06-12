@@ -13,6 +13,8 @@ export class ListUsersComponent implements OnInit {
   users: User[] = [];
   filteredUsers: User[] = [];
   sideNavStatus:boolean = false;
+  searchText: string = '';
+  currentFilter: string = 'ALL';
 
   constructor(private userService: UserService, private matDialog: MatDialog) { }
 
@@ -23,8 +25,19 @@ export class ListUsersComponent implements OnInit {
   afficherUsers(): void {
     this.userService.getAllUsers().subscribe(users => {
       this.users = users.filter(user => user.role !== 'ADMIN_GLOBAL');
+      this.filterUsers('ALL');
     });
   }
+
+  filterUsers(role: string): void {
+    this.currentFilter = role;
+    if (role === 'ALL') {
+      this.filteredUsers = [...this.users];
+    } else {
+      this.filteredUsers = this.users.filter(user => user.role === role);
+    }
+  }
+
 /*  searchByEmail(email: string): void {
     if (email.trim() === '') {
       this.filteredUsers = [...this.users];
@@ -45,7 +58,7 @@ export class ListUsersComponent implements OnInit {
     }
   } */
   
-  searchText ='';
+
   
   openModifyDialog(user: User): void {
     const dialogRef = this.matDialog.open(UpdateUserComponent, {
@@ -71,5 +84,7 @@ export class ListUsersComponent implements OnInit {
       });
     }
   }
+
+
 
 }

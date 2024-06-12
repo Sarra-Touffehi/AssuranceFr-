@@ -22,6 +22,7 @@ export class UpdateUserComponent implements OnInit {
       prenom: [this.user.prenom],
       email: [this.user.email],
       role: [this.user.role],
+      idAgence : [this.user.agence.idAgence]
     });
      }
 
@@ -36,6 +37,7 @@ export class UpdateUserComponent implements OnInit {
       email: this.modifyUserForm.value.email,
       role: this.modifyUserForm.value.role,
       active:this.modifyUserForm.value.active,
+      agence:this.modifyUserForm.value.agence
     };
 
     this.userService.updateUser(updatedUser.iduser, updatedUser).subscribe(() => {

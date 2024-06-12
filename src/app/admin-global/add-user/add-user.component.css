@@ -1,50 +1,72 @@
 .container {
-    margin-top: 20px;
-    text-align: center;
-    margin-bottom: 25px;
-  }
-  
-  #userForm {
-    max-width: 400px;
-    margin: auto;
-    background-color: #f4f4f4; 
-    padding: 30px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  .btn-primary {
-    background-color: orange; 
-    border-color: orange; 
-    color: white; 
-    display: block;
-    width: 100%; 
-    border-radius: 4px; 
-    padding: 10px; 
-    cursor: pointer; 
-  }
-  
-  .btn-primary:hover {
-    background-color: #ff8c00; 
-    border-color: #ff8c00; 
-  }
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+#userForm {
+  max-width: 700px;
+  margin: auto;
+  background-color: #fff9e6;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding-bottom: 30px;
+}
+.form-control {
+  height: 45px; /* Ajuster la hauteur des champs de saisie */
+  font-size: 16px; /* Optionnel : ajuster la taille de la police pour correspondre à la nouvelle hauteur */
+  background-color: #fcfaf3;
+}
 
-  .error-message {
-    color: red; 
-    font-size: 14px; 
-    margin-top: 5px; 
-  }
-  
+.form-group {
+  margin-bottom: 30px;
+}
 
-   /* Header */
+label {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: orange;
+  border-color: orange;
+  color: white;
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+}
+.toggle-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* Ajouter un peu d'espace au-dessus du bouton basculant */
+}
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px; /* Augmenter légèrement la largeur du bouton basculant */
+  height: 30px; /* Augmenter légèrement la hauteur du bouton basculant */
+}
+.btn-primary:hover {
+  background-color: #ff8c00;
+  border-color: #ff8c00;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 app-header-admin-global {
   position: fixed;
   width: 100%;
@@ -54,23 +76,23 @@ app-header-admin-global {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Main content positioning */
 main {
   position: relative;
   top: 4rem;
   width: 100%;
   z-index: 1;
+  display: flex;
+  background-color: #fcfaf3;
 }
 
-/* Side navigation */
 app-sidenav {
   position: fixed;
   top: 4rem;
   left: 0;
   width: 56px;
-  height: calc(100vh - 4rem); /* Adjust to fit below the header */
+  height: 100%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  background-color: #fff9e6; /* Background color */
+  background-color: #fff9e6;
   overflow: hidden;
   white-space: nowrap;
   transition: width 250ms ease-in;
@@ -80,15 +102,88 @@ app-sidenav {
   width: 250px;
 }
 
-/* Display area */
 .display-area {
   position: relative;
   margin-left: 56px;
-  width: calc(100% - 56px); /* Adjust to fit next to the collapsed sidenav */
+  width: calc(100% - 56px);
   transition: margin-left 250ms ease-in, width 250ms ease-in;
 }
 
 .display-area-shrink {
   margin-left: 250px;
-  width: calc(100% - 250px); /* Adjust to fit next to the expanded sidenav */
+  width: calc(100% - 250px);
+}
+
+/* Toggle Button Styles */
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 15px; 
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ffc700; /* Vert lorsque activé */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ffc700; /* Ajouter une légère ombre verte lorsqu'il est activé */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+  background-color: #ccc; /* Vert lorsque activé */
+}
+
+/* Style du slider lorsqu'il est désactivé */
+input[type="checkbox"]:not(:checked) + .slider:before {
+  background-color: #e85641; /* Rouge lorsque désactivé */
+}
+
+input[type="checkbox"]:not(:checked) + .slider {
+  background-color: #ccc; /* Couleur de fond lorsque désactivé */
+}
+
+input:focus:checked + .slider:before {
+  box-shadow: 0 0 1px #e85641; /* Ajouter une légère ombre rouge lorsqu'il est désactivé et en focus */
+}
+
+.large-label {
+  font-size: 1.1rem; /* Taille de la police plus grande pour les labels */
 }

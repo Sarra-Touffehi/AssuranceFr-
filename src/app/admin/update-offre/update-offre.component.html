@@ -29,14 +29,20 @@
         <input type="text" class="form-control" formControlName="couverture" id="couverture" placeholder="Entrer la couverture">
       </div>
   
-      <div class="form-group">
-        <label for="frais">Frais</label>
-        <input  type="text" class="form-control" formControlName="frais" id="frais" placeholder="Entrer le frais">
+      <div class="form-group row">
+        <div class="col">
+          <label for="frais_mrh">Frais MRH</label>
+          <input type="number" class="form-control" formControlName="frais_mrh" id="frais_mrh" placeholder="Entrer le Frais">
+        </div>
+        <div class="col">
+          <label for="taxe">Taxe</label>
+          <input type="number" class="form-control" formControlName="taxe" id="taxe" placeholder="Entrer le Taxe">
+        </div>
       </div>
-
+      
       <div class="form-group">
-        <label for="taux_risque">Taux Risque</label>
-        <input  type="text" class="form-control" formControlName="taux_risque" id="taux_risque" placeholder="Entrer le taux du risque">
+        <label for="prime_commerciale">Prime Commerciale</label>
+        <input type="number" class="form-control" formControlName="prime_commerciale" id="prime_commerciale" placeholder="Entrer la Prime Commerciale">
       </div>
       
 

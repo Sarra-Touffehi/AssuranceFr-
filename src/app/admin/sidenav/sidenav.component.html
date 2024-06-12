@@ -1,5 +1,5 @@
 <div class="side-nav-content">
-    <ul class="nav-list" [ngClass]="{'nav-list-open' : sideNavStatus}">
+  <ul class="nav-list" [ngClass]="{'nav-list-open' : sideNavStatus}">
       <li class="nav-list-item">
         <i class="fa-solid fa-house"></i>
         <span>
@@ -24,6 +24,13 @@
             <a [routerLink]="['/listContratsAdmin']">Liste Contrats</a>
         </span>
       </li>
+      <li class="nav-list-item">
+        <i class="fa-solid fa-chart-line"></i>
+                <span>
+            <a [routerLink]="['/dashboard']">Dashboard</a>
+        </span>
+      </li>
     </ul>
   </div>
+
   

@@ -6,10 +6,12 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { ChatComponent } from '../components/chat/chat.component';
 import { DrawerAdminGlobalComponent } from './drawer-admin-global/drawer-admin-global.component';
 import { AcceuilAdminGlobalComponent } from './acceuil-admin-global/acceuil-admin-global.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { CompteAdminGlobalComponent } from './compte-admin-global/compte-admin-global.component';
 
 const routes: Routes = [
   {path:'admin-global', component:DrawerAdminGlobalComponent,
-  // canActivate: [AuthEmpGuard],
+  canActivate: [AuthGuard],
    children:[
      {path:'', redirectTo:'drawerAdminG', pathMatch:'full'},
      {path:'headerAdminGlobal', title:'headerAdminGlobal',component:HeaderAdminGlobalComponent},
@@ -18,7 +20,8 @@ const routes: Routes = [
      {path:'chat/:iduser', component:ChatComponent},
      {path:'drawerAdminG', component:DrawerAdminGlobalComponent},
      {path:'accueilAdminGlobal', component:AcceuilAdminGlobalComponent},
-     
+     {path:'compteadminglobal', title:'compteadminglobal', component:CompteAdminGlobalComponent},
+
    ]
  },
 ];

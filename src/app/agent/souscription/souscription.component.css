@@ -1,38 +1,37 @@
 .toolbar {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
- .example-full-width {
-    display: flex;
-    justify-content: center;
-    
+.example-full-width {
+  display: flex;
+  justify-content: center;
+}
+.infos {
+  border: 2px solid black;
+  padding: 10px;
+}
+.row {
+  padding: 20px;
+}
+.box {
+  border: 2px solid black;
+}
+.simulerContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: rgb(252, 134, 92);
+}
 
-  }
- .infos{
-    border: 2px solid black;
-    padding: 10px;
-    
-    
- }
- .row{
-    padding: 20px;
- }
- .box{ border: 2px solid black;}
- 
- .simulerContainer {
-   display: flex;
-   justify-content:center;
-   text-align: center;
-   color: rgb(252, 134, 92);
-   
- }
+.risk-level-container {
+  border: 2px solid black;
+  padding: 20px;
+  margin-top: 20px;
+}
 
-
-
- 
-  /* Header */
+/* Header */
 app-header {
   position: fixed;
   width: 100%;
@@ -40,6 +39,7 @@ app-header {
   height: 4rem;
   z-index: 2;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  
 }
 
 /* Main content positioning */
@@ -48,6 +48,7 @@ main {
   top: 4rem;
   width: 100%;
   z-index: 1;
+  background-color: #fcfaf3;
 }
 
 /* Side navigation */
@@ -66,6 +67,7 @@ app-sidenav {
 
 .app-side-nav-open {
   width: 250px;
+  
 }
 
 /* Display area */
@@ -74,6 +76,7 @@ app-sidenav {
   margin-left: 56px;
   width: calc(100% - 56px); /* Adjust to fit next to the collapsed sidenav */
   transition: margin-left 250ms ease-in, width 250ms ease-in;
+  
 }
 
 .display-area-shrink {

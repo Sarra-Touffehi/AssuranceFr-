@@ -4,10 +4,18 @@
     <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
     <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
 
-
-      <h2 style="text-align: center;">Liste des contrats</h2>
+      <div>
+        <mat-toolbar class="toolbar">
+          <span>  <h2 style="text-align: center;"><h2 style="text-align: center;">Liste des contrats</h2>
+          </h2>
+          </span>
+        </mat-toolbar>
+      </div>
       <div class="search-container">
-        <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+        <div class="search-box">
+          <i class="fa fa-search search-icon"></i>
+          <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+        </div>
       </div>
       <table class="souscriptions-table">
         <thead>
@@ -41,7 +49,30 @@
               <button (click)="resilierContrat(souscription.idSousc)">Résilier</button>
             </td>
           </tr>
-        </tbody>
+       <!-- Souscriptions déjà résiliées -->
+       <tr *ngFor="let souscription of souscriptionsResiliees() | search :searchText ; let odd = odd" class="souscription-row">
+        <td style="padding: 8px; text-align: left;">{{ souscription.idSousc }}</td>
+        <td style="padding: 8px; text-align: left;">{{ getClientNumCompte(souscription.idClient) }}</td>
+        <td style="padding: 8px; text-align: left;" >
+          <span *ngIf="afficherCompagnieByIdOffre(souscription.idOffre) ">
+            <img  src="http://localhost:9630/images/{{ getCompagnieLogo(souscription.idOffre)}}" alt="Compagnie Logo" width="60" height="60">
+          </span>
+        </td>
+        <td style="padding: 8px; text-align: left;">{{ getOffreName(souscription.idOffre) }}</td>
+        <td style="padding: 8px; text-align: left;">{{ souscription.dateSouscription | date:'dd/MM/yyyy' }}</td>
+        <td style="padding: 8px; text-align: left;" >
+          <span *ngIf="afficherCreditByNumCompte(getClientNumCompte(souscription.idClient)) ">
+            {{ credits[0]?.dateEcheance| date:'dd/MM/yyyy' }}
+          </span>
+        </td>
+        <td [ngClass]="{'resilie': souscription.statut === 'résilié'}">
+          <span *ngIf="souscription.statut === 'résilié'">Résilié</span>
+        </td>
+          
+      </tr>
+
+   
+    </tbody>
       </table>
           </div>
   </main>

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Offre } from 'src/app/models/offre';
 import { OffreserviceService } from 'src/app/services/offreservice.service';
@@ -25,8 +25,9 @@ export class UpdateOffreComponent implements OnInit {
       nom: [this.offre.nom],
       conditions: [this.offre.conditions],
       couverture: [this.offre.couverture],
-      frais: [this.offre.frais],
-      taux_risque: [this.offre.taux_risque]
+      frais_mrh: [this.offre.frais_mrh, Validators.pattern('^[0-9]*$')],
+      taxe: [this.offre.taxe, Validators.pattern('^[0-9]*$')],
+      prime_commerciale: [this.offre.prime_commerciale, Validators.pattern('^[0-9]*$')],
     });
   }
 
@@ -38,8 +39,9 @@ export class UpdateOffreComponent implements OnInit {
       nom: this.modifyOffreForm.value.nom,
       conditions: this.modifyOffreForm.value.conditions,
       couverture: this.modifyOffreForm.value.couverture,
-      frais: this.modifyOffreForm.value.frais,
-      taux_risque: this.modifyOffreForm.value.taux_risque,
+      frais_mrh: this.modifyOffreForm.value.frais_mrh,
+      taxe: this.modifyOffreForm.value.taxe,
+      prime_commerciale: this.modifyOffreForm.value.prime_commerciale,
       compagnie: this.offre.compagnie
     };
 

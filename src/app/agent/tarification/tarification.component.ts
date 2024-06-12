@@ -16,6 +16,8 @@ export class TarificationComponent implements OnInit {
   client!:Client;
   idClient!:number;
   numCredit!:number;
+  fraisFixes!: number;
+  primeAPayer!: number;
   constructor(  public dialogRef: MatDialogRef<TarificationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private souscriptionService: SouscriptionService,
@@ -28,7 +30,19 @@ export class TarificationComponent implements OnInit {
     this.client= this.data.clientData;
     this.idClient = this.data.idClient;
     this.numCredit  = this.data.numCredit;
+
+    this.calculateFraisFixesEtPrimeAPayer();
   }
+
+  calculateFraisFixesEtPrimeAPayer(): void {
+    const fraisMRH = this.offre.frais_mrh;
+    const taxe = this.offre.taxe;
+    const primeCommerciale = this.offre.prime_commerciale;
+
+    this.fraisFixes = fraisMRH + (fraisMRH * taxe);
+    this.primeAPayer = primeCommerciale + this.fraisFixes;
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
     

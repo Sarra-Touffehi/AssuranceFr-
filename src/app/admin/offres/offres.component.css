@@ -13,6 +13,16 @@ h2 {
   margin-bottom: 20px;
   color: #0b2e13; 
 }
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
 /*
 .offre-card :hover {
   transform: scale(1.1);
@@ -69,24 +79,7 @@ h2 {
 
 }
 
-.edit-icon{
-  margin-top: 5px;
-  margin-left:5px;
-  width: 35px; 
-height: 40px; 
-border-radius: 50%; 
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: #f44336; 
-color: white;
-border: none; 
-cursor: pointer; 
 
-}
-.edit-icon :hover{
-color:#d32f2f;
-}
 
 
 img{
@@ -141,6 +134,7 @@ main {
   top: 4rem;
   width: 100%;
   z-index: 1;
+  background-color: #fcfaf3;
 }
 
 /* Side navigation */
@@ -173,3 +167,57 @@ app-sidenav {
   margin-left: 250px;
   width: calc(100% - 250px); /* Adjust to fit next to the expanded sidenav */
 }
+
+.delete-icon {
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0; /* Positionnez le bouton à gauche */
+}
+
+.delete-icon mat-icon {
+  font-size: 20px;
+}
+.delete-icon :hover{
+  color:#ffc700;
+  }
+
+  .edit-icon {
+    margin-top: 5px;
+  margin-right: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffc700;
+    color: white;
+  color: white;
+  border: none;
+  cursor: pointer;
+    
+ 
+    position: absolute;
+    top: 0;
+    right: 0; /* Positionnez le bouton à droite */
+  }
+  .edit-icon :hover{
+  color:#d32f2f;
+  }
+
+
+  .edit-icon mat-icon {
+    font-size: 15px;
+  }

@@ -33,6 +33,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { ListSouscriptionsComponent } from './list-souscriptions/list-souscriptions.component';
 import { ListContratsComponent } from './list-contrats/list-contrats.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CompteAdminComponent } from './compte-admin/compte-admin.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { ListContratsComponent } from './list-contrats/list-contrats.component';
     AcceuilComponent,
     ListSouscriptionsComponent,
     ListContratsComponent,
+    DashboardComponent,
+    CompteAdminComponent,
   ],
   imports: [
     CommonModule,

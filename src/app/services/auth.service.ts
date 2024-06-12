@@ -10,8 +10,9 @@ import { User } from '../models/user';
 })
 export class AuthService {
   private url = 'http://localhost:9630/api/v1/auth/';
+  private apilogout='http://localhost:9630/api/v1/auth/logout';
  helper = new JwtHelperService();
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
   register(signRequest: any): Observable<any> {
@@ -19,8 +20,15 @@ export class AuthService {
   }
 
   login(loginRequest: any): Observable<any> {
-    return this.http.post<any>(this.url + 'authenticate', loginRequest); 
-} 
+    return this.http.post<any>(this.url + 'authenticate', loginRequest);
+}
+logout(): Observable<any> {
+  return this.http.post<any>(this.apilogout, {}).pipe(
+    tap(() => {
+      this.removeToken();  // Remove token on logout
+    })
+  );
+}
 /*
 login(loginRequest: any): Observable<any> {
   return this.http.post<any>(this.url + 'authenticate', loginRequest).pipe(
@@ -34,23 +42,23 @@ login(loginRequest: any): Observable<any> {
 
 /*
 
-  public loggedInUser ={ 
+  public loggedInUser ={
     _id:'',
      nom: '',
     motdepasse: '',
-      
+
       };
 
       helper = new JwtHelperService();
 
       saveData(token:any){
         let decodeToken= this.helper.decodeToken(token);
-      
+
         localStorage.setItem('token',token);
-        
-       
+
+
         console.log(decodeToken);
-          
+
         }
         getTokenHeaders(config: any = {}) {
           const token = localStorage.getItem('token');
@@ -92,15 +100,15 @@ isLoggedIn(): boolean {
 }
 
 // Method to log out user
-logout(): void {
+/*logout(): void {
   localStorage.removeItem('token');
 }
-
+*/
 // Method to get token expiration date
 getTokenExpirationDate(token: string): Date | null {
   const helper = new JwtHelperService();
   const decodedToken = helper.decodeToken(token);
-  if (decodedToken.exp === undefined) 
+  if (decodedToken.exp === undefined)
     return null;
   const date = new Date(0);
   date.setUTCSeconds(decodedToken.exp);
@@ -110,7 +118,7 @@ getTokenExpirationDate(token: string): Date | null {
 
 // Method to check if token is expired
 isTokenExpired(token?: string): boolean {
-  if (!token) token = localStorage.getItem('token') || undefined; 
+  if (!token) token = localStorage.getItem('token') || undefined;
   if (!token) return true;
   const date = this.getTokenExpirationDate(token);
   if (!date) return false; // Vérifiez si date est null ou undefined
@@ -139,8 +147,8 @@ getUserEmail(): string | null {
   if (token) {
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(token);
-    const userEmail: string = decodedToken.sub; 
-    console.log('Email de l\'utilisateur :', userEmail); 
+    const userEmail: string = decodedToken.sub;
+    console.log('Email de l\'utilisateur :', userEmail);
     return userEmail;
   } else {
     return null;
@@ -154,7 +162,7 @@ saveData(token:any){
   localStorage.setItem('token',token);
   localStorage.setItem('email',decodeToken.sub);
   console.log(decodeToken);
-    
+
   }
 
 

@@ -6,8 +6,9 @@ export class Offre {
           public nom:string,
           public conditions:string,
           public couverture:string,
-          public frais:number,
-          public taux_risque:number,
+          public frais_mrh:number,
+          public taxe:number,
+          public prime_commerciale:number,
           public compagnie: Compagnie
 
           ){

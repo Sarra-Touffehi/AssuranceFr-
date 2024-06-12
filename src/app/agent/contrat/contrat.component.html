@@ -9,8 +9,8 @@
       <div class="container"  id="print-section">
   
         <div *ngIf="compagnie" style="display:flex; justify-content: space-between;">
-          <span> <img style="width:200px; height:100px" src="../../../assets/logo2.png"> </span>
-          <span>    <img *ngIf="compagnie && compagnie.logo" src="http://localhost:9630/images/{{ compagnie.logo }}" alt="Compagnie Logo" width="200" height="100">
+          <span> <img style="width:200px; height:100px; margin-top: 50px;" src="../../../assets/attijari22.gif"> </span>
+          <span style="margin-top: 50px;">    <img *ngIf="compagnie && compagnie.logo" src="http://localhost:9630/images/{{ compagnie.logo }}" alt="Compagnie Logo" width="200" height="100" >
           </span>
         </div>
     
@@ -81,28 +81,27 @@
         <div class="cadreContrat" *ngFor="let c of credit" >
           <p  style="display:flex; justify-content: space-between;">
             <span style="margin-left:60px"><b>Date d'effet : </b>  <span  >{{c.dateAccord| date:'dd/MM/yyyy'}}</span> </span> 
-            <span style="margin-right: 120px;"><b>Montant du prêt :</b>{{c.montant}}</span> 
+            <span style="margin-left:60px"><b>Durée du crédit : </b>2 ans  </span> 
+            <span style="margin-left:88px"><b>Date Echeance : </b>{{c.dateEcheance| date:'dd/MM/yyyy'}}</span>
+
           </p>
     
-          <p style="display:flex; justify-content: space-between;" >
-            <span style="margin-left:60px"><b>Durée du crédit : {{c.duree}}</b> <span style="margin-left:88px">{{c.dateEcheance| date:'dd/MM/yyyy'}}</span> </span> 
-            <span style="margin-right: 120px;" ><b>Amortissement : </b>1 580,153DT</span>
-          </p>
+        
         </div>
     
         <div class="cadreContrat" *ngIf="offre">
           <p style="display:flex; justify-content: space-between;">
             <span style="margin-left:60px">
-              <b>Prime d'assurance :</b> <span>825,000 DT</span>
+              <b>Prime d'assurance :</b> <span>180 DT</span>
             </span>
             <span style="margin-right: 120px;">
-              <b>Frais fixes :</b>{{offre.frais}} DT
+              <b>Frais fixes :</b>20 DT
             </span>
           </p>
         </div>
     
         <div>
-          <p style="text-align: center;"><b>Prime à payer à la souscription : </b>prime  DT</p>
+          <p style="text-align: center;"><b>Prime à payer à la souscription : 200 DT</b></p>
         </div>
     
         <div>

@@ -1,3 +1,5 @@
+import { Agence } from "./agence";
+
 export enum Role {
     AGENT = 'AGENT',
     ADMIN = 'ADMIN',
@@ -12,7 +14,8 @@ export enum Role {
       public email: string,
       public password: string,
       public role: Role,
-      public active : boolean
+      public active : boolean,
+      public agence :Agence
     ) {}
   }
   

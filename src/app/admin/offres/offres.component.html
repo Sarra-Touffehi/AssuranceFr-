@@ -1,59 +1,70 @@
 <div class="container-fluid g-0">
   <app-header-admin (sideNavToggled)="sideNavStatus = $event;"></app-header-admin>
   <main>
-    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
-    <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
-
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+      <mat-toolbar class="toolbar">
+        <span><strong><span style="color: #e85641;">Offres</span></strong></span>
+      </mat-toolbar>
       <div class="container">
-        <h2>Liste des Offres</h2>
         <div *ngIf="offres && offres.length > 0; else noOffres">
           <div *ngFor="let offre of offres" class="offre-card">
-           
             <div class="card">
-                <button mat-icon-button class="edit-icon" aria-label="Modifier" (click)="openModifyDialog(offre)" >
-                  <mat-icon> border_color</mat-icon>
+              <div style="display: flex;">
+                <button mat-icon-button class="edit-icon" aria-label="Modifier" (click)="openModifyDialog(offre)">
+                  <mat-icon>border_color</mat-icon>
                 </button>
-                <div class="card-body">
+
+                <button mat-icon-button class="delete-icon" aria-label="Supprimer" (click)="deleteOffre(offre)">
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
+
+              <div class="card-body">
                 <div *ngFor="let c of lesCompagnies">
-                 
-                  <img  mat-card-image  src="http://localhost:9630/images/{{c.logo}}" alt="Compagnie Logo" width="100" height="150">
+                  <img mat-card-image src="http://localhost:9630/images/{{c.logo}}" alt="Compagnie Logo" width="350" height="150">
                   <h5 class="card-title">{{ offre.nom }}</h5>
                 </div>
-                
                 <table class="table">
                   <tr>
-                    <th>Conditions :</th>
-                    <td >{{ offre.conditions }}</td>
+                    <th>Conditions:</th>
                   </tr>
+                  <td>{{ offre.conditions }}</td>
+
                   <tr>
-                    <th>Couverture :</th>
-                    <td>{{ offre.couverture }}</td>
+                    <th>Couverture:</th>
                   </tr>
+                  <td>{{ offre.couverture }}</td>
+
                   <tr>
-                    <th>Frais :</th>
-                    <td>{{ offre.frais }}</td>
+                    <th>Frais MRH:</th>
                   </tr>
+                  <td>{{ offre.frais_mrh }} DT</td>
+
                   <tr>
-                    <th>Taux de risque :</th>
-                    <td>{{ offre.taux_risque }}</td>
+                    <th>Taxe:</th>
                   </tr>
+                  <td>{{ offre.taxe }} DT</td>
+
+                  <tr>
+                    <th>Prime commerciale:</th>
+                  </tr>
+                  <td>{{ offre.prime_commerciale }} DT</td>
+
                 </table>
               </div>
             </div>
           </div>
         </div>
         <div class="addContainer">
-            <mat-dialog-actions >
-              <button mat-raised-button  (click)="openDialog()">Ajouter Offre</button>
-            </mat-dialog-actions>
+          <mat-dialog-actions>
+            <button mat-raised-button (click)="openDialog()" style="font-weight: bold; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px;">Ajouter Offre</button>
+          </mat-dialog-actions>
         </div>
         <ng-template #noOffres>
           <p>Aucune offre disponible pour cette compagnie.</p>
         </ng-template>
       </div>
-      
-      
-      
-          </div>
+    </div>
   </main>
 </div>

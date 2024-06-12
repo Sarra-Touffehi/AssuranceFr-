@@ -1,59 +1,72 @@
 <div class="dialog-content">
-  <div class="div1">
-    <span>Ajouter Offre</span>
-      <button  type="button" (click)="Cancel()" class=" btn btn-primary centered-button" > 
-        <mat-icon>highlight_off</mat-icon>
-      </button>
+  <div class="div1" style="text-align: center;">
+    <span>Ajouter une Offre</span>
+    <button type="button" (click)="Cancel()" class="btn btn-primary centered-button">
+      <mat-icon>highlight_off</mat-icon>
+    </button>
   </div>
-  
-  
-  <form  [formGroup]="addOffresForm" (ngSubmit)="AddOffre()"  enctype="multipart/form-data">
-        
-  
-      <div class="form-group">
-        <label for="nom">Nom Offre</label>
-        <input  type="text" class="form-control" formControlName="nom" id="nom"  placeholder="Entrer nom ">
-      </div>
-  
-      <div class="form-group">
-        <label for="conditions">Conditions</label>
-        <input type="text" class="form-control" formControlName="conditions" id="conditions" placeholder="Entrer les conditions">
-      </div>
-            <div class="form-group">
-        <label for="couverture">Couverture</label>
-        <input type="text" class="form-control" formControlName="couverture" id="couverture" placeholder="Entrer la couverture">
-      </div>
-  <!--
-      <div class="form-group">
-        <label for="frais">Frais</label>
-        <input  type="text" class="form-control" formControlName="frais" id="frais" placeholder="Entrer le frais">
-      </div>
 
-      <div class="form-group">
-        <label for="taux_risque">Taux Risque</label>
-        <input  type="text" class="form-control" formControlName="taux_risque" id="taux_risque" placeholder="Entrer le taux du risque">
+  <form [formGroup]="addOffresForm" (ngSubmit)="AddOffre()" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="nom">Nom Offre</label>
+      <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Entrer nom" >
+      <div *ngIf="addOffresForm.get('nom')?.invalid && (addOffresForm.get('nom')?.dirty || addOffresForm.get('nom')?.touched)" class="alert alert-danger">
+        Nom de l'offre est requis.
       </div>
-      
+    </div>
 
-    -->
-      <div class="form-group">
-        <label for="compagnie">Compagnie</label>
-        <select class="form-control" formControlName="compagnie" id="compagnie">
-          <option *ngFor="let compagnie of lesCompagnies" [value]="compagnie.idcomp">{{ compagnie.nom }}</option>
-        </select>
+    <div class="form-group">
+      <label for="conditions">Conditions</label>
+      <input type="text" class="form-control" formControlName="conditions" id="conditions" placeholder="Entrer les conditions">
+      <div *ngIf="addOffresForm.get('conditions')?.invalid && (addOffresForm.get('conditions')?.dirty || addOffresForm.get('conditions')?.touched)" class="alert alert-danger">
+        Conditions sont requises.
       </div>
-      
-      <div class="div1">
-        <button type="submit" class=" btn btn-primary centered-button" [disabled]="addOffresForm.invalid"> 
-          <mat-icon class="addicon">add_circle_outline</mat-icon>
-     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>-->
-    </button>  
-    </div> 
-  
-    
-    </form>
-    
+    </div>
 
+    <div class="form-group">
+      <label for="couverture">Couverture</label>
+      <input type="text" class="form-control" formControlName="couverture" id="couverture" placeholder="Entrer la couverture">
+      <div *ngIf="addOffresForm.get('couverture')?.invalid && (addOffresForm.get('couverture')?.dirty || addOffresForm.get('couverture')?.touched)" class="alert alert-danger">
+        Couverture est requise.
+      </div>
+    </div>
 
+    <div class="form-group row">
+      <div class="col">
+        <label for="frais_mrh">Frais MRH</label>
+        <input type="number" class="form-control" formControlName="frais_mrh" id="frais_mrh" placeholder="Entrer le Frais">
+        <div *ngIf="addOffresForm.get('frais_mrh')?.invalid && (addOffresForm.get('frais_mrh')?.dirty || addOffresForm.get('frais_mrh')?.touched)" class="alert alert-danger">
+          Frais MRH est requis et doit être un nombre.
+        </div>
+      </div>
+      <div class="col">
+        <label for="taxe">Taxe</label>
+        <input type="number" class="form-control" formControlName="taxe" id="taxe" placeholder="Entrer la Taxe">
+        <div *ngIf="addOffresForm.get('taxe')?.invalid && (addOffresForm.get('taxe')?.dirty || addOffresForm.get('taxe')?.touched)" class="alert alert-danger">
+          Taxe est requise et doit être un nombre.
+        </div>
+      </div>
+    </div>
 
-   
+    <div class="form-group">
+      <label for="prime_commerciale">Prime Commerciale</label>
+      <input type="number" class="form-control" formControlName="prime_commerciale" id="prime_commerciale" placeholder="Entrer la Prime Commerciale">
+      <div *ngIf="addOffresForm.get('prime_commerciale')?.invalid && (addOffresForm.get('prime_commerciale')?.dirty || addOffresForm.get('prime_commerciale')?.touched)" class="alert alert-danger">
+        Prime commerciale est requise et doit être un nombre.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="compagnie">Compagnie</label>
+      <select class="form-control" formControlName="compagnie" id="compagnie">
+        <option *ngFor="let compagnie of lesCompagnies" [value]="compagnie.idcomp">{{ compagnie.nom }}</option>
+      </select>
+    </div>
+
+    <div class="div1">
+      <button type="submit" class="btn btn-primary centered-button" [disabled]="addOffresForm.invalid">
+        <mat-icon class="addicon">add_circle_outline</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

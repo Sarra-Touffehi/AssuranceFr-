@@ -3,11 +3,11 @@
   <main>
     <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
     <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
-
+      <mat-toolbar class="toolbar">
+        <span><strong> Simulation des offres d'assurance incendie </strong></span>
+      </mat-toolbar>
       <div class="container">
-        <mat-toolbar class="toolbar">
-          <span>Simulation des offres d'assurance incendie</span>
-        </mat-toolbar>
+  
         <div *ngIf="offres && offres.length > 0; else noOffres" class="offre-container">
           <div *ngFor="let offre of offres" class="offre-card">
             <div class="card">
@@ -22,26 +22,22 @@
               <div class="card-body">
                 <table class="table">
                   <tr>
-                    <td>Conditions:</td>
-                    <td>{{ offre.conditions }}</td>
+                    <th>Conditions:</th>
                   </tr>
+                  <td>{{ offre.conditions }}</td>
+
                   <tr>
-                    <td>Couverture:</td>
-                    <td>{{ offre.couverture }}</td>
-                  </tr>
-                  <tr>
-                    <td>Frais:</td>
-                    <td>{{ offre.frais }}</td>
-                  </tr>
-                  <tr>
-                    <td>Taux de risque:</td>
-                    <td>{{ offre.taux_risque }}</td>
-                  </tr>
-                  <div>
+                    <th>Couverture:</th>
                     
-                    <p>id client: {{ idClient }}</p>
+                  </tr>
+                  <td>{{ offre.couverture }}</td>
+                
+                    <tr>
+                      <th>id client: </th>
+                      
+                    </tr>
+                    <td>{{ idClient }}</td>
                     
-                  </div>
                 </table>
               </div>
               <div class="card-footer text-center">
