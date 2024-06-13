@@ -7,6 +7,7 @@ export class Credit {
         public dateEcheance: Date,
         public duree: string,
         public montant: number,
+        public assure: boolean,
         public client: Client 
     ) {}
 }

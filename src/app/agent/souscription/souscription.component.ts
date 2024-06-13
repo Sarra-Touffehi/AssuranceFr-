@@ -60,7 +60,8 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
 	 "montant":[],
 	"dateAccord":[],
 	 "dateEcheance":[],
-	 "duree":[]
+	 "duree":[],
+   "assure": [], 
    }),
  
     this.FormClient.get('numcompte')?.valueChanges.subscribe((value) => {
@@ -99,6 +100,12 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
           if (this.lesCredits.length === 0) {
             this.notificationservice.showError('Ce compte n\'a pas de crédits associés.');
           } else {
+            // Vérifier si le crédit est assuré
+            const creditAssure = this.lesCredits.some(credit => credit.assure === true);
+            this.FormCredit.patchValue({
+              assureEnCredit: creditAssure
+            });
+
             // Si des crédits sont trouvés, réinitialisez le message d'erreur
             this.notificationservice.clearError();
           }
@@ -166,7 +173,8 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
             montant: credit.montant,
             duree: credit.duree,
             dateAccord: credit.dateAccord,
-            dateEcheance: credit.dateEcheance
+            dateEcheance: credit.dateEcheance,
+            assure: credit.assure
           });
 
           this.creditservice.getProprieteByNumCredit(numCredit).subscribe(
@@ -196,6 +204,12 @@ constructor(private clientservice:ClientServiceService,private creditservice:Cre
    
     const numCredit = this.FormCredit.get('numCredit')?.value;
   
+    if (this.FormCredit.get('assureEnCredit')?.value === true) {
+      this.notificationservice.showError('Ce crédit est déjà assuré.');
+      return;
+    }
+
+
     this.creditservice.getCreditByNumCredit(numCredit).subscribe(
       (credit: any) => {
         if (credit) {

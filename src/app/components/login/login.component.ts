@@ -94,31 +94,10 @@ submit(): void {
     password: this.LoginForm.value.password
   };
 
-  this.authService.login(credentials)
-  .subscribe(
+  this.authService.login(credentials).subscribe(
     (response) => {
       localStorage.setItem('token', response.token);
-      
-   //  this.router.navigate(['/header']);
-
-    /* if (response && response.token) {
-      console.log("token : " + response.token);
-      console.log("email : " +this.authService.getUserEmail());
-    }
-     this.userService.getUserByEmail(this.authService.getUserEmail()).subscribe(
-        (user) => {
-          if (user.active) {
-            this.router.navigate(['/header']);
-          } else {
-            console.error('Accès refusé : l\'utilisateur n\'est pas activé');
-            this.notificationservice.showError('Accès refusé : Votre compte est désactivé');
-          }
-        },
-        (error) => {
-          console.error('Une erreur s\'est produite lors de la récupération des données utilisateur :', error);
-          this.notificationservice.showError('Une erreur s\'est produite lors de la récupération des données utilisateur.');
-        }
-      );  */
+      this.getMailToConnect(); // Appel de la méthode après authentification réussie
     },
     (error) => {
       console.error('Identifiants incorrects. Veuillez réessayer.', error);
@@ -127,12 +106,9 @@ submit(): void {
   );
 }
 
-getMailToConnect(){
-  const credentials = {
-    email: this.LoginForm.value.email,
-    password: this.LoginForm.value.password
-  };
-  this.userService.getUserByEmail(credentials.email).subscribe(
+getMailToConnect(): void {
+  const email = this.LoginForm.value.email;
+  this.userService.getUserByEmail(email).subscribe(
     (user) => {
       if (user.active) {
         // Vérifier le rôle de l'utilisateur
@@ -140,7 +116,7 @@ getMailToConnect(){
           this.router.navigate(['/accueilAdmin']);
         } else if (user.role === 'AGENT') {
           this.router.navigate(['/accueilAgent']);
-        }else if (user.role === 'ADMIN_GLOBAL') {
+        } else if (user.role === 'ADMIN_GLOBAL') {
           this.router.navigate(['/accueilAdminGlobal']);
         } else {
           console.error('Rôle non reconnu :', user.role);
@@ -153,51 +129,12 @@ getMailToConnect(){
     },
     (error) => {
       console.error('Une erreur s\'est produite lors de la récupération des données utilisateur :', error);
-      this.notificationservice.showError('Une erreur s\'est produite lors de la récupération des données utilisateur.');
+    //  this.notificationservice.showError('Une erreur s\'est produite lors de la récupération des données utilisateur.');
     }
   );
 }
 
 
-/*
-submit(): void {
-  if (this.LoginForm.invalid) {
-    return;
-  }
 
-  const credentials = {
-    email: this.LoginForm.value.email,
-    password: this.LoginForm.value.password
-  };
 
-  this.authService.login(credentials).pipe(
-    delay(500) // Temps de latence
-  ).subscribe(
-    (response) => {
-      localStorage.setItem('token', response.token);
-      // Obtenir le rôle de l'utilisateur
-      this.userService.getUserRoleByMail(credentials.email).subscribe(
-        (role) => {
-          if (role === 'ADMIN') {
-            this.router.navigate(['/header']); // Redirection vers le composant Header
-          } else if (role === 'AGENT') {
-            this.router.navigate(['/liste-compagnies']); // Redirection vers le composant Liste Compagnies
-          } else {
-            console.error('Rôle non reconnu.');
-            this.notificationservice.showError('Rôle non reconnu.');
-          }
-        },
-        (error) => {
-          console.error('Une erreur s\'est produite lors de la récupération du rôle de l\'utilisateur :', error);
-          this.notificationservice.showError('Une erreur s\'est produite lors de la récupération du rôle de l\'utilisateur.');
-        }
-      );
-    },
-    (error) => {
-      console.error('Identifiants incorrects. Veuillez réessayer.', error);
-      this.notificationservice.showError('Identifiants incorrects. Veuillez réessayer.');
-    }
-  );
-}
-*/
 }

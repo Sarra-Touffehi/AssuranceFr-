@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotificationServiceService } from 'src/app/services/notification-service.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-user',
@@ -11,49 +10,68 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddUserComponent implements OnInit {
   RegisterForm!: FormGroup;
-  sideNavStatus:boolean = false;
+  sideNavStatus: boolean = false;
+  showAgenceField: boolean = false;
 
-  constructor(private authService : AuthService,
-    private fb : FormBuilder, private notificationservice:NotificationServiceService) {
-      this.createForm();
-     }
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private notificationservice: NotificationServiceService
+  ) {
+    this.createForm();
+  }
 
   ngOnInit(): void {
+    this.onRoleChange();
   }
+
+
+
   createForm() {
     this.RegisterForm = this.fb.group({
-      nom: ['', Validators.required], 
+      nom: ['', Validators.required],
       prenom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
       role: ['', Validators.required],
-      agence: ['', Validators.required], 
-      active:[false],
-    },{ validators : this.passwordMathValidator}
-    );
+      agence: [null],
+      active: [false]
+    }, { validators: this.passwordMatchValidator });
   }
-  passwordMathValidator(formGroup :FormGroup){
-const password = formGroup.get('password')?.value;
-const confirmPassword = formGroup.get('confirmPassword')?.value;
 
-    if(password!=confirmPassword){
-      formGroup.get('confirmPassword')?.setErrors({passwordMismatch:true});
+  passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
 
-    }else {
+    if (password !== confirmPassword) {
+      formGroup.get('confirmPassword')?.setErrors({ passwordMismatch: true });
+    } else {
       formGroup.get('confirmPassword')?.setErrors(null);
     }
   }
 
+  onRoleChange() {
+    this.RegisterForm.get('role')?.valueChanges.subscribe(role => {
+      this.showAgenceField = role === 'AGENT';
+      if (this.showAgenceField) {
+        this.RegisterForm.get('agence')
+      } else {
+       // this.RegisterForm.get('agence')?.clearValidators();
+      }
+    //  this.RegisterForm.get('agence')?.updateValueAndValidity();
+    });
+  }
 
+  
   submit() {
-    if (this.RegisterForm.valid) { 
-      const signRequest = this.RegisterForm.value; 
+    if (this.RegisterForm.valid) {
+      const signRequest = this.RegisterForm.value;
+      console.log('Données soumises:', signRequest); 
       this.authService.register(signRequest).subscribe(
         (response) => {
           console.log('Utilisateur inscrit avec succès!', response);
           this.notificationservice.showSuccess('Utilisateur inscrit avec succès!');
-
           this.RegisterForm.reset();
         },
         (error) => {
@@ -64,4 +82,6 @@ const confirmPassword = formGroup.get('confirmPassword')?.value;
       console.error('Le formulaire est invalide');
     }
   }
+  
+  
 }

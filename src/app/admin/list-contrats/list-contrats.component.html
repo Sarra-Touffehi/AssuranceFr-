@@ -4,11 +4,15 @@
       <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-sidenav>
       <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
   
-  
-        <h2 style="text-align: center;">Liste des contrats</h2>
-        <div class="search-container">
-          <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+        <mat-toolbar class="toolbar">
+          <span><strong>Liste des Contrats </strong> </span>
+        </mat-toolbar>        <div class="search-container">
+          <div class="search-box">
+            <i class="fa fa-search search-icon"></i>
+            <input class="search-input form-control" type="text" placeholder="Rechercher" [(ngModel)]="searchText" />
+          </div>
         </div>
+
         <table class="souscriptions-table">
           <thead>
             <tr>

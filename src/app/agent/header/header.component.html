@@ -6,8 +6,9 @@
     </div>
     <a class="navbar-brand px-2" *ngIf="user">
       <img src=".../../../../../assets/attijari.png" alt="Logo" class="navbar-logo">
-     <span><strong style="color: #f44336;">AGENCE : {{ user.agence.idAgence}} </strong></span>
     </a>
+    <span><strong style="color: #f44336;">AGENCE : {{ user.agence?.idAgence}} </strong></span>
+
     <div class="navbar-actions">
       <button class="action-button" mat-icon-button [routerLink]="['/chat', user.iduser]">
         <i class="fa-regular fa-message"></i>

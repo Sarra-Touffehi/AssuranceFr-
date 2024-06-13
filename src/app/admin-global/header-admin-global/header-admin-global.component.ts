@@ -10,7 +10,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./header-admin-global.component.css']
 })
 export class HeaderAdminGlobalComponent implements OnInit {
-  user!: User;
+  user: User = new User(0, '', '', '', '', Role.ADMIN_GLOBAL, true); 
+
   userEmail!: string | null;
   @Output() sideNavToggled=new EventEmitter<boolean>();
 
@@ -37,9 +38,11 @@ export class HeaderAdminGlobalComponent implements OnInit {
     });
   }
   getUserByEmail(): void {
-    if (this.userEmail) { 
+    if (this.userEmail) {
       this.userService.getUserByEmail(this.userEmail)
-        .subscribe(user => this.user = user);
+        .subscribe(user => {
+          this.user = user; 
+        });
     }
   }
   sideNavToggle(){

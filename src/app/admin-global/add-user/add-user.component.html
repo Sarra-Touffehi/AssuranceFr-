@@ -5,7 +5,7 @@
     <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
       <div>
         <mat-toolbar class="toolbar">
-          <span> <strong>Ajouter utilisateur à Attijari <span style="color: #e85641;">Assurance</span> </strong></span>
+          <span><strong>Ajouter utilisateur à Attijari <span style="color: #e85641;">Assurance</span></strong></span>
         </mat-toolbar>
       </div>
       <form id="userForm" [formGroup]="RegisterForm" (ngSubmit)="submit()">
@@ -13,12 +13,10 @@
           <label for="nom" class="large-label">Nom</label>
           <input type="text" class="form-control" id="nom" formControlName="nom" required>
         </div>
-      
         <div class="form-group">
           <label for="prenom" class="large-label">Prénom</label>
           <input type="text" class="form-control" id="prenom" formControlName="prenom" required>
         </div>
-      
         <div class="form-group">
           <label for="email" class="large-label">Email *</label>
           <input type="email" class="form-control" id="email" formControlName="email" required>
@@ -29,7 +27,6 @@
             L'email n'est pas valide
           </div>
         </div>
-      
         <div class="form-group">
           <label for="password" class="large-label">Mot de passe *</label>
           <input type="password" class="form-control" id="password" formControlName="password" required>
@@ -37,9 +34,8 @@
             Le mot de passe est requis
           </div>
         </div>
-      
         <div class="form-group">
-          <label for="confirmPassword"  class="large-label">Confirmation du mot de passe *</label>
+          <label for="confirmPassword" class="large-label">Confirmation du mot de passe *</label>
           <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" required>
           <div class="error-message" *ngIf="RegisterForm.get('confirmPassword')?.hasError('required') && (RegisterForm.get('confirmPassword')?.dirty || RegisterForm.get('confirmPassword')?.touched)">
             La confirmation du mot de passe est requise
@@ -48,10 +44,9 @@
             Les mots de passe ne correspondent pas
           </div>
         </div>
-      
         <div class="form-group">
-          <label for="role"  class="large-label">Rôle *</label>
-          <select class="form-control" id="role" formControlName="role" required >
+          <label for="role" class="large-label">Rôle *</label>
+          <select class="form-control" id="role" formControlName="role" (change)="onRoleChange()" required>
             <option value="AGENT">Agent</option>
             <option value="ADMIN">Admin</option>
             <option value="ADMIN_GLOBAL">Admin Global</option>
@@ -60,24 +55,23 @@
             Le rôle est requis
           </div>
         </div>
-
+        <div class="form-group" *ngIf="showAgenceField">
+          <label for="agence" class="large-label">Numéro d'agence</label>
+          <input type="text" class="form-control" id="agence" formControlName="agence">
+          <div class="error-message" *ngIf="RegisterForm.get('agence')?.hasError('required') && (RegisterForm.get('agence')?.dirty || RegisterForm.get('agence')?.touched)">
+            Le numéro d'agence est requis pour les agents
+          </div>
+        </div>
         
         <div class="form-group">
-          <label for="agence" class="large-label">Numéro d'agence</label>
-          <input type="text" class="form-control" id="agence" formControlName="agence" required>
+          <label for="status" class="large-label">Statut (<span style="color: #ffc700;">Activé</span>, <span style="color: #e85641;">Désactivé</span>)</label>
+          <div class="toggle-container">
+            <label class="toggle">
+              <input type="checkbox" formControlName="active">
+              <span class="slider"></span>
+            </label>
+          </div>
         </div>
-        <!-- Form Group for Status -->
-<div class="form-group">
-  <label for="status"  class="large-label">Statut ( <span style="color: #ffc700;">Activé</span> ,<span style="color: #e85641;">Desactivé</span>  )</label>
-  <div class="toggle-container">
-    <label class="toggle">
-      <input type="checkbox" formControlName="status" >
-      <span class="slider"></span>
-    </label>
-  </div>
-</div>
-
-      
         <button type="submit" class="btn btn-primary w-100" [disabled]="RegisterForm.invalid"><strong>Ajouter</strong></button>
       </form>
     </div>

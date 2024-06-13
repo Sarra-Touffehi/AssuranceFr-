@@ -15,7 +15,7 @@ export enum Role {
       public password: string,
       public role: Role,
       public active : boolean,
-      public agence :Agence
+      public agence?:Agence
     ) {}
   }
   

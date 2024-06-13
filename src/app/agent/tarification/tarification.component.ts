@@ -58,7 +58,7 @@ confirmSouscription(): void {
 }
 
 souscrire(): void {
-  this.souscriptionService.souscrire(this.idClient, this.offre.idOffre, {}).subscribe(
+  this.souscriptionService.souscrire(this.idClient, this.offre.idOffre, this.numCredit).subscribe(
     (response: any) => {
       console.log('Souscription réussie:', response);
       this.notificationservice.showSuccess(response.message);
@@ -67,7 +67,7 @@ souscrire(): void {
         queryParams: {
           idClient: this.idClient,
           numCredit: this.numCredit,
-          idOffre : this.offre.idOffre,
+          idOffre: this.offre.idOffre,
         }
       });
     },

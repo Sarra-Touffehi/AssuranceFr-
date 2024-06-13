@@ -63,9 +63,20 @@
           <div class="col-4"><strong>Date d'accord: </strong>{{ FormCredit.get('dateAccord')?.value | date:'dd/MM/yyyy' }}</div>
           <div class="col-4"><strong>Date d'échéance: </strong>{{ FormCredit.get('dateEcheance')?.value | date:'dd/MM/yyyy' }}</div>
         </div>
-     
+
+          <!-- Message si le crédit est déjà assuré -->
+          <div class="row">
+            <div *ngIf="FormCredit.get('assure')?.value" class="alert alert-warning mt-3" role="alert">
+              Ce crédit est déjà assuré.
+            </div>
+          
+</div>
+        
+
+
       </div>
      
+      <!--Prediction-->
    <mat-toolbar class="toolbar">
           <span>Prédiction</span>
         </mat-toolbar>
@@ -84,8 +95,9 @@
 
       <div class="simulerContainer">
         <mat-dialog-actions>
-          <button mat-raised-button style="background-color:#ffc700; ; color: black; margin: 20px;font-weight: bold;" (click)="simuler()">Simuler</button>
-          <button mat-raised-button style="background-color: #ffc700; ; color: black; margin: 20px;font-weight: bold;" (click)="reset()">Annuler</button>
+          <button mat-raised-button style="background-color:#ffc700; color: black; margin: 20px;font-weight: bold;" 
+          [disabled]="FormCredit.get('assure')?.value === true"
+          (click)="simuler()">Simuler</button>          <button mat-raised-button style="background-color: #ffc700; ; color: black; margin: 20px;font-weight: bold;" (click)="reset()">Annuler</button>
         </mat-dialog-actions>
       </div>
     </div>
